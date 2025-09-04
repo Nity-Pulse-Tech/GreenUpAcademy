@@ -1,0 +1,283 @@
+{% extends 'publics/home/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+ <!-- Header -->
+
+     <!-- Breadcrumbs with Background Image -->
+<div class="relative py-24 min-h-[400px] bg-gray-100 overflow-hidden">
+    <!-- Background Carousel -->
+    <div class="absolute inset-0 w-full h-full overflow-hidden">
+        <div id="carousel" class="w-full h-full relative">
+            <!-- Slide 1 -->
+            <img src="{% static 'images/FORMATIONS.png' %}" 
+                 alt="Slide 1" 
+                 class="absolute inset-0 w-full h-full object-cover object-center  transition-opacity duration-1000">
+            <!-- Slide 2 -->
+            <img src="{% static 'images/FORMATION2.png' %}" 
+                 alt="Slide 2" 
+                 class="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000">
+            <!-- Slide 3 -->
+            <img src="{% static 'images/FORMATIONS3.png' %}" 
+                 alt="Slide 3" 
+                 class="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000">
+        </div>
+    </div>
+
+    <!-- Dark overlay for text readability -->
+    {% comment %} <div class="absolute inset-0 bg-black bg-opacity-40"></div> {% endcomment %}
+
+    <!-- Content -->
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 drop-shadow-lg">
+                Admission résident hors union européenne
+            </h1>
+            <div class="text-sm text-gray-200 bg-black bg-opacity-20 inline-block px-4 py-2 rounded-full backdrop-blur-sm">
+                <a href="https://www.greenup-academy.fr/" class="hover:text-white transition-colors duration-300">
+                    Green Up Academy
+                </a> 
+                <span class="mx-2 text-gray-300">></span> 
+                <span class="text-white font-medium">Admission résident hors union européenne</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const slides = document.querySelectorAll('#carousel img');
+    let current = 0;
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.style.opacity = i === index ? '0.7' : '0';
+        });
+    }
+
+    function nextSlide() {
+        current = (current + 1) % slides.length;
+        showSlide(current);
+    }
+
+    setInterval(nextSlide, 5000); // Change slide every 5 seconds
+</script>
+
+
+
+    <!-- Main Content -->
+    <main class="py-12">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-2xl font-bold text-primary mb-6">Procédure étudiants étrangers Hors union européenne</h2>
+                <p class="mb-8">Les candidats peuvent intégrer les formations de la <a href="#" class="text-primary font-semibold">GREEN UP ACADEMY</a> en <span class="font-semibold">1ère année, 3ème année, 4ème année ou 5ème année</span>. Quel que soit le programme que vous souhaitez intégrer, le processus d'admission suit <span class="font-semibold">3 étapes :</span></p>
+                
+                <!-- 3 Steps -->
+                <div class="grid md:grid-cols-3 gap-6 mb-12">
+                    <!-- Step 1 -->
+                    <div class="bg-blue-50 rounded-lg p-6 text-center">
+                        <div class="w-12 h-12 bg-primary-green rounded-full flex items-center justify-center text-white text-xl font-bold mx-auto mb-4">1</div>
+                        <h3 class="font-bold text-lg mb-4">TÉLÉCHARGER ET REMPLIR LE FORMULAIRE D'ADMISSION</h3>
+                        <a href="#" class="inline-block bg-primary-green hover:bg-secondary text-white px-6 py-2 rounded-md text-sm font-medium transition">Cliquez ici</a>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="bg-blue-50 rounded-lg p-6 text-center">
+                        <div class="w-12 h-12 bg-primary-green rounded-full flex items-center justify-center text-white text-xl font-bold mx-auto mb-4">2</div>
+                        <h3 class="font-bold text-lg">ÉTUDE DE LA CANDIDATURE</h3>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="bg-blue-50 rounded-lg p-6 text-center">
+                        <div class="w-12 h-12 bg-primary-green rounded-full flex items-center justify-center text-white text-xl font-bold mx-auto mb-4">3</div>
+                        <h3 class="font-bold text-lg">CONFIRMATION D'INSCRIPTION PAR MAIL</h3>
+                    </div>
+                </div>
+                
+                <div class="border-t border-gray-300 my-8"></div>
+                
+                <!-- Inscription Section -->
+                <div class="mb-12 bg-blue-50 rounded-lg p-8 text-center">
+                    <h3 class="text-2xl font-bold text-primary mb-4">S'inscrire</h3>
+                    <p class="text-gray-700 mb-6">Les inscriptions pour la rentrée d'<span class="font-semibold">Octobre 2025</span> et la rentrée décalée de <span class="font-semibold">Février 2026</span> sont ouvertes ! Le processus d'admission se fait entièrement à distance.</p>
+                    <a href="#" class="inline-block bg-primary-green hover:bg-secondary text-white px-8 py-3 rounded-md text-lg font-medium transition">Commencer votre inscription</a>
+                </div>
+                
+                <!-- Dates Section -->
+                <div class="mb-12">
+                    <h3 class="text-2xl font-bold text-primary mb-6">Les Dates</h3>
+                    <div class="grid md:grid-cols-4 gap-6">
+                        <div class="bg-blue-50 rounded-lg p-6 shadow-sm">
+                            <h4 class="font-semibold text-lg mb-2 text-primary">Types de formations</h4>
+                            <p class="text-gray-700">Toutes les formations académiques</p>
+                        </div>
+                        <div class="bg-blue-50 rounded-lg p-6 shadow-sm">
+                            <h4 class="font-semibold text-lg mb-2 text-primary">Sessions</h4>
+                            <p class="text-gray-700">Octobre & Février</p>
+                        </div>
+                        <div class="bg-blue-50 rounded-lg p-6 shadow-sm">
+                            <h4 class="font-semibold text-lg mb-2 text-primary">Date limite de candidatures</h4>
+                            <p class="text-gray-700">1 mois avant la rentrée</p>
+                        </div>
+                        <div class="bg-blue-50 rounded-lg p-6 shadow-sm">
+                            <h4 class="font-semibold text-lg mb-2 text-primary">Date de la rentrée</h4>
+                            <ul class="list-disc pl-5 text-gray-700">
+                                <li>15 Octobre 2025</li>
+                                <li>10 Février 2026</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Infos Pratiques -->
+                <div class="mb-12">
+                    <h2 class="text-2xl font-bold text-primary mb-6">Infos pratiques</h2>
+                    <p class="mb-6 text-lg font-semibold">Comment intégrer Green Up Academy depuis l'international ?</p>
+                    
+                    <div class="space-y-4">
+                        <!-- Visa Longue Durée -->
+                        <div class="border border-gray-200 rounded-lg">
+                            <button class="w-full flex justify-between items-center px-6 py-4 bg-blue-50 rounded-t-lg focus:outline-none" onclick="toggleAccordion(this)">
+                                <h4 class="font-semibold text-lg text-primary">Visa longue durée ou titre de séjour</h4>
+                                <i class="fas fa-chevron-down text-primary transition-transform"></i>
+                            </button>
+                            <div class="hidden px-6 py-4 bg-white">
+                                <p class="text-gray-700">La demande de VISA se fait auprès du consulat français de votre pays. Renseignez-vous via le site internet des consulats afin de connaître les démarches à suivre et la durée de la démarche, pouvant prendre plusieurs mois. La liste des pièces justificatives à fournir pour votre demande de visa varie selon le consulat de votre pays, votre demande et la durée souhaitée.</p>
+                                <p class="text-gray-700 mt-2"><span class="font-semibold text-red-600">Attention :</span> Si la durée de validité de votre passeport ne couvre pas la durée totale de votre présence en France, votre demande sera refusée !</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Visa Étudiant -->
+                        <div class="border border-gray-200 rounded-lg">
+                            <button class="w-full flex justify-between items-center px-6 py-4 bg-blue-50 rounded-t-lg focus:outline-none" onclick="toggleAccordion(this)">
+                                <h4 class="font-semibold text-lg text-primary">Visa étudiant</h4>
+                                <i class="fas fa-chevron-down text-primary transition-transform"></i>
+                            </button>
+                            <div class="hidden px-6 py-4 bg-white">
+                                <p class="text-gray-700">Pour obtenir un Visa étudiant, rendez-vous sur Campus France, selon votre pays d'origine :</p>
+                                <ul class="list-disc pl-5 mt-2 space-y-1">
+                                    <li><a href="#" class="text-primary hover:underline font-semibold">Procédure pour les 33 pays disposant d'une inscription en ligne (CEF)</a></li>
+                                    <li><a href="#" class="text-primary hover:underline font-semibold">Procédure pour les Pays d'Europe</a></li>
+                                    <li><a href="#" class="text-primary hover:underline font-semibold">Procédure pour les autres pays</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- La Procédure -->
+                        <div class="border border-gray-200 rounded-lg">
+                            <button class="w-full flex justify-between items-center px-6 py-4 bg-blue-50 rounded-t-lg focus:outline-none" onclick="toggleAccordion(this)">
+                                <h4 class="font-semibold text-lg text-primary">La procédure</h4>
+                                <i class="fas fa-chevron-down text-primary transition-transform"></i>
+                            </button>
+                            <div class="hidden px-6 py-4 bg-white">
+                                <p class="text-gray-700">Lors de votre dépôt de dossier, il y a deux possibilités. Mais dans tous les cas, l'inscription auprès de l'école sera vérifiée par Campus France auprès de nos services :</p>
+                                <p class="text-gray-700 mt-2"><span class="font-semibold">Soit notre établissement figure dans la liste des établissements de votre pays d'origine</span> : il suffira de le sélectionner, suivre les étapes et fournir le pack visa délivré par Green Up Academy lors de votre inscription.</p>
+                                <p class="text-gray-700 mt-2"><span class="font-semibold">Soit notre établissement ne figure pas dans la liste des établissements de votre pays d'origine</span> : il faudra remplir le champ textuel à compléter en indiquant le nom de l'école « Green Up Academy » puis joindre le pack visa délivré par l'école lors de votre inscription.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="bg-gray-50 rounded-lg p-8 mb-12">
+                    <h3 class="text-2xl font-bold text-primary mb-6 text-center">Nous contacter</h3>
+                    
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nom Complet</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
+                            </div>
+                            
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Telephone</label>
+                                <input type="tel" id="phone" name="phone" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="city" class="block text-sm font-medium text-gray-700 mb-1">Ville</label>
+                                <input type="text" id="city" name="city" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
+                            </div>
+                            
+                            <div>
+                                <label for="country" class="block text-sm font-medium text-gray-700 mb-1">Pays</label>
+                                <input type="text" id="country" name="country" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="formation" class="block text-sm font-medium text-gray-700 mb-1">Formation choisie</label>
+                            <select id="formation" name="formation" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
+                                <option value="">Sélectionnez une formation</option>
+                                <option value="FORMATIONS ACADÉMIQUES BAC + 2 / BAC + 3">FORMATIONS ACADÉMIQUES BAC + 2 / BAC + 3</option>
+                                <option value="FORMATIONS ACADÉMIQUES BAC + 5">FORMATIONS ACADÉMIQUES BAC + 5</option>
+                                <option value="Bachelor GUA en Performance Énergétique des Bâtiments et Procédés Industriels">Bachelor GUA en Performance Énergétique des Bâtiments et Procédés Industriels</option>
+                                <option value="Bachelor en Intelligence Artificielle">Bachelor en Intelligence Artificielle</option>
+                                <option value="Bachelor GUA en Conception Designer UI">Bachelor GUA en Conception Designer UI</option>
+                                <option value="Bachelor GUA en Conception et Développement d'Application">Bachelor GUA en Conception et Développement d'Application</option>
+                                <option value="Mastère Intelligence Artificielle">Mastère Intelligence Artificielle</option>
+                                <option value="MASTÈRE en PERFORMANCE ÉNERGÉTIQUE, INTELLIGENCE ARTIFICIELLE ET DÉVELOPPEMENT DURABLE">MASTÈRE en PERFORMANCE ÉNERGÉTIQUE, INTELLIGENCE ARTIFICIELLE ET DÉVELOPPEMENT DURABLE</option>
+                                <option value="Chargée d'Affaires en Rénovation Energétique du Bâtiment">Chargée d'Affaires en Rénovation Energétique du Bâtiment</option>
+                                <option value="Devenir Référent Énergie en industrie">Devenir Référent Énergie en industrie</option>
+                                <option value="NORME ISO 50001">NORME ISO 50001</option>
+                                <option value="Devenir Référent Energie Bâtiment">Devenir Référent Energie Bâtiment</option>
+                                <option value="Diagnostiqueur Rénovation & Recyclage">Diagnostiqueur Rénovation & Recyclage</option>
+                                <option value="Rénover un bâtiment en habitat autonome">Rénover un bâtiment en habitat autonome</option>
+                                <option value="PROFESSIONNELLES INFRA BAC">PROFESSIONNELLES INFRA BAC</option>
+                                <option value="PROFESSIONNELLES BAC + 2">PROFESSIONNELLES BAC + 2</option>
+                                <option value="Autres">Autres</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Parlez nous de vous en quelques mots</label>
+                            <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"></textarea>
+                        </div>
+                        
+                        <div>
+                            <button type="submit" class="w-full bg-primary-green hover:bg-secondary text-white py-3 px-6 rounded-md font-medium transition">Envoyer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+     <!-- Back to top button -->
+    <button id="backToTop" class="fixed bottom-6 right-6 bg-primary text-white p-3 rounded-full shadow-lg hidden">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Back to top button functionality
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Accordion functionality
+        function toggleAccordion(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            content.classList.toggle('hidden');
+            icon.classList.toggle('fa-chevron-down');
+            icon.classList.toggle('fa-chevron-up');
+        }
+    </script>
+{% endblock %}

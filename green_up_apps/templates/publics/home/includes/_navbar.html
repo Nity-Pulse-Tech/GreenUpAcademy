@@ -1,0 +1,82 @@
+<!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 lg:w-12 lg:h-12 bg-primary-green rounded-full flex items-center justify-center">
+                        <i class="fas fa-leaf text-white text-lg lg:text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl lg:text-2xl font-bold text-primary-green">Green Up Academy</h1>
+                        <p class="text-xs text-gray-600 hidden sm:block">Excellence & Durabilité</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center space-x-8">
+                    <div class="menu-item-has-children group relative">
+                        <a href="#" class="font-semibold text-dark hover:text-accent transition-colors flex items-center">
+                            A propos
+                            <i class="fas fa-chevron-down text-xs ml-1 group-hover:rotate-180 transition-transform"></i>
+                        </a>
+                        <div class="submenu absolute left-0 mt-2 w-56 bg-white shadow-xl rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                            <a href="#" class="block px-4 py-3 hover:bg-gray-100">Notre Equipe</a>
+                            <a href="#" class="block px-4 py-3 hover:bg-gray-100">Le règlement intérieur</a>
+                            <a href="#" class="block px-4 py-3 hover:bg-gray-100">Nos Certifications</a>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item-has-children group relative">
+                        <a href="#" class="font-semibold text-dark hover:text-accent transition-colors flex items-center">
+                            Admission
+                            <i class="fas fa-chevron-down text-xs ml-1 group-hover:rotate-180 transition-transform"></i>
+                        </a>
+                        <div class="submenu absolute left-0 mt-2 w-56 bg-white shadow-xl rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                            <a href="{% url "admission:resident_hors_ue" %}" class="block px-4 py-3 hover:bg-gray-100">Résidents hors UE</a>
+                            <a href="#" class="block px-4 py-3 hover:bg-gray-100">Résidents UE</a>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item-has-children group relative">
+                        <a href="#" class="font-semibold text-dark hover:text-accent transition-colors flex items-center">
+                            Formations
+                            <i class="fas fa-chevron-down text-xs ml-1 group-hover:rotate-180 transition-transform"></i>
+                        </a>
+                        <div class="submenu absolute left-0 mt-2 w-64 bg-white shadow-xl rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                            <div class="menu-item-has-children group relative">
+                                <a href="#" class="flex justify-between items-center px-4 py-3 hover:bg-gray-100">
+                                    <span>Bachelor</span>
+                                    <i class="fas fa-chevron-right text-xs"></i>
+                                </a>
+                                <div class="submenu absolute left-full top-0 w-64 bg-white shadow-xl rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                                    <a href="#" class="block px-4 py-3 hover:bg-gray-100">Bachelor Conception Designer UI</a>
+                                    <a href="#" class="block px-4 py-3 hover:bg-gray-100">Bachelor Administrateur d'infrastructure sécurisée</a>
+                                    <a href="#" class="block px-4 py-3 hover:bg-gray-100">Bachelor Conception et Développement d'applications</a>
+                                    <a href="#" class="block px-4 py-3 hover:bg-gray-100">Bachelor en Performance Énergétique</a>
+                                </div>
+                            </div>
+                            <div class="menu-item-has-children group relative">
+                                <a href="#" class="flex justify-between items-center px-4 py-3 hover:bg-gray-100">
+                                    <span>Mastère professionnel</span>
+                                    <i class="fas fa-chevron-right text-xs"></i>
+                                </a>
+                                <div class="submenu absolute left-full top-0 w-64 bg-white shadow-xl rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                                    <a href="#" class="block px-4 py-3 hover:bg-gray-100">Mastère en performance énergétique, IA et développement durable</a>
+                                    <a href="#" class="block px-4 py-3 hover:bg-gray-100">Mastère Intelligence Artificielle</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="font-semibold text-dark hover:text-accent transition-colors">Actualités</a>
+                    <a href="#" class="font-semibold text-dark hover:text-accent transition-colors">Contact</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="lg:hidden text-gray-700 text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
