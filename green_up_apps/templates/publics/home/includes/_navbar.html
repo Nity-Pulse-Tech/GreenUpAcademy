@@ -52,10 +52,10 @@
                                     <i class="fas fa-chevron-right text-xs"></i>
                                 </a>
                                 <div class="submenu absolute left-full top-0 w-64 bg-white shadow-xl rounded-md opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300 z-10">
-                                    <a href="#" class="block px-4 py-3 hover:bg-gray-100">Bachelor Conception Designer UI</a>
-                                    <a href="#" class="block px-4 py-3 hover:bg-gray-100">Bachelor Administrateur d'infrastructure sécurisée</a>
-                                    <a href="#" class="block px-4 py-3 hover:bg-gray-100">Bachelor Conception et Développement d'applications</a>
-                                    <a href="#" class="block px-4 py-3 hover:bg-gray-100">Bachelor en Performance Énergétique</a>
+                                    <a href="{% url "formation:bachelor_designer" %}" class="block px-4 py-3 hover:bg-gray-100">Bachelor Conception Designer UI</a>
+                                    <a href="{% url "formation:bachelor_security" %}" class="block px-4 py-3 hover:bg-gray-100">Bachelor Administrateur d'infrastructure sécurisée</a>
+                                    <a href="{% url "formation:bachelor_application" %}" class="block px-4 py-3 hover:bg-gray-100">Bachelor Conception et Développement d'applications</a>
+                                    <a href="{% url "formation:bachelor_industry" %}" class="block px-4 py-3 hover:bg-gray-100">Bachelor en Performance Énergétique</a>
                                 </div>
                             </div>
                             <div class="menu-item-has-children group/sub relative">
@@ -64,8 +64,8 @@
                                     <i class="fas fa-chevron-right text-xs"></i>
                                 </a>
                                 <div class="submenu absolute left-full top-0 w-64 bg-white shadow-xl rounded-md opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300 z-10">
-                                    <a href="#" class="block px-4 py-3 hover:bg-gray-100">Mastère en performance énergétique, IA et développement durable</a>
-                                    <a href="#" class="block px-4 py-3 hover:bg-gray-100">Mastère Intelligence Artificielle</a>
+                                    <a href="{% url "formation:master_development" %}" class="block px-4 py-3 hover:bg-gray-100">Mastère en performance énergétique, IA et développement durable</a>
+                                    <a href="{% url "formation:master_ai" %}" class="block px-4 py-3 hover:bg-gray-100">Mastère Intelligence Artificielle</a>
                                 </div>
                             </div>
                         </div>

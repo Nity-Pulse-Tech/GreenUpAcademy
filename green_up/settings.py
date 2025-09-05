@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'green_up_apps.users',
     'green_up_apps.admission',
     'green_up_apps.apropos',
+    'green_up_apps.formation',
 ]
 
 MIDDLEWARE = [
