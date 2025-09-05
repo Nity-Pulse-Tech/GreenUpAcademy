@@ -1,0 +1,489 @@
+{% extends 'publics/home/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<style>
+        .admission-step {
+            transition: all 0.3s ease;
+        }
+        .admission-step:hover {
+            transform: translateY(-5px);
+        }
+        .form-section {
+            transition: all 0.3s ease;
+        }
+        .form-section:hover {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .program-table {
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+        .program-table th, .program-table td {
+            border: 1px solid #e5e7eb;
+        }
+        .program-table tr:hover {
+            background-color: #f9fafb;
+        }
+    </style>
+    
+ <!-- Breadcrumb Section -->
+    <section class="bg-primary-green text-white py-6">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <h1 class="text-3xl font-bold mb-2">Procédure d'Admission</h1>
+                <p class="text-lg">Green Up Academy > Admission</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Section -->
+    <main class="py-12">
+        <div class="container mx-auto px-4">
+            <!-- Admission Process Steps -->
+            <section class="mb-16">
+                <h2 class="text-3xl font-bold text-center mb-12">Processus d'Admission</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Step 1 -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 admission-step">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-primary-green text-white rounded-full w-10 h-10 flex items-center justify-center text-xl font-bold mr-3">1</div>
+                            <h3 class="text-xl font-semibold">Formulaire d'Admission</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Soumettez votre formulaire d'admission accompagné des documents requis par email à :</p>
+                        <p class="text-primary font-semibold mb-4">contact@green-up-academy.com</p>
+                        <p class="text-gray-600">Chaque candidature est revue individuellement en fonction des attentes liées au programme envisagé.</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 admission-step">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-primary-green text-white rounded-full w-10 h-10 flex items-center justify-center text-xl font-bold mr-3">2</div>
+                            <h3 class="text-xl font-semibold">Étude de la Candidature</h3>
+                        </div>
+                        <ul class="list-disc list-inside text-gray-600 mb-4 space-y-2">
+                            <li>Examen du dossier</li>
+                            <li>Organisation d'un entretien</li>
+                            <li>Envoi de la réponse</li>
+                        </ul>
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <p class="font-semibold mb-2">Frais d'admission :</p>
+                            <p>1 200 € Frais d'inscription</p>
+                            <p>1 000 € Arrhes (déductibles des frais de scolarité)</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 admission-step">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-primary-green text-white rounded-full w-10 h-10 flex items-center justify-center text-xl font-bold mr-3">3</div>
+                            <h3 class="text-xl font-semibold">Confirmation d'Inscription</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Les documents suivants sont remis à l'issue de cette étape :</p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2">
+                            <li>Attestation d'inscription</li>
+                            <li>Facture correspondant aux frais de dossier, aux frais de scolarité et aux frais techniques</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cancellation Policy -->
+            <section class="mb-16 bg-white rounded-lg shadow-lg p-8">
+                <h2 class="text-2xl font-bold mb-6 text-center">Conditions d'Annulation</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="text-center p-4 border border-gray-200 rounded-lg">
+                        <div class="bg-primary-green text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                            >4
+                        </div>
+                        <h3 class="font-semibold mb-2">Plus de 4 semaines avant la rentrée</h3>
+                        <p class="text-gray-600">100% des arrhes remboursées (avec justificatifs)</p>
+                    </div>
+                    <div class="text-center p-4 border border-gray-200 rounded-lg">
+                        <div class="bg-primary-green text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                            <4
+                        </div>
+                        <h3 class="font-semibold mb-2">Moins de 4 semaines avant la rentrée</h3>
+                        <p class="text-gray-600">Aucun remboursement des arrhes ni des frais d'inscriptions</p>
+                    </div>
+                    <div class="text-center p-4 border border-gray-200 rounded-lg">
+                        <div class="bg-primary-green text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                            ✓
+                        </div>
+                        <h3 class="font-semibold mb-2">Après la rentrée</h3>
+                        <p class="text-gray-600">Pas de remboursement, sauf motif grave (avec justificatifs)</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Application Form -->
+            <section class="bg-white rounded-lg shadow-lg p-8 mb-16">
+                <h2 class="text-3xl font-bold mb-8 text-center">Formulaire d'Admission</h2>
+                
+                <!-- Personal Information -->
+                <div class="form-section mb-8 p-6 border border-gray-200 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-6 text-primary">Informations Personnelles | Personal Details</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-gray-700 mb-2">Civilité (Mr/Mrs)</label>
+                            <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                                <option>Sélectionner</option>
+                                <option>Mr</option>
+                                <option>Mrs</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Nom (Last Name)</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Prénom (First Name)</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Date de Naissance (Date of Birth)</label>
+                            <input type="date" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Lieu de Naissance (Place of Birth)</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Nationalité (Nationality)</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">N° de Passeport (Passport Number)</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Niveau d'Études (Level of Studies)</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">E-mail</label>
+                            <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Téléphone (Mobile Number)</label>
+                            <input type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-gray-700 mb-2">Adresse Permanente (Current Address)</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Code Postal (Postal Code)</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Ville (City)</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Pays (Country)</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Photo d'identité</label>
+                            <input type="file" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Parent/Guardian Information -->
+                <div class="form-section mb-8 p-6 border border-gray-200 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-6 text-primary">Responsable Principal | Parents' Details</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-gray-700 mb-2">Nom (Last Name)</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Prénom (First Name)</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Téléphone (Mobile Number)</label>
+                            <input type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">E-mail</label>
+                            <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-gray-700 mb-2">Adresse (Address)</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Code Postal (Postal Code)</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Ville (City)</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Pays (Country)</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diploma Information -->
+                <div class="form-section mb-8 p-6 border border-gray-200 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-6 text-primary">Diplôme | Diploma</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="md:col-span-2">
+                            <label class="block text-gray-700 mb-2">Diplôme obtenu (+ mention) ou en cours (précisez)</label>
+                            <textarea class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" rows="3"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">École / Université (School / University)</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Ville / Pays (City / Country)</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Année (Year)</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Program Selection -->
+                <div class="form-section mb-8 p-6 border border-gray-200 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-6 text-primary">Choix de la Formation et des Campus</h3>
+                    
+                    <!-- Campus Selection -->
+                    <div class="mb-6">
+                        <label class="block text-gray-700 mb-4">Choisissez le campus souhaité | Please select your campus below</label>
+                        <div class="flex space-x-4">
+                            <label class="flex items-center">
+                                <input type="radio" name="campus" class="form-radio text-primary">
+                                <span class="ml-2">Paris</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="campus" class="form-radio text-primary">
+                                <span class="ml-2">Reims</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Program Selection -->
+                    <div>
+                        <label class="block text-gray-700 mb-4">Cochez la formation choisie | Please select your program below</label>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="program-table w-full rounded-lg overflow-hidden">
+                                <thead>
+                                    <tr class="bg-primary-green text-white">
+                                        <th class="text-left p-4">Formation Program</th>
+                                        <th class="p-4">Campus</th>
+                                        <th class="p-4">Scolarité</th>
+                                        <th class="p-4">Sélection</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Bachelor Programs -->
+                                    <tr class="bg-gray-50">
+                                        <td colspan="4" class="p-3 font-semibold">CYCLE BACHELOR</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-4">BACHELOR Chef de Projet Performance Energétique (1st, 2nd & 3rd year)*</td>
+                                        <td class="p-4 text-center">Paris & Reims</td>
+                                        <td class="p-4 text-center">7 350 €</td>
+                                        <td class="p-4 text-center">
+                                            <input type="checkbox" class="form-checkbox text-primary">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-4">BACHELOR Conception et Développement d'Application (1st, 2nd & 3rd year)*</td>
+                                        <td class="p-4 text-center">Paris & Reims</td>
+                                        <td class="p-4 text-center">7 350 €</td>
+                                        <td class="p-4 text-center">
+                                            <input type="checkbox" class="form-checkbox text-primary">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-4">BACHELOR UX/UI DESIGN (1st, 2nd & 3rd year)*</td>
+                                        <td class="p-4 text-center">Paris & Reims</td>
+                                        <td class="p-4 text-center">7 350 €</td>
+                                        <td class="p-4 text-center">
+                                            <input type="checkbox" class="form-checkbox text-primary">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-4">Bachelor Administrateur d'Infrastructure Sécurisée (1st, 2nd & 3rd year)*</td>
+                                        <td class="p-4 text-center">Paris & Reims</td>
+                                        <td class="p-4 text-center">7 350 €</td>
+                                        <td class="p-4 text-center">
+                                            <input type="checkbox" class="form-checkbox text-primary">
+                                        </td>
+                                    </tr>
+                                    
+                                    <!-- Master Programs -->
+                                    <tr class="bg-gray-50">
+                                        <td colspan="4" class="p-3 font-semibold">CYCLE MASTÈRE</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-4">MASTÈRE Performance Energétique (4th year)*</td>
+                                        <td class="p-4 text-center">Paris & Reims</td>
+                                        <td class="p-4 text-center">8 000 €</td>
+                                        <td class="p-4 text-center">
+                                            <input type="checkbox" class="form-checkbox text-primary">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-4">MASTÈRE IA (4th year)*</td>
+                                        <td class="p-4 text-center">Paris & Reims</td>
+                                        <td class="p-4 text-center">8 000 €</td>
+                                        <td class="p-4 text-center">
+                                            <input type="checkbox" class="form-checkbox text-primary">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-4">MASTÈRE USER EXPERIENCE (4th year)*</td>
+                                        <td class="p-4 text-center">Paris & Reims</td>
+                                        <td class="p-4 text-center">8 000 €</td>
+                                        <td class="p-4 text-center">
+                                            <input type="checkbox" class="form-checkbox text-primary">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-4">* Formation en alternance | Work-study contract</p>
+                    </div>
+                </div>
+
+                <!-- Required Documents -->
+                <div class="form-section mb-8 p-6 border border-gray-200 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-6 text-primary">Documents à Joindre à ce Dossier</h3>
+                    <p class="text-gray-600 mb-4">À envoyer par email à : <span class="text-primary font-semibold">contact@green-up-academy.com</span></p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="flex items-start">
+                            <div class="bg-primary-green rounded-full p-2 mr-3 flex-shrink-0 mt-1">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </div>
+                            <p>Curriculum Vitae (CV)</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-primary-green rounded-full p-2 mr-3 flex-shrink-0 mt-1">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </div>
+                            <p>Lettre de motivation</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-primary-green rounded-full p-2 mr-3 flex-shrink-0 mt-1">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </div>
+                            <p>Portfolio de travaux (si applicable)</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-primary-green rounded-full p-2 mr-3 flex-shrink-0 mt-1">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </div>
+                            <p>Copie du passeport</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-primary-green rounded-full p-2 mr-3 flex-shrink-0 mt-1">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </div>
+                            <p>Diplôme ou relevés de notes (ou attestation d'études en cours)</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-primary-green rounded-full p-2 mr-3 flex-shrink-0 mt-1">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </div>
+                            <p>Attestation du niveau de langue française (si non francophone)</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-primary-green rounded-full p-2 mr-3 flex-shrink-0 mt-1">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </div>
+                            <p>Photo d'identité récente</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- How did you hear about us -->
+                <div class="form-section mb-8 p-6 border border-gray-200 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-6 text-primary">Comment avez-vous connu la Green Up Academy?</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="form-checkbox text-primary">
+                                <span class="ml-2">Internet</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="form-checkbox text-primary">
+                                <span class="ml-2">Salon...Précisez (Fair...Details)</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="form-checkbox text-primary">
+                                <span class="ml-2">Bouche à oreille (By word of mouth)</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="form-checkbox text-primary">
+                                <span class="ml-2">Étudiant de la GUA (GUA Student)</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="form-checkbox text-primary">
+                                <span class="ml-2">Presse (Press)</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="form-checkbox text-primary">
+                                <span class="ml-2">Autre...Précisez (Other...Details)</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Declaration -->
+                <div class="form-section mb-8 p-6 border border-gray-200 rounded-lg bg-gray-50">
+                    <h3 class="text-xl font-semibold mb-6 text-primary">Déclaration</h3>
+                    <p class="text-gray-600 mb-4">
+                        Je déclare sur l'honneur que les renseignements fournis dans ce formulaire sont exacts. Le comité d'admission
+                        se réserve le droit de vérifier toutes les pièces jointes à ma candidature. Je suis conscient que toute fausse
+                        déclaration peut entraîner le refus d'admission, l'annulation de l'admission ou l'expulsion.
+                    </p>
+                    <p class="text-gray-600">
+                        I hereby declare that the information provided in this form is complete and accurate. The admission committee
+                        has the right to verify any and all parts of my application materials. I am aware that any misrepresentation of
+                        facts in my application will justify the denial of admission, the cancellation of admission or expulsion.
+                    </p>
+                    <div class="mt-6">
+                        <label class="flex items-start">
+                            <input type="checkbox" class="form-checkbox text-primary mt-1">
+                            <span class="ml-2">J'accepte les termes de cette déclaration | I accept the terms of this declaration</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-center">
+                    <button class="bg-primary-green hover:bg-green-600 text-white font-semibold py-3 px-8 rounded-lg transition-colors text-lg">
+                        Soumettre ma Candidature
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+{% endblock %}

@@ -4,6 +4,79 @@
 
 {% block content %}
  <!-- Header -->
+<style>
+        .gallery-item {
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        .gallery-item img {
+            transition: transform 0.5s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(57, 181, 74, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: #39b54a;
+            margin: 15px auto 0;
+        }
+
+           .partner-card {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .partner-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(57, 181, 74, 0.1), transparent);
+        transition: left 0.5s ease;
+    }
+    
+    .partner-card:hover::before {
+        left: 100%;
+    }
+    
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+    
+    .partner-card:hover {
+        animation: pulse 2s infinite;
+    }
+    </style>
 
     <!-- Hero Section -->
     <section id="accueil" class="hero-gradient min-h-screen flex items-center relative">
@@ -177,7 +250,7 @@
                     <p class="text-gray-600">Une approche holistique de l'environnement et de la construction durable</p>
                 </div>
                 <div class="text-center">
-                    <div class="w-16 h-16 bg-secondary-green rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div class="w-16 h-16 bg-secondary-green-green rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-lightbulb text-white text-xl"></i>
                     </div>
                     <h4 class="text-xl font-bold text-gray-800 mb-3">Innovation</h4>
@@ -223,7 +296,7 @@
                             </div>
                         </div>
                         <div class="flex items-start space-x-3">
-                            <div class="w-2 h-2 bg-secondary-green rounded-full mt-3 flex-shrink-0"></div>
+                            <div class="w-2 h-2 bg-secondary-green-green rounded-full mt-3 flex-shrink-0"></div>
                             <div>
                                 <h5 class="font-bold text-gray-800">Bachelor Éco-Construction</h5>
                                 <p class="text-gray-600 text-sm">3 ans • Campus Lyon</p>
@@ -248,7 +321,7 @@
                 <!-- Formations Professionnelles -->
                 <div class="card-shadow bg-white p-8 lg:p-10 rounded-3xl border border-gray-100">
                     <div class="text-center mb-8">
-                        <div class="w-20 h-20 bg-secondary-green rounded-full flex items-center justify-center mx-auto mb-6">
+                        <div class="w-20 h-20 bg-secondary-green-green rounded-full flex items-center justify-center mx-auto mb-6">
                             <i class="fas fa-tools text-white text-3xl"></i>
                         </div>
                         <h4 class="text-3xl lg:text-4xl font-black text-secondary-green mb-4">
@@ -286,7 +359,7 @@
                     </div>
                     
                     <div class="text-center">
-                        <button class="bg-secondary-green text-white px-8 py-3 rounded-full font-bold hover:bg-primary-green transition duration-300">
+                        <button class="bg-secondary-green-green text-white px-8 py-3 rounded-full font-bold hover:bg-primary-green transition duration-300">
                             Découvrir les formations
                         </button>
                     </div>
@@ -415,6 +488,267 @@
         </div>
     </section>
 
+            <!-- Gallery Section -->
+<!-- Gallery Section -->
+<section class="mb-16">
+    <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold section-title inline-block">Galerie</h2>
+    </div>
+    
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        <!-- Gallery Item -->
+        <div class="gallery-item rounded-lg overflow-hidden shadow-md relative h-40">
+            <img src="https://www.greenup-academy.fr/wp-content/uploads/2024/05/H9737c3bbe7e14cc2828e014157ed4a8-e1725997391208.jpg" 
+                 alt="Green Up Academy Event" 
+                 class="w-full h-full object-cover">
+            <div class="gallery-overlay absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition">
+                <div class="text-white text-center">
+                    <i class="fas fa-search-plus text-xl mb-1"></i>
+                    <p class="text-sm">Événement Green Up</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Item -->
+        <div class="gallery-item rounded-lg overflow-hidden shadow-md relative h-40">
+            <img src="https://www.greenup-academy.fr/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-10-a-17.09.27_8bc9f725-scaled.jpg" 
+                 alt="Student Activity" 
+                 class="w-full h-full object-cover">
+            <div class="gallery-overlay absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition">
+                <div class="text-white text-center">
+                    <i class="fas fa-search-plus text-xl mb-1"></i>
+                    <p class="text-sm">Activité étudiante</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Item -->
+        <div class="gallery-item rounded-lg overflow-hidden shadow-md relative h-40">
+            <img src="https://www.greenup-academy.fr/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-10-a-17.09.27_3f95961c-scaled.jpg" 
+                 alt="Campus Life" 
+                 class="w-full h-full object-cover">
+            <div class="gallery-overlay absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition">
+                <div class="text-white text-center">
+                    <i class="fas fa-search-plus text-xl mb-1"></i>
+                    <p class="text-sm">Vie sur le campus</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Item -->
+        <div class="gallery-item rounded-lg overflow-hidden shadow-md relative h-40">
+            <img src="https://www.greenup-academy.fr/wp-content/uploads/2024/05/WhatsApp-Image-2024-06-01-at-00.47.03.jpeg" 
+                 alt="Workshop Session" 
+                 class="w-full h-full object-cover">
+            <div class="gallery-overlay absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition">
+                <div class="text-white text-center">
+                    <i class="fas fa-search-plus text-xl mb-1"></i>
+                    <p class="text-sm">Session d'atelier</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Item -->
+        <div class="gallery-item rounded-lg overflow-hidden shadow-md relative h-40">
+            <img src="https://www.greenup-academy.fr/wp-content/uploads/2024/05/WhatsApp-Image-2024-06-01-at-00.47.05.jpeg" 
+                 alt="Student Collaboration" 
+                 class="w-full h-full object-cover">
+            <div class="gallery-overlay absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition">
+                <div class="text-white text-center">
+                    <i class="fas fa-search-plus text-xl mb-1"></i>
+                    <p class="text-sm">Collaboration étudiante</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Item -->
+        <div class="gallery-item rounded-lg overflow-hidden shadow-md relative h-40">
+            <img src="https://www.greenup-academy.fr/wp-content/uploads/2025/04/photo-greenup-academy2.jpg" 
+                 alt="Campus Facility" 
+                 class="w-full h-full object-cover">
+            <div class="gallery-overlay absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition">
+                <div class="text-white text-center">
+                    <i class="fas fa-search-plus text-xl mb-1"></i>
+                    <p class="text-sm">Installation du campus</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Item -->
+        <div class="gallery-item rounded-lg overflow-hidden shadow-md relative h-40">
+            <img src="https://www.greenup-academy.fr/wp-content/uploads/2025/04/photo-greenup-academy.jpg" 
+                 alt="Learning Environment" 
+                 class="w-full h-full object-cover">
+            <div class="gallery-overlay absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition">
+                <div class="text-white text-center">
+                    <i class="fas fa-search-plus text-xl mb-1"></i>
+                    <p class="text-sm">Environnement d'apprentissage</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Item -->
+        <div class="gallery-item rounded-lg overflow-hidden shadow-md relative h-40">
+            <img src="https://www.greenup-academy.fr/wp-content/uploads/2025/04/greenup-academy.jpg" 
+                 alt="Green Up Academy Building" 
+                 class="w-full h-full object-cover">
+            <div class="gallery-overlay absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition">
+                <div class="text-white text-center">
+                    <i class="fas fa-search-plus text-xl mb-1"></i>
+                    <p class="text-sm">Bâtiment Green Up Academy</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- View More Button -->
+    <div class="text-center mt-8">
+        <button class="bg-primary-green hover:bg-green-600 text-white font-semibold py-2 px-6 rounded-lg transition-colors text-base">
+            Voir plus de photos
+        </button>
+    </div>
+</section>
+
+
+            
+           <!-- Enhanced Partners Section -->
+<section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">
+                Nos Partenaires Stratégiques
+            </h2>
+            <div class="w-20 h-1 bg-green-600 mx-auto mb-6"></div>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Nous collaborons avec des organisations leaders pour offrir une formation d'excellence 
+                et créer des opportunités professionnelles pour nos étudiants
+            </p>
+        </div>
+
+        <!-- Partners Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+            <!-- Partner 1 -->
+            <div class="group relative">
+                <div class="partner-card bg-white rounded-xl p-8 flex items-center justify-center h-48 transition-all duration-300 
+                           shadow-md hover:shadow-xl hover:scale-105 hover:border-green-500 border-2 border-transparent">
+                    <div class="relative w-full h-full flex items-center justify-center">
+                        <img src="https://www.greenup-academy.fr/wp-content/uploads/2024/05/IMG-20240430-WA0013-1-300x300-1.jpg" 
+                             alt="Partner 1" 
+                             class="max-h-16 object-contain transition-transform duration-300 group-hover:scale-110">
+                    </div>
+                </div>
+                <!-- Partner Name on Hover -->
+                <div class="absolute inset-0 bg-gradient-to-t from-green-700 to-transparent opacity-0 group-hover:opacity-100 
+                           rounded-xl flex items-end justify-center p-4 transition-opacity duration-300">
+                    <span class="text-white font-semibold text-sm">Entreprise Partenaire</span>
+                </div>
+            </div>
+            
+            <!-- Partner 2 -->
+            <div class="group relative">
+                <div class="partner-card bg-white rounded-xl p-8 flex items-center justify-center h-48 transition-all duration-300 
+                           shadow-md hover:shadow-xl hover:scale-105 hover:border-green-500 border-2 border-transparent">
+                    <div class="relative w-full h-full flex items-center justify-center">
+                        <img src="https://www.greenup-academy.fr/wp-content/uploads/2024/05/IMG-20240430-WA0015.jpg" 
+                             alt="Partner 2" 
+                             class="max-h-16 object-contain transition-transform duration-300 group-hover:scale-110">
+                    </div>
+                </div>
+                <!-- Partner Name on Hover -->
+                <div class="absolute inset-0 bg-gradient-to-t from-green-700 to-transparent opacity-0 group-hover:opacity-100 
+                           rounded-xl flex items-end justify-center p-4 transition-opacity duration-300">
+                    <span class="text-white font-semibold text-sm">Institution Académique</span>
+                </div>
+            </div>
+            
+            <!-- Partner 3 -->
+            <div class="group relative">
+                <div class="partner-card bg-white rounded-xl p-8 flex items-center justify-center h-48 transition-all duration-300 
+                           shadow-md hover:shadow-xl hover:scale-105 hover:border-green-500 border-2 border-transparent">
+                    <div class="relative w-full h-full flex items-center justify-center">
+                        <img src="https://www.greenup-academy.fr/wp-content/uploads/2024/05/IMG-20240430-WA0016-300x300-1.jpg" 
+                             alt="Partner 3" 
+                             class="max-h-16 object-contain transition-transform duration-300 group-hover:scale-110">
+                    </div>
+                </div>
+                <!-- Partner Name on Hover -->
+                <div class="absolute inset-0 bg-gradient-to-t from-green-700 to-transparent opacity-0 group-hover:opacity-100 
+                           rounded-xl flex items-end justify-center p-4 transition-opacity duration-300">
+                    <span class="text-white font-semibold text-sm">Organisation Écologique</span>
+                </div>
+            </div>
+            
+            <!-- Partner 4 -->
+            <div class="group relative">
+                <div class="partner-card bg-white rounded-xl p-8 flex items-center justify-center h-48 transition-all duration-300 
+                           shadow-md hover:shadow-xl hover:scale-105 hover:border-green-500 border-2 border-transparent">
+                    <div class="relative w-full h-full flex items-center justify-center">
+                        <img src="https://www.greenup-academy.fr/wp-content/uploads/2024/05/WhatsApp-Image-2023-10-11-at-15.18.49.jpeg" 
+                             alt="Partner 4" 
+                             class="max-h-16 object-contain transition-transform duration-300 group-hover:scale-110">
+                    </div>
+                </div>
+                <!-- Partner Name on Hover -->
+                <div class="absolute inset-0 bg-gradient-to-t from-green-700 to-transparent opacity-0 group-hover:opacity-100 
+                           rounded-xl flex items-end justify-center p-4 transition-opacity duration-300">
+                    <span class="text-white font-semibold text-sm">Centre de Recherche</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Partnership Benefits -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 mb-16">
+            <h3 class="text-2xl font-bold text-center text-gray-900 mb-8">Les avantages de nos partenariats</h3>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-briefcase text-green-700 text-2xl"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-gray-800 mb-2">Stages garantis</h4>
+                    <p class="text-gray-600 text-sm">Accès à des opportunités de stage chez nos partenaires</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-chalkboard-teacher text-green-700 text-2xl"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-gray-800 mb-2">Intervenants experts</h4>
+                    <p class="text-gray-600 text-sm">Professionnels qui partagent leur expertise en classe</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-handshake text-green-700 text-2xl"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-gray-800 mb-2">Recrutement privilégié</h4>
+                    <p class="text-gray-600 text-sm">Accès prioritaire aux offres d'emploi de nos partenaires</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="text-center">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">Rejoignez notre réseau de partenaires</h3>
+            <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
+                Devenez partenaire de Green Up Academy et participez à la formation des talents de demain 
+                dans le domaine de la construction durable et de l'écologie.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="bg-green-700 hover:bg-green-800 text-white font-semibold py-4 px-8 rounded-lg 
+                             transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    <i class="fas fa-handshake mr-2"></i>
+                    Devenir Partenaire
+                </button>
+                <button class="border-2 border-green-700 text-green-700 hover:bg-green-700 hover:text-white 
+                             font-semibold py-4 px-8 rounded-lg transition-all duration-300">
+                    <i class="fas fa-info-circle mr-2"></i>
+                    En savoir plus
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+        
+
     <!-- Contact Section -->
     <section id="contact" class="section-padding bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -443,7 +777,7 @@
                         </div>
                         
                         <div class="flex items-start space-x-4">
-                            <div class="w-12 h-12 bg-secondary-green rounded-full flex items-center justify-center flex-shrink-0">
+                            <div class="w-12 h-12 bg-secondary-green-green rounded-full flex items-center justify-center flex-shrink-0">
                                 <i class="fas fa-phone text-white"></i>
                             </div>
                             <div>
@@ -502,4 +836,96 @@
         </div>
     </section>
 
+ <!-- Lightbox Modal (hidden by default) -->
+    <div id="lightbox-modal" class="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center hidden">
+        <div class="relative max-w-4xl w-full mx-4">
+            <button id="close-lightbox" class="absolute -top-12 right-0 text-white text-3xl z-10">
+                <i class="fas fa-times"></i>
+            </button>
+            <img id="lightbox-image" src="" alt="" class="w-full rounded-lg">
+            <p id="lightbox-caption" class="text-white text-center mt-4 text-lg"></p>
+            
+            <button id="prev-image" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-3xl">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button id="next-image" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-3xl">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Simple lightbox functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const lightboxModal = document.getElementById('lightbox-modal');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+            const closeLightbox = document.getElementById('close-lightbox');
+            const prevButton = document.getElementById('prev-image');
+            const nextButton = document.getElementById('next-image');
+            
+            let currentImageIndex = 0;
+            const images = [];
+            
+            // Collect all gallery images
+            galleryItems.forEach((item, index) => {
+                const img = item.querySelector('img');
+                const caption = item.querySelector('.gallery-overlay p').textContent;
+                images.push({ src: img.src, caption: caption });
+                
+                item.addEventListener('click', () => {
+                    currentImageIndex = index;
+                    openLightbox();
+                });
+            });
+            
+            function openLightbox() {
+                lightboxImage.src = images[currentImageIndex].src;
+                lightboxCaption.textContent = images[currentImageIndex].caption;
+                lightboxModal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            function closeLightboxFunc() {
+                lightboxModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+            
+            function showNextImage() {
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                lightboxImage.src = images[currentImageIndex].src;
+                lightboxCaption.textContent = images[currentImageIndex].caption;
+            }
+            
+            function showPrevImage() {
+                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                lightboxImage.src = images[currentImageIndex].src;
+                lightboxCaption.textContent = images[currentImageIndex].caption;
+            }
+            
+            closeLightbox.addEventListener('click', closeLightboxFunc);
+            nextButton.addEventListener('click', showNextImage);
+            prevButton.addEventListener('click', showPrevImage);
+            
+            lightboxModal.addEventListener('click', (e) => {
+                if (e.target === lightboxModal) {
+                    closeLightboxFunc();
+                }
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (!lightboxModal.classList.contains('hidden')) {
+                    if (e.key === 'Escape') {
+                        closeLightboxFunc();
+                    } else if (e.key === 'ArrowRight') {
+                        showNextImage();
+                    } else if (e.key === 'ArrowLeft') {
+                        showPrevImage();
+                    }
+                }
+            });
+        });
+    </script>
 {% endblock %}
