@@ -8,4 +8,4 @@ class NotreEquipeView(TemplateView):
     
     
 class ReglementView(TemplateView):
-    template_name = "publics/home/admission/resident_hors/admission_process.html"
+    template_name = "publics/home/apropos/reglement.html"
