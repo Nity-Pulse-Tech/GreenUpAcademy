@@ -361,56 +361,78 @@
                     </div>
                 </div>
 
-                <!-- Required Documents -->
-                <div class="form-section mb-8 p-6 border border-gray-200 rounded-lg">
-                    <h3 class="text-xl font-semibold mb-6 text-primary">Documents à Joindre à ce Dossier</h3>
-                    <p class="text-gray-600 mb-4">À envoyer par email à : <span class="text-primary font-semibold">contact@green-up-academy.com</span></p>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="flex items-start">
-                            <div class="bg-primary-green rounded-full p-2 mr-3 flex-shrink-0 mt-1">
-                                <i class="fas fa-check text-white text-sm"></i>
-                            </div>
-                            <p>Curriculum Vitae (CV)</p>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="bg-primary-green rounded-full p-2 mr-3 flex-shrink-0 mt-1">
-                                <i class="fas fa-check text-white text-sm"></i>
-                            </div>
-                            <p>Lettre de motivation</p>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="bg-primary-green rounded-full p-2 mr-3 flex-shrink-0 mt-1">
-                                <i class="fas fa-check text-white text-sm"></i>
-                            </div>
-                            <p>Portfolio de travaux (si applicable)</p>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="bg-primary-green rounded-full p-2 mr-3 flex-shrink-0 mt-1">
-                                <i class="fas fa-check text-white text-sm"></i>
-                            </div>
-                            <p>Copie du passeport</p>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="bg-primary-green rounded-full p-2 mr-3 flex-shrink-0 mt-1">
-                                <i class="fas fa-check text-white text-sm"></i>
-                            </div>
-                            <p>Diplôme ou relevés de notes (ou attestation d'études en cours)</p>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="bg-primary-green rounded-full p-2 mr-3 flex-shrink-0 mt-1">
-                                <i class="fas fa-check text-white text-sm"></i>
-                            </div>
-                            <p>Attestation du niveau de langue française (si non francophone)</p>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="bg-primary-green rounded-full p-2 mr-3 flex-shrink-0 mt-1">
-                                <i class="fas fa-check text-white text-sm"></i>
-                            </div>
-                            <p>Photo d'identité récente</p>
-                        </div>
-                    </div>
-                </div>
+               <!-- Required Documents -->
+<div class="form-section mb-8 p-6 border border-gray-200 rounded-lg">
+    <h3 class="text-xl font-semibold mb-6 text-primary">Documents à Joindre à ce Dossier</h3>
+    <p class="text-gray-600 mb-4">
+        Veuillez téléverser les documents suivants (formats acceptés : 
+        <span class="font-semibold text-primary">PDF / JPEG</span>) :
+    </p>
+
+    <form action="/upload-documents/" method="POST" enctype="multipart/form-data" class="space-y-4">
+        {% csrf_token %}
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- CV -->
+            <div>
+                <label class="block text-gray-700 font-medium mb-1">Curriculum Vitae (CV) <span class="text-red-500">*</span></label>
+                <input type="file" name="cv" accept=".pdf,.jpeg,.jpg,.png"
+                       class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary-green focus:outline-none">
+            </div>
+
+            <!-- Lettre de motivation -->
+            <div>
+                <label class="block text-gray-700 font-medium mb-1">Lettre de motivation <span class="text-red-500">*</span></label>
+                <input type="file" name="lettre_motivation" accept=".pdf,.jpeg,.jpg,.png"
+                       class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary-green focus:outline-none">
+            </div>
+
+            <!-- Portfolio -->
+            <div>
+                <label class="block text-gray-700 font-medium mb-1">Portfolio de travaux (si applicable)</label>
+                <input type="file" name="portfolio" accept=".pdf,.jpeg,.jpg,.png"
+                       class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary-green focus:outline-none">
+            </div>
+
+            <!-- Passeport -->
+            <div>
+                <label class="block text-gray-700 font-medium mb-1">Copie du passeport <span class="text-red-500">*</span></label>
+                <input type="file" name="passeport" accept=".pdf,.jpeg,.jpg,.png"
+                       class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary-green focus:outline-none">
+            </div>
+
+            <!-- Diplôme ou relevés -->
+            <div>
+                <label class="block text-gray-700 font-medium mb-1">Diplôme / Relevés de notes / Attestation d'études <span class="text-red-500">*</span></label>
+                <input type="file" name="diplome" accept=".pdf,.jpeg,.jpg,.png"
+                       class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary-green focus:outline-none">
+            </div>
+
+            <!-- Attestation langue -->
+            <div>
+                <label class="block text-gray-700 font-medium mb-1">Attestation du niveau de langue française (si non francophone)</label>
+                <input type="file" name="attestation_langue" accept=".pdf,.jpeg,.jpg,.png"
+                       class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary-green focus:outline-none">
+            </div>
+
+            <!-- Photo identité -->
+            <div>
+                <label class="block text-gray-700 font-medium mb-1">Photo d'identité récente <span class="text-red-500">*</span></label>
+                <input type="file" name="photo_identite" accept=".jpeg,.jpg,.png"
+                       class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary-green focus:outline-none">
+            </div>
+        </div>
+
+        <!-- Submit button -->
+        <div class="pt-6">
+            <button type="submit"
+                    class="bg-primary-green text-white px-6 py-2 rounded-md hover:bg-green-700 transition-colors">
+                Envoyer les documents
+            </button>
+        </div>
+    </form>
+</div>
+
 
                 <!-- How did you hear about us -->
                 <div class="form-section mb-8 p-6 border border-gray-200 rounded-lg">
