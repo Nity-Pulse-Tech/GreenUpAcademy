@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'green_up_apps.users',
     'green_up_apps.admission',
+    'green_up_apps.apropos',
 ]
 
 MIDDLEWARE = [

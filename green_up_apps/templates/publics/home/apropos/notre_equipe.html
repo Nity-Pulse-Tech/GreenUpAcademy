@@ -1,0 +1,404 @@
+{% extends 'publics/home/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+ <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        .team-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+            position: relative;
+        }
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        .team-img-container {
+            overflow: hidden;
+            position: relative;
+        }
+        .team-img {
+            transition: all 0.5s ease;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .team-card:hover .team-img {
+            transform: scale(1.08);
+        }
+        .team-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+            height: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .team-card:hover .team-overlay {
+            opacity: 1;
+        }
+        .social-links {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        .team-card:hover .social-links {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .social-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #39b54a;
+            transition: all 0.3s ease;
+        }
+        .social-icon:hover {
+            background: #39b54a;
+            color: white;
+            transform: translateY(-3px);
+        }
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: #39b54a;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .placeholder-icon {
+            background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #adb5bd;
+        }
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: #39b54a;
+            top: -150px;
+            right: -150px;
+        }
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            background: #2c5aa0;
+            bottom: -100px;
+            left: -100px;
+        }
+    </style>
+    
+   <!-- Breadcrumb Section -->
+    <section class="bg-primary-green text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <h1 class="text-4xl font-bold mb-3">Notre Équipe</h1>
+                <p class="text-lg opacity-90">Green Up Academy > Notre Équipe</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Section -->
+    <main class="py-16">
+        <div class="container mx-auto px-4">
+            <!-- Intro Section -->
+            <section class="text-center mb-20">
+                <h2 class="text-4xl font-bold mb-6">Rencontrez Notre Équipe</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Découvrez les experts passionnés qui font de Green Up Academy un lieu d'excellence académique et d'innovation.
+                </p>
+            </section>
+
+            <!-- Leadership Section -->
+            <section class="mb-20 relative overflow-hidden">
+                <div class="floating-shape shape-1"></div>
+                <div class="floating-shape shape-2"></div>
+                
+                <div class="text-center mb-16">
+                    <span class="text-primary font-semibold uppercase tracking-wider text-sm">Direction</span>
+                    <h2 class="text-3xl font-bold mt-3 section-title">La Direction</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+                    <!-- President -->
+                    <div class="team-card bg-white rounded-xl shadow-md">
+                        <div class="team-img-container h-80">
+                            <img src="https://www.greenup-academy.fr/wp-content/uploads/2024/06/photo-charle.jpg" 
+                                 alt="Charles Giscard FONGANG TAGNE" 
+                                 class="team-img">
+                            <div class="team-overlay"></div>
+                            <div class="social-links">
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="social-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold">Charles Giscard FONGANG TAGNE</h3>
+                            <p class="text-primary font-medium mt-2">Président</p>
+                            <p class="text-gray-600 text-sm mt-3">Green Up Academy</p>
+                        </div>
+                    </div>
+
+                    <!-- Director -->
+                    <div class="team-card bg-white rounded-xl shadow-md">
+                        <div class="team-img-container h-80">
+                            <img src="https://www.greenup-academy.fr/wp-content/uploads/2024/06/photo-directeur-2.jpeg" 
+                                 alt="Nadir BELHOCINE" 
+                                 class="team-img">
+                            <div class="team-overlay"></div>
+                            <div class="social-links">
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="social-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold">Nadir BELHOCINE</h3>
+                            <p class="text-primary font-medium mt-2">Directeur Général</p>
+                            <p class="text-gray-600 text-sm mt-3">Green Up Academy</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Scientific Council Section -->
+            <section class="mb-20">
+                <div class="text-center mb-16">
+                    <span class="text-primary font-semibold uppercase tracking-wider text-sm">Expertise</span>
+                    <h2 class="text-3xl font-bold mt-3 section-title">Conseil Scientifique</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Member 1 -->
+                    <div class="team-card bg-white rounded-xl shadow-md">
+                        <div class="team-img-container h-64">
+                            <img src="https://www.greenup-academy.fr/wp-content/uploads/2024/06/tharsene2-1.jpg" 
+                                 alt="Arsène TEMA BIWOLE" 
+                                 class="team-img">
+                            <div class="team-overlay"></div>
+                            <div class="social-links">
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-5 text-center">
+                            <h3 class="text-lg font-semibold">Arsène TEMA BIWOLE</h3>
+                            <p class="text-primary text-sm font-medium mt-1">Ingénieur Nucléaire & Doctorat spé.énergie</p>
+                        </div>
+                    </div>
+
+                    <!-- Member 2 -->
+                    <div class="team-card bg-white rounded-xl shadow-md">
+                        <div class="team-img-container h-64">
+                            <img src="https://www.greenup-academy.fr/wp-content/uploads/2024/06/maurice.jpg" 
+                                 alt="Maurice KAMGA" 
+                                 class="team-img">
+                            <div class="team-overlay"></div>
+                            <div class="social-links">
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-5 text-center">
+                            <h3 class="text-lg font-semibold">Maurice KAMGA</h3>
+                            <p class="text-primary text-sm font-medium mt-1">Juge au tribunal international</p>
+                        </div>
+                    </div>
+
+                    <!-- Member 3 -->
+                    <div class="team-card bg-white rounded-xl shadow-md">
+                        <div class="team-img-container h-64">
+                            <img src="https://www.greenup-academy.fr/wp-content/uploads/2024/06/th-1-2.jpg" 
+                                 alt="Alphonse NAFACK" 
+                                 class="team-img">
+                            <div class="team-overlay"></div>
+                            <div class="social-links">
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-5 text-center">
+                            <h3 class="text-lg font-semibold">Alphonse NAFACK</h3>
+                            <p class="text-primary text-sm font-medium mt-1">Fondateur de l'institut JFN</p>
+                        </div>
+                    </div>
+
+                    <!-- Member 4 -->
+                    <div class="team-card bg-white rounded-xl shadow-md">
+                        <div class="team-img-container h-64">
+                            <img src="https://www.greenup-academy.fr/wp-content/uploads/2024/06/th.jpg" 
+                                 alt="Mondher BELLALAH" 
+                                 class="team-img">
+                            <div class="team-overlay"></div>
+                            <div class="social-links">
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-5 text-center">
+                            <h3 class="text-lg font-semibold">Mondher BELLALAH</h3>
+                            <p class="text-primary text-sm font-medium mt-1">Prof. Paris Dauphine & HEC</p>
+                        </div>
+                    </div>
+
+                    <!-- Member 5 -->
+                    <div class="team-card bg-white rounded-xl shadow-md">
+                        <div class="team-img-container h-64">
+                            <img src="https://www.greenup-academy.fr/wp-content/uploads/2025/01/WhatsApp-Image-2025-01-12-a-20.14.01_66006712-e1736805649908-150x150.jpg" 
+                                 alt="Fatma TURKI CHICHTI" 
+                                 class="team-img">
+                            <div class="team-overlay"></div>
+                            <div class="social-links">
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-5 text-center">
+                            <h3 class="text-lg font-semibold">Fatma TURKI CHICHTI</h3>
+                            <p class="text-primary text-sm font-medium mt-1">Docteur en Sciences de l'information</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Administration Section -->
+            <section>
+                <div class="text-center mb-16">
+                    <span class="text-primary font-semibold uppercase tracking-wider text-sm">Administration</span>
+                    <h2 class="text-3xl font-bold mt-3 section-title">Notre Administration</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Admin 1 -->
+                    <div class="team-card bg-white rounded-xl shadow-md p-6 text-center">
+                        <div class="mx-auto rounded-full w-32 h-32 flex items-center justify-center mb-5 placeholder-icon">
+                            <i class="fas fa-user-tie text-4xl"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold">Durand KONCHIPE</h3>
+                        <p class="text-primary text-sm font-medium mt-1">Responsable du développement international</p>
+                        <div class="flex justify-center space-x-3 mt-4">
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-linkedin-in text-sm"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fas fa-envelope text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Admin 2 -->
+                    <div class="team-card bg-white rounded-xl shadow-md p-6 text-center">
+                        <div class="mx-auto rounded-full w-32 h-32 flex items-center justify-center mb-5 placeholder-icon">
+                            <i class="fas fa-user-tie text-4xl"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold">Frank NEOSSI</h3>
+                        <p class="text-primary text-sm font-medium mt-1">Responsable du pôle pédagogique et relation entreprise</p>
+                        <div class="flex justify-center space-x-3 mt-4">
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-linkedin-in text-sm"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fas fa-envelope text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Admin 3 -->
+                    <div class="team-card bg-white rounded-xl shadow-md p-6 text-center">
+                        <div class="mx-auto rounded-full w-32 h-32 flex items-center justify-center mb-5 placeholder-icon">
+                            <i class="fas fa-user-tie text-4xl"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold">Audrey Inès</h3>
+                        <p class="text-primary text-sm font-medium mt-1">Responsable communication et marketing digital</p>
+                        <div class="flex justify-center space-x-3 mt-4">
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-linkedin-in text-sm"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fas fa-envelope text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Admin 4 -->
+                    <div class="team-card bg-white rounded-xl shadow-md p-6 text-center">
+                        <div class="mx-auto rounded-full w-32 h-32 flex items-center justify-center mb-5 placeholder-icon">
+                            <i class="fas fa-user-tie text-4xl"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold">Thérèse OTT</h3>
+                        <p class="text-primary text-sm font-medium mt-1">Responsable du service apprentissage</p>
+                        <div class="flex justify-center space-x-3 mt-4">
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-linkedin-in text-sm"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fas fa-envelope text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Admin 5 -->
+                    <div class="team-card bg-white rounded-xl shadow-md p-6 text-center">
+                        <div class="mx-auto rounded-full w-32 h-32 flex items-center justify-center mb-5 placeholder-icon">
+                            <i class="fas fa-user-tie text-4xl"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold">Loic GARCIA</h3>
+                        <p class="text-primary text-sm font-medium mt-1">Responsable cellule informatique</p>
+                        <div class="flex justify-center space-x-3 mt-4">
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-linkedin-in text-sm"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fas fa-envelope text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+{% endblock %}
