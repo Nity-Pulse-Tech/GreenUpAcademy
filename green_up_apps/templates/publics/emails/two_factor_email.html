@@ -26,12 +26,12 @@
             {% trans "Vérifier maintenant" %}
         </a>
     </div>
-    <p>
+    {% comment %} <p>
         {% trans "Si le bouton ne fonctionne pas, veuillez copier et coller ce lien dans votre navigateur :" %}
         <br>
         <a href="{{ protocol }}://{{ domain }}{% url 'users:verify_2fa' email=user.email %}" style="color: #1e40af; text-decoration: underline;">
             {{ protocol }}://{{ domain }}{% url 'users:verify_2fa' email=user.email %}
         </a>
-    </p>
+    </p> {% endcomment %}
 </div>
 {% endblock %}
