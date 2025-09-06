@@ -73,7 +73,20 @@
                     
                     <a href="#" class="font-semibold text-dark hover:text-accent transition-colors">Actualités</a>
                     <a href="{% url "users:contact" %}" class="font-semibold text-dark hover:text-accent transition-colors">Contact</a>
+
+                    <!-- Signin / Signup Buttons -->
+                    <div class="flex space-x-3">
+                        <a href="{% url 'users:login' %}" 
+                        class="px-4 py-2 rounded-md border border-primary-green text-primary-green font-semibold hover:bg-primary-green hover:text-white transition-colors">
+                            Connexion
+                        </a>
+                        <a href="{% url 'users:register' %}" 
+                        class="px-4 py-2 rounded-md bg-primary-green text-white font-semibold hover:bg-green-700 transition-colors">
+                            Inscription
+                        </a>
+                    </div>
                 </nav>
+
 
                 <!-- Mobile Menu Button -->
                 <button id="mobileMenuBtn" class="lg:hidden text-gray-700 text-2xl">
