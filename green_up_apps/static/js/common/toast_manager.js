@@ -39,7 +39,6 @@ class ToastManager {
                 pointer-events: auto;
             }
 
-            /* Toast element styles, inspired by showNotification */
             .toast {
                 padding: 16px;
                 border-radius: 8px;
@@ -100,7 +99,6 @@ class ToastManager {
                 color: #e5e7eb; /* text-gray-200 */
             }
 
-            /* Animation keyframes, inspired by showNotification */
             @keyframes slideInRight {
                 from { transform: translateX(100%); opacity: 0; }
                 to { transform: translateX(0); opacity: 1; }
@@ -141,7 +139,6 @@ class ToastManager {
                 to { transform: translateY(100%); opacity: 0; }
             }
 
-            /* Animation classes */
             .animate-slide-in-right {
                 animation: slideInRight 0.3s ease-out forwards;
             }
@@ -174,7 +171,6 @@ class ToastManager {
                 animation: slideOutBottom 0.3s ease-in forwards;
             }
 
-            /* Responsive adjustments */
             @media (max-width: 768px) {
                 #toast-container2 {
                     max-width: 90%;
@@ -190,7 +186,7 @@ class ToastManager {
         if (!document.querySelector('link[href*="font-awesome"]')) {
             const fontAwesomeLink = document.createElement('link');
             fontAwesomeLink.rel = 'stylesheet';
-            fontAwesomeLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css';
+            fontAwesomeLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
             document.head.appendChild(fontAwesomeLink);
         }
     }
@@ -266,7 +262,6 @@ class ToastManager {
 
         const style = toastStyles[type] || toastStyles.info;
 
-        // Determine initial and final transform based on position
         let initialTransform, slideInAnimation, slideOutAnimation;
         switch (position) {
             case 'top-left':
@@ -297,7 +292,6 @@ class ToastManager {
                 slideOutAnimation = 'animate-slide-out-right';
         }
 
-        // Create toast element
         const toast = document.createElement('div');
         toast.className = `toast ${style.class}`;
         toast.style.transform = initialTransform;
@@ -315,17 +309,14 @@ class ToastManager {
 
         this.toastContainer.appendChild(toast);
 
-        // Force reflow to ensure animation triggers
         toast.offsetHeight; // Trigger reflow
 
-        // Animate in
         requestAnimationFrame(() => {
             toast.classList.add(slideInAnimation);
-            toast.style.transform = null; // Remove inline transform to let CSS animation take over
+            toast.style.transform = null;
             toast.style.opacity = '1';
         });
 
-        // Close button handler
         const closeBtn = toast.querySelector('.toast-close');
         closeBtn.addEventListener('click', () => {
             toast.classList.remove(slideInAnimation);
@@ -337,7 +328,6 @@ class ToastManager {
             }, 300);
         });
 
-        // Auto-close after specified duration
         setTimeout(() => {
             if (toast.parentElement) {
                 toast.classList.remove(slideInAnimation);
@@ -419,6 +409,7 @@ class ToastBuilder {
     }
 }
 
-// Export a singleton instance
-const ToastManager = new ToastManager();
-window.ToastManager = ToastManager;
+// Export a singleton instance, avoiding redeclaration
+if (!window.ToastManager) {
+    window.ToastManager = new ToastManager();
+}

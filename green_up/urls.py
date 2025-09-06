@@ -16,9 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.views.i18n import JavaScriptCatalog
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('jsi18n/', JavaScriptCatalog.as_view(), name='javascript_catalog'),
     path('', include('green_up_apps.users.urls', namespace='users')),
     path('admission/', include('green_up_apps.admission.urls', namespace='admission')),
     path('apropos/', include('green_up_apps.apropos.urls', namespace='apropos')),
