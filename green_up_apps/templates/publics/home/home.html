@@ -97,52 +97,55 @@
     </style>
 
     <!-- Hero Section -->
-    <section id="accueil" class="hero-gradient min-h-screen flex items-center relative">
-        <!-- Background Pattern -->
-        <div class="absolute inset-0 opacity-10">
-            <div class="absolute top-20 left-10 w-32 h-32 bg-white rounded-full"></div>
-            <div class="absolute bottom-20 right-10 w-24 h-24 bg-white rounded-full"></div>
-            <div class="absolute top-1/2 left-1/4 w-16 h-16 bg-white rounded-full"></div>
-        </div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-            <div class="text-center text-white">
-                <!-- Admission Banner -->
-                <div class="inline-flex items-center bg-yellow-accent text-primary-green px-6 py-3 rounded-full font-semibold mb-8 animate-fadeIn shadow-lg">
-                    <i class="fas fa-graduation-cap mr-2"></i>
-                    Les admissions 2025 sont ouvertes
-                </div>
-                
-                <!-- Main Title -->
-                <h2 class="hero-title text-4xl sm:text-5xl lg:text-7xl font-black mb-6 text-shadow leading-tight">
-                    Découvrez nos<br>
-                    <span class="text-yellow-accent">formations</span>
-                </h2>
-                
-                <!-- Subtitle -->
-                <p class="text-lg sm:text-xl lg:text-2xl mb-10 opacity-95 max-w-4xl mx-auto leading-relaxed px-4">
-                    Première institution d'enseignement et de recherche dédiée à la rénovation, construction et environnement des bâtiments éco-énergétiques
-                </p>
-                
-                <!-- CTA Buttons -->
-                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center px-4">
-                    <button class="w-full sm:w-auto bg-white text-primary-green px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition duration-300 shadow-lg">
-                        Découvrir nos formations
-                        <i class="fas fa-arrow-right ml-2"></i>
-                    </button>
-                    <button class="w-full sm:w-auto border-3 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-primary-green transition duration-300">
-                        Télécharger la brochure
-                        <i class="fas fa-download ml-2"></i>
-                    </button>
-                </div>
+<section id="accueil" class="relative min-h-screen flex items-center overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+        <img src="{% static 'images/FORMATIONS.png' %}" 
+             alt="Hero Background" 
+             class="w-full h-full object-cover object-center">
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-black/40"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+        <div class="text-center text-white">
+            <!-- Admission Banner -->
+            <div class="inline-flex items-center bg-yellow-accent text-primary-green px-6 py-3 rounded-full font-semibold mb-8 animate-fadeIn shadow-lg">
+                <i class="fas fa-graduation-cap mr-2"></i>
+                Les admissions 2025 sont ouvertes
+            </div>
+            
+            <!-- Main Title -->
+            <h2 class="hero-title text-4xl sm:text-5xl lg:text-7xl font-black mb-6 text-shadow leading-tight">
+                Découvrez nos<br>
+                <span class="text-yellow-accent">formations</span>
+            </h2>
+            
+            <!-- Subtitle -->
+            <p class="text-lg sm:text-xl lg:text-2xl mb-10 opacity-95 max-w-4xl mx-auto leading-relaxed px-4">
+                Première institution d'enseignement et de recherche dédiée à la rénovation, construction et environnement des bâtiments éco-énergétiques
+            </p>
+            
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center px-4">
+                <button class="w-full sm:w-auto bg-white text-primary-green px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition duration-300 shadow-lg">
+                    Découvrir nos formations
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+                <button class="w-full sm:w-auto border-3 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-primary-green transition duration-300">
+                    Télécharger la brochure
+                    <i class="fas fa-download ml-2"></i>
+                </button>
             </div>
         </div>
-        
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
-            <i class="fas fa-chevron-down text-2xl"></i>
-        </div>
-    </section>
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+        <i class="fas fa-chevron-down text-2xl"></i>
+    </div>
+</section>
 
     <!-- Partners Section -->
     <section class="bg-gray-50 py-12">
@@ -222,22 +225,33 @@
                 <!-- Image -->
                 <div class="order-1 lg:order-2">
                     <div class="relative mx-auto max-w-md lg:max-w-none">
-                        <div class="w-full h-80 lg:h-96 bg-primary-green rounded-3xl flex items-center justify-center shadow-2xl relative">
-                            <div class="text-center text-white">
+                        <div class="w-full h-80 lg:h-96 rounded-3xl flex items-center justify-center shadow-2xl relative overflow-hidden">
+                            <!-- Background Image -->
+                            <img src="{% static 'images/construction.png' %}" 
+                                alt="Éco-Construction" 
+                                class="absolute inset-0 w-full h-full object-cover object-center">
+
+                            <!-- Gradient Overlay -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-black/40"></div>
+
+                            <!-- Content -->
+                            <div class="text-center text-white relative z-10">
                                 <i class="fas fa-seedling text-6xl lg:text-8xl mb-4 opacity-80"></i>
                                 <h4 class="text-2xl font-bold">Éco-Construction</h4>
                                 <p class="text-lg opacity-90">Innovation Durable</p>
                             </div>
-                            <!-- Floating Elements - positioned more carefully -->
-                            <div class="absolute -top-3 -right-3 w-16 h-16 bg-yellow-accent rounded-full flex items-center justify-center shadow-lg">
+
+                            <!-- Floating Elements -->
+                            <div class="absolute -top-3 -right-3 w-16 h-16 bg-yellow-accent rounded-full flex items-center justify-center shadow-lg z-10">
                                 <i class="fas fa-leaf text-white text-xl"></i>
                             </div>
-                            <div class="absolute -bottom-3 -left-3 w-12 h-12 bg-orange-accent rounded-full flex items-center justify-center shadow-lg">
+                            <div class="absolute -bottom-3 -left-3 w-12 h-12 bg-orange-accent rounded-full flex items-center justify-center shadow-lg z-10">
                                 <i class="fas fa-recycle text-white text-sm"></i>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -268,7 +282,7 @@
                     <p class="text-gray-600">Une approche holistique de l'environnement et de la construction durable</p>
                 </div>
                 <div class="text-center">
-                    <div class="w-16 h-16 bg-secondary-green-green rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div class="w-16 h-16 bg-secondary-green rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-lightbulb text-white text-xl"></i>
                     </div>
                     <h4 class="text-xl font-bold text-gray-800 mb-3">Innovation</h4>

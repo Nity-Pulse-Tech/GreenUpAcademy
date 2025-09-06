@@ -1,3 +1,4 @@
+{% load static %}
 <!-- Header -->
     <header class="bg-white shadow-lg sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -5,9 +6,7 @@
                 <!-- Logo -->
                  <a href="{% url 'users:home' %}">
                 <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 lg:w-12 lg:h-12 bg-primary-green rounded-full flex items-center justify-center">
-                        <i class="fas fa-leaf text-white text-lg lg:text-xl"></i>
-                    </div>
+                        <img src="{% static 'images/logo.png' %}" alt="logo" class="w-16 h-16 mx-auto mb-4 cursor-pointer" />
                     <div>
                         <h1 class="text-xl lg:text-2xl font-bold text-primary-green">Green Up Academy</h1>
                         <p class="text-xs text-gray-600 hidden sm:block">Excellence & Durabilité</p>
