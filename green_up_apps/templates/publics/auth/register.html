@@ -3,69 +3,90 @@
 {% load i18n %}
 
 {% block content %}
-<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-  <div class="max-w-md w-full space-y-8 bg-white shadow-lg rounded-2xl p-8">
-    <!-- Logo / Title -->
-    <div class="text-center">
-      <div class="w-14 h-14 mx-auto bg-primary-green rounded-full flex items-center justify-center">
-        <i class="fas fa-user-plus text-white text-2xl"></i>
+<div class="grid lg:grid-cols-2 h-screen">
+  <!-- Left Section (Hero Image + Text, hidden on mobile) -->
+  <div class="relative hidden lg:block">
+    <div class="relative w-full h-full">
+      <!-- Replace with your own image -->
+      <img src="{% static 'images/FORMATIONS2.jpg' %}" 
+           alt="hero" 
+           class="w-full h-full object-cover"/>
+      <div class="absolute inset-0 bg-gradient-to-t from-primary/70 to-primary/40">
+        <div class="absolute inset-0 flex flex-col justify-center px-16 text-white z-10">
+          <h1 class="text-3xl font-lato font-bold italic max-w-lg leading-snug animate-fade-in-down">
+            {% trans "The future belongs to those who believe in the beauty of their dreams." %}
+          </h1>
+          <p class="mt-4 text-right text-lg font-semibold animate-fade-in-up">— Eleanor Roosevelt</p>
+        </div>
       </div>
-      <h2 class="mt-4 text-2xl font-bold text-gray-900">Inscription</h2>
-      <p class="mt-1 text-sm text-gray-600">Créez votre compte pour rejoindre Green Up Academy</p>
     </div>
+  </div>
 
-    <!-- Form -->
-    <form action="{% url 'users:register' %}" method="post" class="mt-8 space-y-6">
-      {% csrf_token %}
-      <div class="space-y-4">
-        <div>
-          <label for="first_name" class="block text-sm font-medium text-gray-700">Prénom</label>
-          <input id="first_name" name="first_name" type="text" required
-                 class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-green focus:border-primary-green sm:text-sm">
-        </div>
-        <div>
-          <label for="last_name" class="block text-sm font-medium text-gray-700">Nom</label>
-          <input id="last_name" name="last_name" type="text" required
-                 class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-green focus:border-primary-green sm:text-sm">
-        </div>
-        <div>
-          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-          <input id="email" name="email" type="email" required
-                 class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-green focus:border-primary-green sm:text-sm">
-        </div>
-        <div>
-          <label for="password" class="block text-sm font-medium text-gray-700">Mot de passe</label>
-          <input id="password" name="password" type="password" required
-                 class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-green focus:border-primary-green sm:text-sm">
-        </div>
-        <div>
-          <label for="confirm_password" class="block text-sm font-medium text-gray-700">Confirmer le mot de passe</label>
-          <input id="confirm_password" name="confirm_password" type="password" required
-                 class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-green focus:border-primary-green sm:text-sm">
-        </div>
+  <!-- Right Section (Register Form) -->
+  <div class="flex flex-col items-center justify-center px-6 py-10 lg:py-0 bg-gray-50">
+    <div class="w-full max-w-md bg-gray-50 rounded-xl shadow-lg p-8 animate-fade-in">
+      <!-- Logo -->
+      <div class="text-center mb-6">
+        <img src="{% static 'images/logo.png' %}" 
+             alt="logo" 
+             class="w-16 h-16 mx-auto mb-4 cursor-pointer"
+             onclick="window.location.href = ``;" />
+        <h2 class="text-2xl font-bold text-gray-900">{% trans "Create Your Account" %}</h2>
+        <p class="mt-1 text-sm text-gray-600">{% trans "Join Green Up Academy today" %}</p>
       </div>
 
-      <!-- Terms -->
-      <div class="flex items-center">
-        <input id="terms" name="terms" type="checkbox" required
-               class="h-4 w-4 text-primary-green border-gray-300 rounded">
-        <label for="terms" class="ml-2 block text-sm text-gray-600">
-          J’accepte les <a href="#" class="text-primary-green hover:text-green-700 font-medium">Conditions d’utilisation</a>
-        </label>
-      </div>
+      <form action="{% url 'users:register' %}" method="post" class="space-y-5">
+        {% csrf_token %}
 
-      <!-- Submit Button -->
-      <button type="submit"
-              class="w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm text-sm font-semibold text-white bg-primary-green hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-green">
-        Inscription
-      </button>
+        <!-- Name -->
+        <div>
+          <label for="first_name" class="custom-label">{% trans 'First Name' %}</label>
+          <input type="text" id="first_name" name="first_name" class="custom-input mt-1" required>
+        </div>
 
-      <!-- Redirect -->
-      <p class="mt-4 text-center text-sm text-gray-600">
-        Vous avez déjà un compte ?
-        <a href="{% url 'users:login' %}" class="font-semibold text-primary-green hover:text-green-700">Connectez-vous</a>
-      </p>
-    </form>
+        <div>
+          <label for="last_name" class="custom-label">{% trans 'Last Name' %}</label>
+          <input type="text" id="last_name" name="last_name" class="custom-input mt-1" required>
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label for="email" class="custom-label">{% trans 'Email' %}</label>
+          <input type="email" id="email" name="email" class="custom-input mt-1" required>
+        </div>
+
+        <!-- Password -->
+        <div>
+          <label for="password" class="custom-label">{% trans 'Password' %}</label>
+          <input type="password" id="password" name="password" class="custom-input mt-1" required>
+        </div>
+
+        <!-- Confirm Password -->
+        <div>
+          <label for="confirm_password" class="custom-label">{% trans 'Confirm Password' %}</label>
+          <input type="password" id="confirm_password" name="confirm_password" class="custom-input mt-1" required>
+        </div>
+
+        <!-- Terms -->
+        <div class="flex items-center">
+          <input id="terms" name="terms" type="checkbox" required class="h-4 w-4 text-primary border-gray-300 rounded">
+          <label for="terms" class="ml-2 text-sm text-gray-600">
+            {% trans "I agree to the" %} <a href="#" class="text-primary hover:underline">{% trans "Terms of Service" %}</a>
+          </label>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="custom-btn w-full">
+          {% trans 'Sign Up' %}
+        </button>
+
+        <!-- Switch to Login -->
+        <p class="text-center text-sm text-gray-600">
+          {% trans "Already have an account?" %}
+          <a href="{% url 'users:login' %}" class="font-medium text-primary hover:underline">{% trans "Login" %}</a>
+        </p>
+      </form>
+    </div>
   </div>
 </div>
 {% endblock %}
