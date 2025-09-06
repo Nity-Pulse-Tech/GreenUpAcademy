@@ -14,7 +14,7 @@
       <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-black/40">
         <div class="absolute inset-0 flex flex-col justify-center px-16 text-white z-10">
           <h1 class="text-3xl font-lato font-bold italic max-w-lg leading-snug animate-fade-in-down">
-            {% trans "Education is the passport to the future, for tomorrow belongs to those who prepare for it today." %}
+            {% trans "L'éducation est le passeport pour l'avenir, car demain appartient à ceux qui s'y préparent aujourd'hui." %}
           </h1>
           <p class="mt-4 text-right text-lg font-semibold animate-fade-in-up">— Malcolm X</p>
         </div>
@@ -31,8 +31,8 @@
              alt="logo" 
              class="w-16 h-16 mx-auto mb-4 cursor-pointer"
              onclick="window.location.href = ``;" />
-        <h2 class="text-2xl font-bold text-gray-900">{% trans "Welcome Back!" %}</h2>
-        <p class="mt-1 text-sm text-gray-600">{% trans "Login to continue your learning journey" %}</p>
+        <h2 class="text-2xl font-bold text-gray-900">{% trans "Bon retour !" %}</h2>
+        <p class="mt-1 text-sm text-gray-600">{% trans "Connectez-vous pour continuer votre parcours d'apprentissage" %}</p>
       </div>
 
       <form action="{% url 'users:login' %}" method="post" class="space-y-5">
@@ -40,32 +40,32 @@
 
         <!-- Email -->
         <div>
-          <label for="email" class="custom-label">{% trans 'Email Address' %}</label>
+          <label for="email" class="custom-label">{% trans 'Adresse e-mail' %}</label>
           <input type="email" id="email" name="email" class="custom-input mt-1" required>
         </div>
 
         <!-- Password -->
         <div>
-          <label for="password" class="custom-label">{% trans 'Password' %}</label>
+          <label for="password" class="custom-label">{% trans 'Mot de passe' %}</label>
           <input type="password" id="password" name="password" class="custom-input mt-1" required>
         </div>
 
         <!-- Forgot password -->
         <div class="text-right">
           <a href="#" class="text-sm text-primary hover:underline">
-            {% trans 'Forgot Password?' %}
+            {% trans 'Mot de passe oublié ?' %}
           </a>
         </div>
 
         <!-- Submit -->
         <button type="submit" class="custom-btn w-full">
-          {% trans 'Login' %}
+          {% trans 'Se connecter' %}
         </button>
 
         <!-- Switch to Register -->
         <p class="text-center text-sm text-gray-600">
-          {% trans "Don’t have an account?" %}
-          <a href="{% url 'users:register' %}" class="font-medium text-primary hover:underline">{% trans "Sign Up" %}</a>
+          {% trans "Vous n’avez pas de compte ?" %}
+          <a href="{% url 'users:register' %}" class="font-medium text-primary hover:underline">{% trans "S’inscrire" %}</a>
         </p>
       </form>
     </div>
