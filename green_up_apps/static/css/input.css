@@ -12,16 +12,7 @@
 @source "../../../node_modules/flowbite-datepicker";
 
 /* Load Montserrat Variable Font */
-@font-face {
-  font-family: "Montserrat";
-  src: url("../fonts/Montserrat-VariableFont_wght.ttf") format("truetype");
-  font-weight: 100 900;
-  /* Variable font supports a range of weights */
-  font-style: normal;
-  /* This file is italic-only */
-  font-display: swap;
-  /* Improves loading performance */
-}
+
 
 /* Lato Black */
 @font-face {

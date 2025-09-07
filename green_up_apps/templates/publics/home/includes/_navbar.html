@@ -1,81 +1,81 @@
 {% load static %}
 {% load i18n %}
 <!-- Header -->
-    <header class="bg-white shadow-lg sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16 lg:h-20">
-                <!-- Logo -->
-                 <a href="{% url 'users:home' %}">
+<header class="bg-white shadow-lg sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16 lg:h-20">
+            <!-- Logo -->
+            <a href="{% url 'users:home' %}">
                 <div class="flex items-center space-x-3">
-                        <img src="{% static 'images/logo.png' %}" alt="logo" class="w-12 h-12 rounded-full flex items-center justify-center cursor-pointer" />
+                    <img src="{% static 'images/logo.png' %}" alt="logo" class="w-12 h-12 rounded-full flex items-center justify-center cursor-pointer" />
                     <div>
                         <h1 class="text-xl lg:text-2xl font-bold text-primary-green">Green Up Academy</h1>
                         <p class="text-xs text-gray-600 hidden sm:block">Excellence & Durabilité</p>
                     </div>
                 </div>
-                </a>
+            </a>
 
-                <!-- Desktop Navigation -->
-                <nav class="hidden lg:flex items-center space-x-8">
-                    <div class="menu-item-has-children group relative">
-                        <a href="#" class="font-semibold text-dark hover:text-accent transition-colors flex items-center">
-                            A propos
-                            <i class="fas fa-chevron-down text-xs ml-1 group-hover:rotate-180 transition-transform"></i>
-                        </a>
-                        <div class="submenu absolute left-0 mt-2 w-56 bg-white shadow-xl rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
-                            <a href="{% url "apropos:notre_equipe" %}" class="block px-4 py-3 hover:bg-gray-100">Notre Equipe</a>
-                            <a href="{% url "apropos:reglement" %}" class="block px-4 py-3 hover:bg-gray-100">Le règlement intérieur</a>
-                            <a href="#" class="block px-4 py-3 hover:bg-gray-100">Nos Certifications</a>
-                        </div>
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:flex items-center space-x-8">
+                <div class="menu-item-has-children group relative">
+                    <a href="#" class="font-semibold text-dark hover:text-accent transition-colors flex items-center">
+                        A propos
+                        <i class="fas fa-chevron-down text-xs ml-1 group-hover:rotate-180 transition-transform"></i>
+                    </a>
+                    <div class="submenu absolute left-0 mt-2 w-56 bg-white shadow-xl rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                        <a href="{% url 'apropos:notre_equipe' %}" class="block px-4 py-3 hover:bg-gray-100">Notre Equipe</a>
+                        <a href="{% url 'apropos:reglement' %}" class="block px-4 py-3 hover:bg-gray-100">Le règlement intérieur</a>
+                        <a href="#" class="block px-4 py-3 hover:bg-gray-100">Nos Certifications</a>
                     </div>
-                    
-                    <div class="menu-item-has-children group relative">
-                        <a href="#" class="font-semibold text-dark hover:text-accent transition-colors flex items-center">
-                            Admission
-                            <i class="fas fa-chevron-down text-xs ml-1 group-hover:rotate-180 transition-transform"></i>
-                        </a>
-                        <div class="submenu absolute left-0 mt-2 w-56 bg-white shadow-xl rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
-                            <a href="{% url "admission:resident_hors_ue" %}" class="block px-4 py-3 hover:bg-gray-100">Résidents hors UE</a>
-                            <a href="{% url "admission:resident_ue" %}" class="block px-4 py-3 hover:bg-gray-100">Résidents UE</a>
-                        </div>
+                </div>
+                
+                <div class="menu-item-has-children group relative">
+                    <a href="#" class="font-semibold text-dark hover:text-accent transition-colors flex items-center">
+                        Admission
+                        <i class="fas fa-chevron-down text-xs ml-1 group-hover:rotate-180 transition-transform"></i>
+                    </a>
+                    <div class="submenu absolute left-0 mt-2 w-56 bg-white shadow-xl rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                        <a href="{% url 'admission:resident_hors_ue' %}" class="block px-4 py-3 hover:bg-gray-100">Résidents hors UE</a>
+                        <a href="{% url 'admission:resident_ue' %}" class="block px-4 py-3 hover:bg-gray-100">Résidents UE</a>
                     </div>
-                    
-                    <div class="menu-item-has-children group relative">
-                        <a href="#" class="font-semibold text-dark hover:text-accent transition-colors flex items-center">
-                            Formations
-                            <i class="fas fa-chevron-down text-xs ml-1 group-hover:rotate-180 transition-transform"></i>
-                        </a>
-                        <div class="submenu absolute left-0 mt-2 w-64 bg-white shadow-xl rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
-                            <div class="menu-item-has-children group/sub relative">
-                                <a href="#" class="flex justify-between items-center px-4 py-3 hover:bg-gray-100">
-                                    <span>Bachelor</span>
-                                    <i class="fas fa-chevron-right text-xs"></i>
-                                </a>
-                                <div class="submenu absolute left-full top-0 w-64 bg-white shadow-xl rounded-md opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300 z-10">
-                                    <a href="{% url "formation:bachelor_designer" %}" class="block px-4 py-3 hover:bg-gray-100">Bachelor Conception Designer UI</a>
-                                    <a href="{% url "formation:bachelor_security" %}" class="block px-4 py-3 hover:bg-gray-100">Bachelor Administrateur d'infrastructure sécurisée</a>
-                                    <a href="{% url "formation:bachelor_application" %}" class="block px-4 py-3 hover:bg-gray-100">Bachelor Conception et Développement d'applications</a>
-                                    <a href="{% url "formation:bachelor_industry" %}" class="block px-4 py-3 hover:bg-gray-100">Bachelor en Performance Énergétique</a>
-                                </div>
-                            </div>
-                            <div class="menu-item-has-children group/sub relative">
-                                <a href="#" class="flex justify-between items-center px-4 py-3 hover:bg-gray-100">
-                                    <span>Mastère professionnel</span>
-                                    <i class="fas fa-chevron-right text-xs"></i>
-                                </a>
-                                <div class="submenu absolute left-full top-0 w-64 bg-white shadow-xl rounded-md opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300 z-10">
-                                    <a href="{% url "formation:master_development" %}" class="block px-4 py-3 hover:bg-gray-100">Mastère en performance énergétique, IA et développement durable</a>
-                                    <a href="{% url "formation:master_ai" %}" class="block px-4 py-3 hover:bg-gray-100">Mastère Intelligence Artificielle</a>
-                                </div>
+                </div>
+                
+                <div class="menu-item-has-children group relative">
+                    <a href="#" class="font-semibold text-dark hover:text-accent transition-colors flex items-center">
+                        Formations
+                        <i class="fas fa-chevron-down text-xs ml-1 group-hover:rotate-180 transition-transform"></i>
+                    </a>
+                    <div class="submenu absolute left-0 mt-2 w-64 bg-white shadow-xl rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                        <div class="menu-item-has-children group/sub relative">
+                            <a href="#" class="flex justify-between items-center px-4 py-3 hover:bg-gray-100">
+                                <span>Bachelor</span>
+                                <i class="fas fa-chevron-right text-xs"></i>
+                            </a>
+                            <div class="submenu absolute left-full top-0 w-64 bg-white shadow-xl rounded-md opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300 z-10">
+                                <a href="{% url 'formation:bachelor_designer' %}" class="block px-4 py-3 hover:bg-gray-100">Bachelor Conception Designer UI</a>
+                                <a href="{% url 'formation:bachelor_security' %}" class="block px-4 py-3 hover:bg-gray-100">Bachelor Administrateur d'infrastructure sécurisée</a>
+                                <a href="{% url 'formation:bachelor_application' %}" class="block px-4 py-3 hover:bg-gray-100">Bachelor Conception et Développement d'applications</a>
+                                <a href="{% url 'formation:bachelor_industry' %}" class="block px-4 py-3 hover:bg-gray-100">Bachelor en Performance Énergétique</a>
                             </div>
                         </div>
+                        <div class="menu-item-has-children group/sub relative">
+                            <a href="#" class="flex justify-between items-center px-4 py-3 hover:bg-gray-100">
+                                <span>Mastère professionnel</span>
+                                <i class="fas fa-chevron-right text-xs"></i>
+                            </a>
+                            <div class="submenu absolute left-full top-0 w-64 bg-white shadow-xl rounded-md opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300 z-10">
+                                <a href="{% url 'formation:master_development' %}" class="block px-4 py-3 hover:bg-gray-100">Mastère en performance énergétique, IA et développement durable</a>
+                                <a href="{% url 'formation:master_ai' %}" class="block px-4 py-3 hover:bg-gray-100">Mastère Intelligence Artificielle</a>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <a href="#" class="font-semibold text-dark hover:text-accent transition-colors">Actualités</a>
-                    <a href="{% url "users:contact" %}" class="font-semibold text-dark hover:text-accent transition-colors">Contact</a>
-                    {% if user.is_authenticated %}
-                        <a href="{% url 'users:logout' %}" class="hover:text-secondary transition" title="{% trans 'Deconnecte' %}">{% trans "Deconnecte" %}</a>
-                    {% else %}
+                </div>
+                
+                <a href="#" class="font-semibold text-dark hover:text-accent transition-colors">Actualités</a>
+                <a href="{% url 'users:contact' %}" class="font-semibold text-dark hover:text-accent transition-colors">Contact</a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'users:logout' %}" class="hover:text-secondary transition" title="{% trans 'Deconnecte' %}">{% trans "Deconnecte" %}</a>
+                {% else %}
                     <!-- Signin / Signup Buttons -->
                     <div class="flex space-x-3">
                         <a href="{% url 'users:login' %}" 
@@ -87,14 +87,158 @@
                             Inscription
                         </a>
                     </div>
-                    {% endif %}
-                </nav>
+                {% endif %}
+            </nav>
 
-
-                <!-- Mobile Menu Button -->
-                <button id="mobileMenuBtn" class="lg:hidden text-gray-700 text-2xl">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobileMenuBtn" class="lg:hidden text-gray-700 text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
-    </header>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="lg:hidden fixed inset-0 bg-white z-50 hidden flex-col overflow-y-auto">
+        <div class="flex items-center justify-between p-4 border-b border-gray-200">
+            <div class="flex items-center space-x-3">
+                <img src="{% static 'images/logo.png' %}" alt="logo" class="w-10 h-10 rounded-full" />
+                <h1 class="text-xl font-bold text-primary-green">Green Up Academy</h1>
+            </div>
+            <button id="closeMobileMenu" class="text-gray-700 text-2xl focus:outline-none">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="flex flex-col p-4 space-y-2">
+            <div class="relative">
+                <button class="mobile-menu-toggle flex items-center justify-between w-full py-2 text-dark font-semibold hover:text-accent transition-colors">
+                    A propos
+                    <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div class="mobile-submenu hidden pl-4 space-y-2">
+                    <a href="{% url 'apropos:notre_equipe' %}" class="block py-2 hover:text-accent">Notre Equipe</a>
+                    <a href="{% url 'apropos:reglement' %}" class="block py-2 hover:text-accent">Le règlement intérieur</a>
+                    <a href="#" class="block py-2 hover:text-accent">Nos Certifications</a>
+                </div>
+            </div>
+            <div class="relative">
+                <button class="mobile-menu-toggle flex items-center justify-between w-full py-2 text-dark font-semibold hover:text-accent transition-colors">
+                    Admission
+                    <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div class="mobile-submenu hidden pl-4 space-y-2">
+                    <a href="{% url 'admission:resident_hors_ue' %}" class="block py-2 hover:text-accent">Résidents hors UE</a>
+                    <a href="{% url 'admission:resident_ue' %}" class="block py-2 hover:text-accent">Résidents UE</a>
+                </div>
+            </div>
+            <div class="relative">
+                <button class="mobile-menu-toggle flex items-center justify-between w-full py-2 text-dark font-semibold hover:text-accent transition-colors">
+                    Formations
+                    <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div class="mobile-submenu hidden pl-4 space-y-2">
+                    <div class="relative">
+                        <button class="mobile-submenu-toggle flex items-center justify-between w-full py-2 hover:text-accent">
+                            Bachelor
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <div class="mobile-sub-submenu hidden pl-4 space-y-2">
+                            <a href="{% url 'formation:bachelor_designer' %}" class="block py-2 hover:text-accent">Bachelor Conception Designer UI</a>
+                            <a href="{% url 'formation:bachelor_security' %}" class="block py-2 hover:text-accent">Bachelor Administrateur d'infrastructure sécurisée</a>
+                            <a href="{% url 'formation:bachelor_application' %}" class="block py-2 hover:text-accent">Bachelor Conception et Développement d'applications</a>
+                            <a href="{% url 'formation:bachelor_industry' %}" class="block py-2 hover:text-accent">Bachelor en Performance Énergétique</a>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <button class="mobile-submenu-toggle flex items-center justify-between w-full py-2 hover:text-accent">
+                            Mastère professionnel
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <div class="mobile-sub-submenu hidden pl-4 space-y-2">
+                            <a href="{% url 'formation:master_development' %}" class="block py-2 hover:text-accent">Mastère en performance énergétique, IA et développement durable</a>
+                            <a href="{% url 'formation:master_ai' %}" class="block py-2 hover:text-accent">Mastère Intelligence Artificielle</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="py-2 text-dark font-semibold hover:text-accent transition-colors">Actualités</a>
+            <a href="{% url 'users:contact' %}" class="py-2 text-dark font-semibold hover:text-accent transition-colors">Contact</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'users:logout' %}" class="py-2 text-dark hover:text-secondary transition" title="{% trans 'Deconnecte' %}">{% trans "Deconnecte" %}</a>
+            {% else %}
+                <div class="flex flex-col space-y-2">
+                    <a href="{% url 'users:login' %}" class="py-2 px-4 rounded-md border border-primary-green text-primary-green font-semibold hover:bg-primary-green hover:text-white transition-colors text-center">Connexion</a>
+                    <a href="{% url 'users:register' %}" class="py-2 px-4 rounded-md bg-primary-green text-white font-semibold hover:bg-green-700 transition-colors text-center">Inscription</a>
+                </div>
+            {% endif %}
+        </nav>
+    </div>
+</header>
+
+<!-- JavaScript for Mobile Menu Toggle -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMobileMenu = document.getElementById('closeMobileMenu');
+    const menuToggles = document.querySelectorAll('.mobile-menu-toggle');
+    const submenuToggles = document.querySelectorAll('.mobile-submenu-toggle');
+
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        mobileMenu.classList.toggle('flex');
+    });
+
+    closeMobileMenu.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('flex');
+    });
+
+    menuToggles.forEach(toggle => {
+        toggle.addEventListener('click', () => {
+            const submenu = toggle.nextElementSibling;
+            submenu.classList.toggle('hidden');
+            const chevron = toggle.querySelector('i');
+            chevron.classList.toggle('fa-chevron-down');
+            chevron.classList.toggle('fa-chevron-up');
+        });
+    });
+
+    submenuToggles.forEach(toggle => {
+        toggle.addEventListener('click', () => {
+            const subSubmenu = toggle.nextElementSibling;
+            subSubmenu.classList.toggle('hidden');
+            const chevron = toggle.querySelector('i');
+            chevron.classList.toggle('fa-chevron-down');
+            chevron.classList.toggle('fa-chevron-up');
+        });
+    });
+});
+</script>
+
+<!-- CSS for Mobile Menu Styling -->
+<style>
+#mobileMenu {
+    transition: all 0.3s ease-in-out;
+}
+
+.mobile-menu-toggle, .mobile-submenu-toggle {
+    transition: color 0.3s ease;
+}
+
+.mobile-submenu, .mobile-sub-submenu {
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle:hover, .mobile-submenu-toggle:hover {
+    color: #059669; /* Matches primary-green */
+}
+
+.mobile-menu-toggle i, .mobile-submenu-toggle i {
+    transition: transform 0.3s ease;
+}
+
+#mobileMenu a:hover {
+    background-color: #f3f4f6; /* Matches hover:bg-gray-100 */
+    border-radius: 0.375rem; /* Matches rounded-md */
+}
+</style>
