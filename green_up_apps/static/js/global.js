@@ -78,20 +78,20 @@
         }
 
         // Add loading animation to buttons
-        document.querySelectorAll('button').forEach(btn => {
-            btn.addEventListener('click', function() {
-                if (this.type !== 'submit') return;
+        // document.querySelectorAll('button').forEach(btn => {
+        //     btn.addEventListener('click', function() {
+        //         if (this.type !== 'submit') return;
                 
-                const originalText = this.innerHTML;
-                this.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Envoi...';
-                this.disabled = true;
+        //         const originalText = this.innerHTML;
+        //         this.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Envoi...';
+        //         this.disabled = true;
                 
-                setTimeout(() => {
-                    this.innerHTML = originalText;
-                    this.disabled = false;
-                }, 2000);
-            });
-        });
+        //         setTimeout(() => {
+        //             this.innerHTML = originalText;
+        //             this.disabled = false;
+        //         }, 2000);
+        //     });
+        // });
 
         // Add hover effects to testimonials
         document.querySelectorAll('#temoignages .card-shadow').forEach(card => {
