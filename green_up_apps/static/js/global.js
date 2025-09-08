@@ -69,13 +69,13 @@
         });
 
         // Form validation
-        const contactForm = document.querySelector('form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert('Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.');
-            });
-        }
+        // const contactForm = document.querySelector('form');
+        // if (contactForm) {
+        //     contactForm.addEventListener('submit', (e) => {
+        //         e.preventDefault();
+        //         alert('Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.');
+        //     });
+        // }
 
         // Add loading animation to buttons
         // document.querySelectorAll('button').forEach(btn => {
