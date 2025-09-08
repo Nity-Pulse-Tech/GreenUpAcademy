@@ -98,7 +98,7 @@
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobileMenu" class="lg:hidden absolute w-full bg-white z-50 hidden flex-col overflow-y-auto shadow-lg">
+    <div id="mobileMenu" class="lg:hidden fixed inset-0 bg-white z-50 hidden flex-col overflow-y-auto">
         <div class="flex items-center justify-between p-4 border-b border-gray-200">
             <div class="flex items-center space-x-3">
                 <img src="{% static 'images/logo.png' %}" alt="logo" class="w-10 h-10 rounded-full" />
@@ -184,17 +184,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const submenuToggles = document.querySelectorAll('.mobile-submenu-toggle');
 
     mobileMenuBtn.addEventListener('click', () => {
-        const scrollPosition = window.scrollY;
-        mobileMenu.style.top = `${scrollPosition}px`;
         mobileMenu.classList.toggle('hidden');
         mobileMenu.classList.toggle('flex');
-        document.body.style.overflow = mobileMenu.classList.contains('flex') ? 'hidden' : 'auto';
     });
 
     closeMobileMenu.addEventListener('click', () => {
         mobileMenu.classList.add('hidden');
         mobileMenu.classList.remove('flex');
-        document.body.style.overflow = 'auto';
     });
 
     menuToggles.forEach(toggle => {
@@ -223,7 +219,6 @@ document.addEventListener('DOMContentLoaded', () => {
 <style>
 #mobileMenu {
     transition: all 0.3s ease-in-out;
-    min-height: 100vh;
 }
 
 .mobile-menu-toggle, .mobile-submenu-toggle {
