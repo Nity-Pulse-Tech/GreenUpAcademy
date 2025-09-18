@@ -72,6 +72,43 @@ class Program(GreenUpBaseModel):
 
     def __str__(self):
         return f"{self.name} ({self.level})"
+    
+# ----------------- DIPLOMA -----------------
+class Diploma(GreenUpBaseModel):
+    """
+    Name: Diploma
+    Description: Model to store diploma information for a user.
+    Author: fotsoeddysteve@gmail.com
+    """
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='diplomas',
+        help_text=_("User who obtained or is pursuing this diploma.")
+    )
+    name = models.CharField(
+        max_length=200,
+        help_text=_("Name of the diploma obtained or in progress, including mention if applicable.")
+    )
+    institution = models.CharField(
+        max_length=200,
+        help_text=_("Institution where the diploma was obtained or is in progress.")
+    )
+    city_country = models.CharField(
+        max_length=200,
+        help_text=_("City and country of the institution.")
+    )
+    year = models.CharField(
+        max_length=4,
+        help_text=_("Year the diploma was obtained or expected.")
+    )
+
+    class Meta:
+        verbose_name = _("Diploma")
+        verbose_name_plural = _("Diplomas")
+
+    def __str__(self):
+        return f"{self.name} - {self.user.get_full_name} ({self.year})"
 
 
 # ----------------- ADMISSION SEASON -----------------
@@ -160,6 +197,11 @@ class AdmissionApplication(GreenUpBaseModel):
         related_name="%(class)s_applications",
         help_text=_("Selected campus for the application.")
     )
+    diplomas = models.ManyToManyField(
+        Diploma,
+        related_name="%(class)s_applications",
+        help_text=_("Diplomas associated with this application.")
+    )
 
     # File fields with validators
     cv = models.FileField(
@@ -245,12 +287,6 @@ class NonEUAdmissionApplication(AdmissionApplication):
     parent_city = models.CharField(max_length=100, blank=True, null=True, help_text=_("City of the parent's address."))
     parent_country = models.CharField(max_length=100, blank=True, null=True, help_text=_("Country of the parent's address."))
 
-    # Diploma info
-    diploma_details = models.TextField(help_text=_("Details of the diploma obtained or in progress."))
-    diploma_institution = models.CharField(max_length=200, help_text=_("Institution where the diploma was obtained."))
-    diploma_city_country = models.CharField(max_length=200, help_text=_("City and country of the diploma institution."))
-    diploma_year = models.CharField(max_length=4, help_text=_("Year the diploma was obtained or expected."))
-
     language_certificate = models.FileField(
         upload_to='admission_documents/language_certificates/',
         validators=[FileExtensionValidator(['pdf', 'jpg', 'jpeg', 'png'])],
@@ -262,7 +298,6 @@ class NonEUAdmissionApplication(AdmissionApplication):
     class Meta:
         verbose_name = _("Non-EU Admission Application")
         verbose_name_plural = _("Non-EU Admission Applications")
-
 
 # ----------------- EU APPLICATION -----------------
 class EUAdmissionApplication(AdmissionApplication):
