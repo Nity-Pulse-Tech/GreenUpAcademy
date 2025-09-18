@@ -186,84 +186,66 @@
                     </div>
 
                     <!-- Campus and Program Selection -->
-                    <div class="form-section mb-8 p-6 border border-gray-200 rounded-lg">
-                        <h3 class="text-xl font-semibold mb-6 text-primary">CHOIX DU CAMPUS ET DE LA FORMATION</h3>
-                        
-                        <!-- Campus Selection -->
-                        <div class="mb-8">
-                            <h4 class="text-lg font-semibold mb-4">1. Campus souhaité :</h4>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <label class="program-option flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer">
-                                    <input type="radio" name="campus" value="Paris" class="form-radio text-primary h-5 w-5" required>
-                                    <span class="ml-3 text-gray-700">Paris</span>
-                                </label>
-                                <label class="program-option flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer">
-                                    <input type="radio" name="campus" value="Reims" class="form-radio text-primary h-5 w-5" required>
-                                    <span class="ml-3 text-gray-700">Reims</span>
-                                </label>
-                            </div>
-                        </div>
+        <div class="form-section mb-8 p-6 border border-gray-200 rounded-lg">
+            <h3 class="text-xl font-semibold mb-6 text-primary">{% trans "CHOIX DU CAMPUS ET DE LA FORMATION" %}</h3>
+            
+            <!-- Campus Selection -->
+            <div class="mb-8">
+                <h4 class="text-lg font-semibold mb-4">1. {% trans "Campus souhaité :" %}</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {% for campus in campuses %}
+                        <label class="program-option flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer">
+                            <input type="radio" name="campus" value="{{ campus.name }}" class="form-radio text-primary h-5 w-5" required>
+                            <span class="ml-3 text-gray-700">{{ campus.name }}</span>
+                        </label>
+                    {% empty %}
+                        <p class="text-red-500">{% trans "No campuses available. Please contact support." %}</p>
+                    {% endfor %}
+                </div>
+            </div>
 
-                        <!-- Program Selection -->
-                        <div class="mb-8">
-                            <h4 class="text-lg font-semibold mb-4">2. Formation choisie :</h4>
-                            
-                            <h5 class="font-semibold text-primary mb-3">Bachelors (Bac +3)</h5>
-                            <div class="grid grid-cols-1 gap-3 mb-6">
-                                <label class="program-option flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer">
-                                    <input type="radio" name="program" value="Conception et Développement d'Application" class="form-radio text-primary h-5 w-5" required>
-                                    <span class="ml-3 text-gray-700">Conception et Développement d'Application</span>
-                                </label>
-                                <label class="program-option flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer">
-                                    <input type="radio" name="program" value="Intelligence Artificielle" class="form-radio text-primary h-5 w-5">
-                                    <span class="ml-3 text-gray-700">Intelligence Artificielle</span>
-                                </label>
-                                <label class="program-option flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer">
-                                    <input type="radio" name="program" value="Administrateur d'Infrastructure Sécurisée" class="form-radio text-primary h-5 w-5">
-                                    <span class="ml-3 text-gray-700">Administrateur d'Infrastructure Sécurisée</span>
-                                </label>
-                                <label class="program-option flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer">
-                                    <input type="radio" name="program" value="Performance Énergétique des Bâtiments et Procédés Industriels" class="form-radio text-primary h-5 w-5">
-                                    <span class="ml-3 text-gray-700">Performance Énergétique des Bâtiments et Procédés Industriels</span>
-                                </label>
-                                <label class="program-option flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer">
-                                    <input type="radio" name="program" value="Conception Designer UI" class="form-radio text-primary h-5 w-5">
-                                    <span class="ml-3 text-gray-700">Conception Designer UI</span>
-                                </label>
-                            </div>
+            <!-- Program Selection -->
+            <div class="mb-8">
+                <h4 class="text-lg font-semibold mb-4">2. {% trans "Formation choisie :" %}</h4>
+                
+                <h5 class="font-semibold text-primary mb-3">{% trans "Bachelors (Bac +3)" %}</h5>
+                <div class="grid grid-cols-1 gap-3 mb-6">
+                    {% for program in bachelor_programs %}
+                        <label class="program-option flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer">
+                            <input type="radio" name="program" value="{{ program.name }}" class="form-radio text-primary h-5 w-5" required>
+                            <span class="ml-3 text-gray-700">{{ program.name }}</span>
+                        </label>
+                    {% empty %}
+                        <p class="text-red-500">{% trans "No Bachelor programs available." %}</p>
+                    {% endfor %}
+                </div>
 
-                            <h5 class="font-semibold text-primary mb-3">Mastères (Bac +5)</h5>
-                            <div class="grid grid-cols-1 gap-3">
-                                <label class="program-option flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer">
-                                    <input type="radio" name="program" value="Performance Énergétique, Intelligence Artificielle & Développement Durable" class="form-radio text-primary h-5 w-5">
-                                    <span class="ml-3 text-gray-700">Performance Énergétique, Intelligence Artificielle & Développement Durable</span>
-                                </label>
-                                <label class="program-option flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer">
-                                    <input type="radio" name="program" value="Intelligence Artificielle" class="form-radio text-primary h-5 w-5">
-                                    <span class="ml-3 text-gray-700">Intelligence Artificielle</span>
-                                </label>
-                            </div>
-                        </div>
+                <h5 class="font-semibold text-primary mb-3">{% trans "Mastères (Bac +5)" %}</h5>
+                <div class="grid grid-cols-1 gap-3">
+                    {% for program in master_programs %}
+                        <label class="program-option flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer">
+                            <input type="radio" name="program" value="{{ program.name }}" class="form-radio text-primary h-5 w-5">
+                            <span class="ml-3 text-gray-700">{{ program.name }}</span>
+                        </label>
+                    {% empty %}
+                        <p class="text-red-500">{% trans "No Master programs available." %}</p>
+                    {% endfor %}
+                </div>
+            </div>
 
-                        <!-- Apprenticeship Question -->
-                        <div>
-                            <h4 class="text-lg font-semibold mb-4">Avez-vous déjà une alternance pour votre formation ?</h4>
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <label class="program-option flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer">
-                                    <input type="radio" name="apprenticeship" value="yes" class="form-radio text-primary h-5 w-5" required>
-                                    <span class="ml-3 text-gray-700">Oui</span>
-                                </label>
-                                <label class="program-option flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer">
-                                    <input type="radio" name="apprenticeship" value="no" class="form-radio text-primary h-5 w-5">
-                                    <span class="ml-3 text-gray-700">Non</span>
-                                </label>
-                                <label class="program-option flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer">
-                                    <input type="radio" name="apprenticeship" value="undecided" class="form-radio text-primary h-5 w-5">
-                                    <span class="ml-3 text-gray-700">Je ne sais pas encore</span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Apprenticeship Question -->
+            <div>
+                <h4 class="text-lg font-semibold mb-4">{% trans "Avez-vous déjà une alternance pour votre formation ?" %}</h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {% for value, label in apprenticeship_choices %}
+                        <label class="program-option flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer">
+                            <input type="radio" name="apprenticeship" value="{{ value }}" class="form-radio text-primary h-5 w-5" {% if value == "undecided" %}required{% endif %}>
+                            <span class="ml-3 text-gray-700">{{ label }}</span>
+                        </label>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
 
                     <!-- Required Documents -->
                     <div class="form-section mb-8 p-6 border border-gray-200 rounded-lg">

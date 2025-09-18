@@ -6,7 +6,7 @@ from django.utils import timezone
 from django.contrib.auth.mixins import LoginRequiredMixin
 from green_up_apps.admission.models import EUAdmissionApplication, Program, Campus, Diploma, AdmissionSeason
 from green_up_apps.users.models import User, Profile
-from green_up_apps.global_data.enums import ApplicationStatusChoices, ApprenticeshipChoices
+from green_up_apps.global_data.enums import ApplicationStatusChoices, ApprenticeshipChoices, ProgramLevelChoices
 from green_up_apps.admission.tasks.admission_task import notify_admission_pending
 
 logger = logging.getLogger(__name__)
@@ -18,7 +18,16 @@ class AdmissionUeView(LoginRequiredMixin, View):
     """View for handling EU admission application form submission"""
 
     def get(self, request):
-        return TemplateView.as_view(template_name="publics/home/admission/resident_ue/admission_process.html")(request)
+        context = {
+            'campuses': Campus.objects.all(),
+            'bachelor_programs': Program.objects.filter(level=ProgramLevelChoices.BACHELOR),
+            'master_programs': Program.objects.filter(level=ProgramLevelChoices.MASTER),
+            'apprenticeship_choices': ApprenticeshipChoices.choices,
+        }
+        return TemplateView.as_view(
+            template_name="publics/home/admission/resident_ue/admission_process.html",
+            extra_context=context
+        )(request)
 
     def post(self, request):
         try:
