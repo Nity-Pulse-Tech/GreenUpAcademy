@@ -1,5 +1,11 @@
 from django.contrib import admin
-from .models import Campus, Program, EUAdmissionApplication, NonEUAdmissionApplication
+from .models import (
+    Campus,
+    Program,
+    AdmissionSeason,
+    EUAdmissionApplication,
+    NonEUAdmissionApplication,
+)
 
 # ----------------- CAMPUS -----------------
 @admin.register(Campus)
@@ -18,6 +24,15 @@ class ProgramAdmin(admin.ModelAdmin):
     filter_horizontal = ("campuses",)
 
 
+# ----------------- ADMISSION SEASON -----------------
+@admin.register(AdmissionSeason)
+class AdmissionSeasonAdmin(admin.ModelAdmin):
+    list_display = ("name", "academic_year", "start_date", "end_date", "is_active")
+    list_filter = ("academic_year", "is_active")
+    search_fields = ("name", "academic_year")
+    ordering = ("-start_date",)
+
+
 # ----------------- NON-EU APPLICATION -----------------
 @admin.register(NonEUAdmissionApplication)
 class NonEUAdmissionApplicationAdmin(admin.ModelAdmin):
@@ -28,10 +43,11 @@ class NonEUAdmissionApplicationAdmin(admin.ModelAdmin):
         "nationality",
         "program",
         "campus",
+        "season",
         "status",
         "application_date",
     )
-    list_filter = ("status", "program", "campus", "nationality")
+    list_filter = ("status", "program", "campus", "season", "nationality")
     search_fields = ("first_name", "last_name", "email", "passport_number")
     readonly_fields = ("application_date",)
 
@@ -45,9 +61,10 @@ class EUAdmissionApplicationAdmin(admin.ModelAdmin):
         "email",
         "program",
         "campus",
+        "season",
         "status",
         "application_date",
     )
-    list_filter = ("status", "program", "campus")
+    list_filter = ("status", "program", "campus", "season")
     search_fields = ("first_name", "last_name", "email", "institution")
     readonly_fields = ("application_date",)

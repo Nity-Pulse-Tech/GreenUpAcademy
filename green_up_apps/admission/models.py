@@ -74,6 +74,43 @@ class Program(GreenUpBaseModel):
         return f"{self.name} ({self.level})"
 
 
+# ----------------- ADMISSION SEASON -----------------
+class AdmissionSeason(GreenUpBaseModel):
+    """
+    Name: AdmissionSeason
+    Description: Defines admission seasons with their application start and end dates.
+    Author: ayemeleelgol@gmail.com
+    """
+    name = models.CharField(
+        max_length=100,
+        unique=True,
+        help_text=_("Name of the season (e.g., Fall 2025, Spring 2026).")
+    )
+    academic_year = models.CharField(
+        max_length=20,
+        help_text=_("Academic year for the season (e.g., 2025/2026).")
+    )
+    start_date = models.DateField(help_text=_("Start date for applications."))
+    end_date = models.DateField(help_text=_("End date for applications."))
+    is_active = models.BooleanField(
+        default=True,
+        help_text=_("Whether this season is currently active.")
+    )
+
+    class Meta:
+        verbose_name = _("Admission Season")
+        verbose_name_plural = _("Admission Seasons")
+        ordering = ["-start_date"]
+
+    def __str__(self):
+        return f"{self.name} ({self.academic_year})"
+
+    def is_open(self):
+        """Check if applications are currently open for this season."""
+        today = timezone.now().date()
+        return self.is_active and self.start_date <= today <= self.end_date
+
+
 # ----------------- BASE APPLICATION -----------------
 class AdmissionApplication(GreenUpBaseModel):
     """
@@ -86,6 +123,13 @@ class AdmissionApplication(GreenUpBaseModel):
         on_delete=models.CASCADE,
         related_name="%(class)s_admission_applications",
         help_text=_("User submitting the application.")
+    )
+    season = models.ForeignKey(
+        AdmissionSeason,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name="%(class)s_applications",   # ✅ FIXED: unique per subclass
+        help_text=_("Admission season for this application.")
     )
     civility = models.CharField(
         max_length=10,
@@ -172,6 +216,12 @@ class AdmissionApplication(GreenUpBaseModel):
     def __str__(self):
         return f"{self.first_name} {self.last_name} - {self.program or 'No program'}"
 
+    def clean(self):
+        """Ensure application season is valid."""
+        super().clean()
+        if self.season and not self.season.is_open():
+            raise ValidationError({"season": _("This admission season is closed. Please select an open season.")})
+
 
 # ----------------- NON-EU APPLICATION -----------------
 class NonEUAdmissionApplication(AdmissionApplication):
@@ -246,7 +296,7 @@ class EUAdmissionApplication(AdmissionApplication):
         verbose_name_plural = _("EU Admission Applications")
 
     def clean(self):
-        """Validate registration fee."""
+        """Validate registration fee and season rules."""
         super().clean()
         if self.registration_fee < 0:
             raise ValidationError({"registration_fee": _("Registration fee cannot be negative.")})
