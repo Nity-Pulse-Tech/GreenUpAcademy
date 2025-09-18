@@ -148,7 +148,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label class="block text-gray-700 mb-2">{% trans "Civilité" %}</label>
-                            <select name="civility" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" >
+                            <select name="civility" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
                                 <option value="">{% trans "Sélectionner" %}</option>
                                 {% for value, label in civility_choices %}
                                     <option value="{{ value }}">{{ label }}</option>
@@ -157,59 +157,59 @@
                         </div>
                         <div>
                             <label class="block text-gray-700 mb-2">{% trans "Nom" %}</label>
-                            <input type="text" name="last_name" value="{{ user_data.last_name|default:'' }}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" >
+                            <input type="text" name="last_name" value="{{ user_data.last_name|default:'' }}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
                         </div>
                         <div>
                             <label class="block text-gray-700 mb-2">{% trans "Prénom" %}</label>
-                            <input type="text" name="first_name" value="{{ user_data.first_name|default:'' }}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" >
+                            <input type="text" name="first_name" value="{{ user_data.first_name|default:'' }}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
                         </div>
                         <div>
                             <label class="block text-gray-700 mb-2">{% trans "Date de Naissance" %}</label>
-                            <input type="date" name="date_of_birth" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" >
+                            <input type="date" name="date_of_birth" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
                         </div>
                         <div>
                             <label class="block text-gray-700 mb-2">{% trans "Lieu de Naissance" %}</label>
-                            <input type="text" name="place_of_birth" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" >
+                            <input type="text" name="place_of_birth" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
                         </div>
                         <div>
                             <label class="block text-gray-700 mb-2">{% trans "Nationalité" %}</label>
-                            <input type="text" name="nationality" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" >
+                            <input type="text" name="nationality" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
                         </div>
                         <div>
                             <label class="block text-gray-700 mb-2">{% trans "N° de Passeport" %}</label>
-                            <input type="text" name="passport_number" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" >
+                            <input type="text" name="passport_number" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
                         </div>
                         <div>
                             <label class="block text-gray-700 mb-2">{% trans "Niveau d'Études" %}</label>
-                            <input type="text" name="level_of_studies" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" >
+                            <input type="text" name="level_of_studies" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
                         </div>
                         <div>
                             <label class="block text-gray-700 mb-2">{% trans "E-mail" %}</label>
-                            <input type="email" name="email" value="{{ user_data.email|default:'' }}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" >
+                            <input type="email" name="email" value="{{ user_data.email|default:'' }}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
                         </div>
                         <div>
                             <label class="block text-gray-700 mb-2">{% trans "Téléphone" %}</label>
-                            <input type="tel" name="phone_number" value="{{ user_data.phone_number|default:'' }}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" >
+                            <input type="tel" name="phone_number" value="{{ user_data.phone_number|default:'' }}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
                         </div>
                         <div class="md:col-span-2">
                             <label class="block text-gray-700 mb-2">{% trans "Adresse Permanente" %}</label>
-                            <input type="text" name="address" value="{{ user_data.address|default:'' }}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" >
+                            <input type="text" name="address" value="{{ user_data.address|default:'' }}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
                         </div>
                         <div>
                             <label class="block text-gray-700 mb-2">{% trans "Code Postal" %}</label>
-                            <input type="text" name="zip_code" value="{{ user_data.zip_code|default:'' }}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" >
+                            <input type="text" name="zip_code" value="{{ user_data.zip_code|default:'' }}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
                         </div>
                         <div>
                             <label class="block text-gray-700 mb-2">{% trans "Ville" %}</label>
-                            <input type="text" name="city" value="{{ user_data.city|default:'' }}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" >
+                            <input type="text" name="city" value="{{ user_data.city|default:'' }}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
                         </div>
                         <div>
                             <label class="block text-gray-700 mb-2">{% trans "Pays" %}</label>
-                            <input type="text" name="country" value="{{ user_data.country|default:'' }}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" >
+                            <input type="text" name="country" value="{{ user_data.country|default:'' }}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
                         </div>
                         <div>
                             <label class="block text-gray-700 mb-2">{% trans "Photo d'identité" %} <span class="text-red-500">*</span></label>
-                            <input type="file" name="photo" accept=".jpg,.jpeg,.png" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" >
+                            <input type="file" name="photo" accept=".jpg,.jpeg,.png" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
                         </div>
                     </div>
                 </div>
@@ -261,19 +261,19 @@
                         <div class="diploma-entry grid grid-cols-1 md:grid-cols-2 gap-6 mb-4" data-index="0">
                             <div class="md:col-span-2">
                                 <label class="block text-gray-700 mb-2">{% trans "Diplôme obtenu (+ mention) ou en cours (précisez)" %}</label>
-                                <textarea name="diploma_name_0" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" rows="3" ></textarea>
+                                <textarea name="diploma_name_0" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" rows="3" required></textarea>
                             </div>
                             <div>
                                 <label class="block text-gray-700 mb-2">{% trans "École / Université" %}</label>
-                                <input type="text" name="institution_0" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" >
+                                <input type="text" name="institution_0" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
                             </div>
                             <div>
                                 <label class="block text-gray-700 mb-2">{% trans "Ville / Pays" %}</label>
-                                <input type="text" name="city_country_0" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" >
+                                <input type="text" name="city_country_0" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
                             </div>
                             <div>
                                 <label class="block text-gray-700 mb-2">{% trans "Année" %}</label>
-                                <input type="text" name="year_0" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" >
+                                <input type="text" name="year_0" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
                             </div>
                             <div class="md:col-span-2">
                                 <button type="button" class="remove-diploma bg-red-500 text-white px-4 py-2 rounded-lg" style="display: none;">{% trans "Supprimer le Diplôme" %}</button>
@@ -289,7 +289,7 @@
                     <!-- Session Selection -->
                     <div class="mb-6">
                         <label class="block text-gray-700 mb-4">{% trans "Choisissez la session d'admission" %}</label>
-                        <select name="season" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" >
+                        <select name="season" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
                             <option value="">{% trans "Sélectionner une session" %}</option>
                             {% for season in seasons %}
                                 <option value="{{ season.id }}">{{ season.name }} ({{ season.session_start_date|date:"d F Y" }})</option>
@@ -302,7 +302,7 @@
                         <div class="flex flex-wrap gap-4">
                             {% for campus in campuses %}
                                 <label class="flex items-center">
-                                    <input type="radio" name="campus" value="{{ campus.id }}" class="form-radio text-primary" >
+                                    <input type="radio" name="campus" value="{{ campus.id }}" class="form-radio text-primary" required>
                                     <span class="ml-2">{{ campus.name }}</span>
                                 </label>
                             {% empty %}
@@ -330,7 +330,7 @@
                                             <td class="p-4 text-center">{{ program.campuses.all|join:", " }}</td>
                                             <td class="p-4 text-center">{{ program.tuition_fee }} €</td>
                                             <td class="p-4 text-center">
-                                                <input type="radio" name="program" value="{{ program.id }}" class="form-radio text-primary" >
+                                                <input type="radio" name="program" value="{{ program.id }}" class="form-radio text-primary" required>
                                             </td>
                                         </tr>
                                     {% empty %}
@@ -345,7 +345,7 @@
                     </div>
                 </div>
 
-                <!--  Documents -->
+                <!-- Required Documents -->
                 <div class="form-section mb-8 p-6 border border-gray-200 rounded-lg">
                     <h3 class="text-xl font-semibold mb-6 text-primary">{% trans "Documents à Joindre" %}</h3>
                     <p class="text-gray-600 mb-4">
@@ -354,11 +354,11 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label class="block text-gray-700 font-medium mb-1">{% trans "Curriculum Vitae (CV)" %} <span class="text-red-500">*</span></label>
-                            <input type="file" name="cv" accept=".pdf,.jpeg,.jpg,.png" class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary-green focus:outline-none" >
+                            <input type="file" name="cv" accept=".pdf,.jpeg,.jpg,.png" class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary-green focus:outline-none" required>
                         </div>
                         <div>
                             <label class="block text-gray-700 font-medium mb-1">{% trans "Lettre de motivation" %} <span class="text-red-500">*</span></label>
-                            <input type="file" name="motivation_letter" accept=".pdf,.jpeg,.jpg,.png" class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary-green focus:outline-none" >
+                            <input type="file" name="motivation_letter" accept=".pdf,.jpeg,.jpg,.png" class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary-green focus:outline-none" required>
                         </div>
                         <div>
                             <label class="block text-gray-700 font-medium mb-1">{% trans "Portfolio (si applicable)" %}</label>
@@ -366,11 +366,11 @@
                         </div>
                         <div>
                             <label class="block text-gray-700 font-medium mb-1">{% trans "Copie du passeport" %} <span class="text-red-500">*</span></label>
-                            <input type="file" name="identity_document" accept=".pdf,.jpeg,.jpg,.png" class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary-green focus:outline-none" >
+                            <input type="file" name="identity_document" accept=".pdf,.jpeg,.jpg,.png" class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary-green focus:outline-none" required>
                         </div>
                         <div>
                             <label class="block text-gray-700 font-medium mb-1">{% trans "Relevés de notes / Diplôme" %} <span class="text-red-500">*</span></label>
-                            <input type="file" name="academic_records" accept=".pdf,.jpeg,.jpg,.png" class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary-green focus:outline-none" >
+                            <input type="file" name="academic_records" accept=".pdf,.jpeg,.jpg,.png" class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary-green focus:outline-none" required>
                         </div>
                         <div>
                             <label class="block text-gray-700 font-medium mb-1">{% trans "Attestation de langue (si non francophone)" %}</label>
@@ -378,7 +378,7 @@
                         </div>
                         <div>
                             <label class="block text-gray-700 font-medium mb-1">{% trans "Photo d'identité récente" %} <span class="text-red-500">*</span></label>
-                            <input type="file" name="photo" accept=".jpeg,.jpg,.png" class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary-green focus:outline-none" >
+                            <input type="file" name="photo" accept=".jpeg,.jpg,.png" class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary-green focus:outline-none" required>
                         </div>
                     </div>
                 </div>
@@ -434,7 +434,7 @@
                     </p>
                     <div class="mt-6">
                         <label class="flex items-start">
-                            <input type="checkbox" name="declaration_accepted" class="form-checkbox text-primary mt-1" >
+                            <input type="checkbox" name="declaration_accepted" class="form-checkbox text-primary mt-1" required>
                             <span class="ml-2">{% trans "J'accepte les termes de cette déclaration" %}</span>
                         </label>
                     </div>
@@ -473,19 +473,19 @@
         newEntry.innerHTML = `
             <div class="md:col-span-2">
                 <label class="block text-gray-700 mb-2">{% trans "Diplôme obtenu (+ mention) ou en cours (précisez)" %}</label>
-                <textarea name="diploma_name_${index}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" rows="3" ></textarea>
+                <textarea name="diploma_name_${index}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" rows="3" required></textarea>
             </div>
             <div>
                 <label class="block text-gray-700 mb-2">{% trans "École / Université" %}</label>
-                <input type="text" name="institution_${index}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" >
+                <input type="text" name="institution_${index}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
             </div>
             <div>
                 <label class="block text-gray-700 mb-2">{% trans "Ville / Pays" %}</label>
-                <input type="text" name="city_country_${index}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" >
+                <input type="text" name="city_country_${index}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
             </div>
             <div>
                 <label class="block text-gray-700 mb-2">{% trans "Année" %}</label>
-                <input type="text" name="year_${index}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" >
+                <input type="text" name="year_${index}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
             </div>
             <div class="md:col-span-2">
                 <button type="button" class="remove-diploma bg-red-500 text-white px-4 py-2 rounded-lg">{% trans "Supprimer le Diplôme" %}</button>
