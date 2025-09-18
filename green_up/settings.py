@@ -49,7 +49,13 @@ INSTALLED_APPS = [
     'green_up_apps.admission',
     'green_up_apps.apropos',
     'green_up_apps.formation',
+    'formtools',
+    "crispy_forms",
+    "crispy_tailwind",
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+CRISPY_TEMPLATE_PACK = "tailwind"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -192,8 +198,7 @@ STATIC_ROOT = BASE_DIR / "staticfiles"   # folder where collectstatic will put a
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
-
+MEDIA_ROOT = os.path.join(BASE_DIR, "green_up_apps", "media")
 
 
 if DEBUG:
