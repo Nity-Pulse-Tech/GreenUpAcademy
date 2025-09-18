@@ -1,0 +1,32 @@
+{% extends "publics/emails/base.html" %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Confirmation de Candidature - Green Up Academy" %}
+{% endblock %}
+
+{% block content %}
+<div class="content-block">
+    <h2>{% trans "Confirmation de réception de votre candidature" %}</h2>
+    <p>{% trans "Cher(e)" %} {{ user_name }},</p>
+    <p>
+        {% trans "Nous vous confirmons que votre candidature à Green Up Academy a été reçue avec succès." %}
+        {% trans "Voici les détails de votre candidature :" %}
+    </p>
+    <ul style="list-style-type: disc; margin-left: 20px;">
+        <li><strong>{% trans "Numéro de candidature" %}:</strong> {{ application_id }}</li>
+        <li><strong>{% trans "Programme" %}:</strong> {{ program_name }}</li>
+        <li><strong>{% trans "Campus" %}:</strong> {{ campus_name }}</li>
+        <li><strong>{% trans "Session" %}:</strong> {{ season_name }}</li>
+        <li><strong>{% trans "Date de soumission" %}:</strong> {{ submission_date }}</li>
+    </ul>
+    <p>
+        {% trans "Votre dossier sera examiné par notre comité d'admission, et nous vous contacterons bientôt pour la suite du processus." %}
+        {% trans "Pour toute question, n'hésitez pas à nous contacter à" %} <a href="mailto:contact@green-up-academy.com">contact@green-up-academy.com</a>.
+    </p>
+    <p>{% trans "Merci de votre intérêt pour Green Up Academy !" %}</p>
+</div>
+<div class="button-container">
+    <a href="https://www.green-up-academy.com" class="button">{% trans "Visiter notre site" %}</a>
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "publics/emails/base.html" %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Nouvelle Candidature Reçue - Green Up Academy" %}
+{% endblock %}
+
+{% block content %}
+<div class="content-block">
+    <h2>{% trans "Nouvelle candidature reçue" %}</h2>
+    <p>{% trans "Une nouvelle candidature a été soumise à Green Up Academy. Voici les détails :" %}</p>
+    <h3>{% trans "Détails de la candidature" %}</h3>
+    <ul style="list-style-type: disc; margin-left: 20px;">
+        <li><strong>{% trans "Numéro de candidature" %}:</strong> {{ application_id }}</li>
+        <li><strong>{% trans "Programme" %}:</strong> {{ program_name }}</li>
+        <li><strong>{% trans "Campus" %}:</strong> {{ campus_name }}</li>
+        <li><strong>{% trans "Session" %}:</strong> {{ season_name }}</li>
+        <li><strong>{% trans "Date de soumission" %}:</strong> {{ submission_date }}</li>
+    </ul>
+    <h3>{% trans "Détails du candidat" %}</h3>
+    <ul style="list-style-type: disc; margin-left: 20px;">
+        <li><strong>{% trans "Nom complet" %}:</strong> {{ user_details.first_name }} {{ user_details.last_name }}</li>
+        <li><strong>{% trans "E-mail" %}:</strong> {{ user_details.email }}</li>
+        <li><strong>{% trans "Téléphone" %}:</strong> {{ user_details.phone_number }}</li>
+        <li><strong>{% trans "Nationalité" %}:</strong> {{ user_details.nationality }}</li>
+        <li><strong>{% trans "Date de naissance" %}:</strong> {{ user_details.date_of_birth }}</li>
+        <li><strong>{% trans "Lieu de naissance" %}:</strong> {{ user_details.place_of_birth }}</li>
+        <li><strong>{% trans "Numéro de passeport" %}:</strong> {{ user_details.passport_number }}</li>
+        <li><strong>{% trans "Niveau d'études" %}:</strong> {{ user_details.level_of_studies }}</li>
+        <li><strong>{% trans "Adresse" %}:</strong> {{ user_details.address }}, {{ user_details.zip_code }}, {{ user_details.city }}, {{ user_details.country }}</li>
+    </ul>
+    <p>{% trans "Veuillez examiner cette candidature dans le panneau d'administration." %}</p>
+</div>
+<div class="button-container">
+    <a href="https://admin.green-up-academy.com" class="button">{% trans "Accéder au panneau d'administration" %}</a>
+</div>
+{% endblock %}

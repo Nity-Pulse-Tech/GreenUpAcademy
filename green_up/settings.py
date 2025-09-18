@@ -201,6 +201,10 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "green_up_apps", "media")
 
 
+# Logo path for emails
+LOGO = os.path.join(BASE_DIR, 'green_up_apps/static/images/logo.webp')
+
+
 if DEBUG:
     STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 else:
