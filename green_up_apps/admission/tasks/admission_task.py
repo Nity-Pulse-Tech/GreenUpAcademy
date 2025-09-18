@@ -31,7 +31,7 @@ def notify_admission_pending(application_id: str):
                 template="publics/emails/admission_notification.html",
                 context={
                     "is_admin": True,
-                    "applicant_name": applicant.get_full_name(),
+                    "applicant_name": applicant.get_full_name,
                     "program_name": program.name if program else "N/A",
                     "campus_name": campus.name if campus else "N/A",
                     "application_id": str(application.id),

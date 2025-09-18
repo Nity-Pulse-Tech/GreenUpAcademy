@@ -1,6 +1,12 @@
+import os
 from celery import Celery
 
-app = Celery('green_up', broker='redis://localhost:6379/0', backend='redis://localhost:6379/0')
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "green_up.settings")
 
-# Optional: Load tasks from all registered apps
+app = Celery("green_up")
+
+# Load settings from Django
+app.config_from_object("django.conf:settings", namespace="CELERY")
+
+# Auto-discover tasks in installed apps
 app.autodiscover_tasks()
