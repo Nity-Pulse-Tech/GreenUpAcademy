@@ -1,0 +1,24 @@
+{% extends 'publics/home/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block extra_head %}
+    <script src="{% static 'js/common/toast_manager.js' %}"></script>
+    <script src="{% static 'js/common/notification_manager.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<section class="py-12">
+    <div class="container mx-auto px-4 text-center">
+        <h1 class="text-3xl font-bold mb-4">{% trans "Candidature Soumise avec Succès" %}</h1>
+        <p class="text-lg text-gray-600">{% trans "Merci pour votre candidature à Green Up Academy. Vous recevrez bientôt une confirmation." %}</p>
+        <a href="{% url 'users:home' %}" class="bg-primary-green text-white px-6 py-3 rounded-lg mt-6 inline-block">{% trans "Retour à l'Accueil" %}</a>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        window.notificationManager.showSuccess("{% trans 'Candidature soumise avec succès !' %}", "top-right", 4000);
+    });
+</script>
+{% endblock %}

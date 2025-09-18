@@ -121,7 +121,7 @@ class AdmissionSeason(GreenUpBaseModel):
     name = models.CharField(
         max_length=100,
         unique=True,
-        help_text=_("Name of the season (e.g., Fall 2025, Spring 2026).")
+        help_text=_("Name of the season (e.g., October 2025, February 2026).")
     )
     academic_year = models.CharField(
         max_length=20,
@@ -129,6 +129,7 @@ class AdmissionSeason(GreenUpBaseModel):
     )
     start_date = models.DateField(help_text=_("Start date for applications."))
     end_date = models.DateField(help_text=_("End date for applications."))
+    session_start_date = models.DateField(help_text=_("Start date of the academic session (e.g., 15 October 2025)."))
     is_active = models.BooleanField(
         default=True,
         help_text=_("Whether this season is currently active.")
