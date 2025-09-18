@@ -1,0 +1,46 @@
+{% extends 'publics/emails/base.html' %}
+{% load i18n %}
+
+{% block title %}
+{% trans "New EU Admission Application" %} - {{ site_name }}
+{% endblock %}
+
+{% block content %}
+<div class="content-block">
+    <h2>{% trans "New EU Admission Application Received" %}</h2>
+    <p>{% trans "Dear Admin," %}</p>
+    <p>
+        {% trans "A new EU admission application has been submitted and is pending review." %}
+    </p>
+    <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+        <tr>
+            <td style="padding: 8px; border: 1px solid #e5e7eb; font-weight: bold;">{% trans "Applicant" %}</td>
+            <td style="padding: 8px; border: 1px solid #e5e7eb;">{{ applicant_name }}</td>
+        </tr>
+        <tr>
+            <td style="padding: 8px; border: 1px solid #e5e7eb; font-weight: bold;">{% trans "Program" %}</td>
+            <td style="padding: 8px; border: 1px solid #e5e7eb;">{{ program_name }}</td>
+        </tr>
+        <tr>
+            <td style="padding: 8px; border: 1px solid #e5e7eb; font-weight: bold;">{% trans "Campus" %}</td>
+            <td style="padding: 8px; border: 1px solid #e5e7eb;">{{ campus_name }}</td>
+        </tr>
+        <tr>
+            <td style="padding: 8px; border: 1px solid #e5e7eb; font-weight: bold;">{% trans "Application ID" %}</td>
+            <td style="padding: 8px; border: 1px solid #e5e7eb;">{{ application_id }}</td>
+        </tr>
+        <tr>
+            <td style="padding: 8px; border: 1px solid #e5e7eb; font-weight: bold;">{% trans "Submission Date" %}</td>
+            <td style="padding: 8px; border: 1px solid #e5e7eb;">{{ application_date }}</td>
+        </tr>
+    </table>
+    <p>
+        {% trans "Please review the application in the admin dashboard." %}
+    </p>
+    <div class="button-container">
+        <a href="{{ protocol }}://{{ domain }}/admin/admission/euadmissionapplication/{{ application_id }}/" class="button">
+            {% trans "View Application" %}
+        </a>
+    </div>
+</div>
+{% endblock %}

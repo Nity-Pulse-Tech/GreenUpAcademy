@@ -2,8 +2,10 @@
 {% load static %}
 {% load i18n %}
 
-{% block content %}
- <style>
+{% block extra_head %}
+    <script src="{% static 'js/common/toast_manager.js' %}"></script>
+    <script src="{% static 'js/common/loader_manager.js' %}"></script>
+    <style>
         .admission-step {
             transition: all 0.3s ease;
         }
@@ -23,8 +25,10 @@
             background-color: #f0f9f0;
         }
     </style>
+{% endblock %}
 
-   <!-- Breadcrumb Section -->
+{% block content %}
+    <!-- Breadcrumb Section -->
     <section class="bg-primary-green text-white py-6">
         <div class="container mx-auto px-4">
             <div class="text-center">
@@ -94,337 +98,392 @@
             </section>
 
             <!-- Application Form -->
-            <section class="bg-white rounded-lg shadow-lg p-8 mb-16">
+            <section class="bg-white rounded-lg shadow-lg p-8 mb-16" id="admission-section">
                 <h2 class="text-3xl font-bold mb-8 text-center">Formulaire d'Admission</h2>
                 
-                <!-- Personal Information -->
-                <div class="form-section mb-8 p-6 border border-gray-200 rounded-lg">
-                    <h3 class="text-xl font-semibold mb-6 text-primary">INFORMATIONS PERSONNELLES</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-gray-700 mb-2">Nom</label>
-                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 mb-2">Prénom</label>
-                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 mb-2">Date de naissance</label>
-                            <input type="date" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 mb-2">Téléphone mobile</label>
-                            <input type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
-                        </div>
-                        <div class="md:col-span-2">
-                            <label class="block text-gray-700 mb-2">E-mail</label>
-                            <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Contact Information -->
-                <div class="form-section mb-8 p-6 border border-gray-200 rounded-lg">
-                    <h3 class="text-xl font-semibold mb-6 text-primary">COORDONNÉES</h3>
-                    <div class="grid grid-cols-1 gap-6">
-                        <div>
-                            <label class="block text-gray-700 mb-2">Adresse complète</label>
-                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <div class="md:col-span-1">
-                                <label class="block text-gray-700 mb-2">Code postal</label>
-                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
-                            </div>
-                            <div class="md:col-span-1">
-                                <label class="block text-gray-700 mb-2">Ville</label>
-                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
-                            </div>
-                            <div class="md:col-span-1">
-                                <label class="block text-gray-700 mb-2">Pays</label>
-                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Academic Background -->
-                <div class="form-section mb-8 p-6 border border-gray-200 rounded-lg">
-                    <h3 class="text-xl font-semibold mb-6 text-primary">PARCOURS ACADÉMIQUE</h3>
-                    <div class="grid grid-cols-1 gap-6">
-                        <div>
-                            <label class="block text-gray-700 mb-2">Dernier diplôme obtenu ou en cours</label>
-                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
-                        </div>
+                <form id="admission-form" enctype="multipart/form-data" class="space-y-8">
+                    {% csrf_token %}
+                    
+                    <!-- Personal Information -->
+                    <div class="form-section mb-8 p-6 border border-gray-200 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-6 text-primary">INFORMATIONS PERSONNELLES</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label class="block text-gray-700 mb-2">Établissement</label>
-                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                                <label class="block text-gray-700 mb-2">Nom <span class="text-red-500">*</span></label>
+                                <input type="text" name="last_name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
                             </div>
                             <div>
-                                <label class="block text-gray-700 mb-2">Ville / Pays</label>
-                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                                <label class="block text-gray-700 mb-2">Prénom <span class="text-red-500">*</span></label>
+                                <input type="text" name="first_name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2">Date de naissance <span class="text-red-500">*</span></label>
+                                <input type="date" name="date_of_birth" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2">Téléphone mobile <span class="text-red-500">*</span></label>
+                                <input type="tel" name="phone_number" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-gray-700 mb-2">E-mail <span class="text-red-500">*</span></label>
+                                <input type="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
                             </div>
                         </div>
-                        <div>
-                            <label class="block text-gray-700 mb-2">Année d'obtention (prévue ou effective)</label>
-                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
-                        </div>
                     </div>
-                    <div class="bg-blue-50 p-4 rounded-lg border border-blue-200 mt-4 flex items-start">
-                        <i class="fas fa-info-circle text-blue-500 text-xl mr-3 mt-1"></i>
-                        <p class="text-blue-700">Les diplômes obtenus dans l'Union Européenne ne nécessitent pas de certification officielle.</p>
-                    </div>
-                </div>
 
-                <!-- Campus and Program Selection -->
-                <div class="form-section mb-8 p-6 border border-gray-200 rounded-lg">
-                    <h3 class="text-xl font-semibold mb-6 text-primary">CHOIX DU CAMPUS ET DE LA FORMATION</h3>
-                    
-                    <!-- Campus Selection -->
-                    <div class="mb-8">
-                        <h4 class="text-lg font-semibold mb-4">1. Campus souhaité :</h4>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <label class="program-option flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer">
-                                <input type="radio" name="campus" class="form-radio text-primary h-5 w-5">
-                                <span class="ml-3 text-gray-700">Paris</span>
-                            </label>
-                            <label class="program-option flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer">
-                                <input type="radio" name="campus" class="form-radio text-primary h-5 w-5">
-                                <span class="ml-3 text-gray-700">Reims</span>
-                            </label>
+                    <!-- Contact Information -->
+                    <div class="form-section mb-8 p-6 border border-gray-200 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-6 text-primary">COORDONNÉES</h3>
+                        <div class="grid grid-cols-1 gap-6">
+                            <div>
+                                <label class="block text-gray-700 mb-2">Adresse complète <span class="text-red-500">*</span></label>
+                                <input type="text" name="address" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div>
+                                    <label class="block text-gray-700 mb-2">Code postal <span class="text-red-500">*</span></label>
+                                    <input type="text" name="zip_code" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-2">Ville <span class="text-red-500">*</span></label>
+                                    <input type="text" name="city" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-2">Pays <span class="text-red-500">*</span></label>
+                                    <input type="text" name="country" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Program Selection -->
-                    <div class="mb-8">
-                        <h4 class="text-lg font-semibold mb-4">2. Formation choisie :</h4>
+                    <!-- Academic Background -->
+                    <div class="form-section mb-8 p-6 border border-gray-200 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-6 text-primary">PARCOURS ACADÉMIQUE</h3>
+                        <div class="grid grid-cols-1 gap-6">
+                            <div>
+                                <label class="block text-gray-700 mb-2">Dernier diplôme obtenu ou en cours <span class="text-red-500">*</span></label>
+                                <input type="text" name="last_diploma" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-gray-700 mb-2">Établissement <span class="text-red-500">*</span></label>
+                                    <input type="text" name="institution" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-2">Ville / Pays <span class="text-red-500">*</span></label>
+                                    <input type="text" name="institution_city_country" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2">Année d'obtention (prévue ou effective) <span class="text-red-500">*</span></label>
+                                <input type="text" name="year_obtained" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
+                            </div>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-200 mt-4 flex items-start">
+                            <i class="fas fa-info-circle text-blue-500 text-xl mr-3 mt-1"></i>
+                            <p class="text-blue-700">Les diplômes obtenus dans l'Union Européenne ne nécessitent pas de certification officielle.</p>
+                        </div>
+                    </div>
+
+                    <!-- Campus and Program Selection -->
+                    <div class="form-section mb-8 p-6 border border-gray-200 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-6 text-primary">CHOIX DU CAMPUS ET DE LA FORMATION</h3>
                         
-                        <h5 class="font-semibold text-primary mb-3">Bachelors (Bac +3)</h5>
-                        <div class="grid grid-cols-1 gap-3 mb-6">
-                            <label class="program-option flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer">
-                                <input type="radio" name="program" class="form-radio text-primary h-5 w-5">
-                                <span class="ml-3 text-gray-700">Conception et Développement d'Application</span>
-                            </label>
-                            <label class="program-option flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer">
-                                <input type="radio" name="program" class="form-radio text-primary h-5 w-5">
-                                <span class="ml-3 text-gray-700">Intelligence Artificielle</span>
-                            </label>
-                            <label class="program-option flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer">
-                                <input type="radio" name="program" class="form-radio text-primary h-5 w-5">
-                                <span class="ml-3 text-gray-700">Administrateur d'Infrastructure Sécurisée</span>
-                            </label>
-                            <label class="program-option flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer">
-                                <input type="radio" name="program" class="form-radio text-primary h-5 w-5">
-                                <span class="ml-3 text-gray-700">Performance Énergétique des Bâtiments et Procédés Industriels</span>
-                            </label>
-                            <label class="program-option flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer">
-                                <input type="radio" name="program" class="form-radio text-primary h-5 w-5">
-                                <span class="ml-3 text-gray-700">Conception Designer UI</span>
-                            </label>
-                        </div>
-
-                        <h5 class="font-semibold text-primary mb-3">Mastères (Bac +5)</h5>
-                        <div class="grid grid-cols-1 gap-3">
-                            <label class="program-option flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer">
-                                <input type="radio" name="program" class="form-radio text-primary h-5 w-5">
-                                <span class="ml-3 text-gray-700">Performance Énergétique, Intelligence Artificielle & Développement Durable</span>
-                            </label>
-                            <label class="program-option flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer">
-                                <input type="radio" name="program" class="form-radio text-primary h-5 w-5">
-                                <span class="ml-3 text-gray-700">Intelligence Artificielle</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Apprenticeship Question -->
-                    <div>
-                        <h4 class="text-lg font-semibold mb-4">Avez-vous déjà une alternance pour votre formation ?</h4>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <label class="program-option flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer">
-                                <input type="radio" name="apprenticeship" class="form-radio text-primary h-5 w-5">
-                                <span class="ml-3 text-gray-700">Oui</span>
-                            </label>
-                            <label class="program-option flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer">
-                                <input type="radio" name="apprenticeship" class="form-radio text-primary h-5 w-5">
-                                <span class="ml-3 text-gray-700">Non</span>
-                            </label>
-                            <label class="program-option flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer">
-                                <input type="radio" name="apprenticeship" class="form-radio text-primary h-5 w-5">
-                                <span class="ml-3 text-gray-700">Je ne sais pas encore</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Required Documents -->
-<div class="form-section mb-8 p-6 border border-gray-200 rounded-lg">
-    <h3 class="text-xl font-semibold mb-6 text-primary">DOCUMENTS À FOURNIR</h3>
-    <p class="text-gray-600 mb-4">
-        Veuillez téléverser les documents suivants (formats acceptés : <span class="font-semibold text-primary">PDF / JPEG</span>) :
-    </p>
-
-    <form action="/upload-documents/" method="POST" enctype="multipart/form-data" class="space-y-4">
-        <!-- CSRF token if Django -->
-        {% csrf_token %}
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- CV -->
-            <div>
-                <label class="block text-gray-700 font-medium mb-1">CV <span class="text-red-500">*</span></label>
-                <input type="file" name="cv" accept=".pdf,.jpeg,.jpg,.png"
-                       class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary-green focus:outline-none">
-            </div>
-
-            <!-- Lettre de motivation -->
-            <div>
-                <label class="block text-gray-700 font-medium mb-1">Lettre de motivation <span class="text-red-500">*</span></label>
-                <input type="file" name="lettre_motivation" accept=".pdf,.jpeg,.jpg,.png"
-                       class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary-green focus:outline-none">
-            </div>
-
-            <!-- Relevés de notes -->
-            <div>
-                <label class="block text-gray-700 font-medium mb-1">Relevés de notes / Attestation d'études <span class="text-red-500">*</span></label>
-                <input type="file" name="releves_notes" accept=".pdf,.jpeg,.jpg,.png"
-                       class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary-green focus:outline-none">
-            </div>
-
-            <!-- Pièce d'identité -->
-            <div>
-                <label class="block text-gray-700 font-medium mb-1">Pièce d'identité (CNI / Passeport) <span class="text-red-500">*</span></label>
-                <input type="file" name="piece_identite" accept=".pdf,.jpeg,.jpg,.png"
-                       class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary-green focus:outline-none">
-            </div>
-
-            <!-- Photo d'identité -->
-            <div>
-                <label class="block text-gray-700 font-medium mb-1">Photo d'identité <span class="text-red-500">*</span></label>
-                <input type="file" name="photo_identite" accept=".jpeg,.jpg,.png"
-                       class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary-green focus:outline-none">
-            </div>
-
-            <!-- Portfolio (optionnel) -->
-            <div>
-                <label class="block text-gray-700 font-medium mb-1">Portfolio (optionnel)</label>
-                <input type="file" name="portfolio" accept=".pdf,.jpeg,.jpg,.png"
-                       class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary-green focus:outline-none">
-            </div>
-        </div>
-
-        <!-- Submit -->
-        <div class="pt-6">
-            <button type="submit"
-                    class="bg-primary-green text-white px-6 py-2 rounded-md hover:bg-green-700 transition-colors">
-                Envoyer les documents
-            </button>
-        </div>
-    </form>
-</div>
-
-
-                <!-- How did you hear about us -->
-                <div class="form-section mb-8 p-6 border border-gray-200 rounded-lg">
-                    <h3 class="text-xl font-semibold mb-6 text-primary">COMMENT AVEZ-VOUS CONNU GREEN UP ACADEMY ?</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="flex items-center">
-                                <input type="checkbox" class="form-checkbox text-primary">
-                                <span class="ml-2">Internet</span>
-                            </label>
-                        </div>
-                        <div>
-                            <label class="flex items-center">
-                                <input type="checkbox" class="form-checkbox text-primary">
-                                <span class="ml-2">Réaux sociaux</span>
-                            </label>
-                        </div>
-                        <div>
-                            <label class="flex items-center">
-                                <input type="checkbox" class="form-checkbox text-primary">
-                                <span class="ml-2">Forum / Salon (précisez) :</span>
-                            </label>
-                            <input type="text" class="w-full mt-2 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
-                        </div>
-                        <div>
-                            <label class="flex items-center">
-                                <input type="checkbox" class="form-checkbox text-primary">
-                                <span class="ml-2">Étudiant ou alumni</span>
-                            </label>
-                        </div>
-                        <div>
-                            <label class="flex items-center">
-                                <input type="checkbox" class="form-checkbox text-primary">
-                                <span class="ml-2">Autre :</span>
-                            </label>
-                            <input type="text" class="w-full mt-2 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Registration Fees -->
-                <div class="form-section mb-8 p-6 border border-gray-200 rounded-lg bg-green-50 border-green-200">
-                    <h3 class="text-xl font-semibold mb-6 text-primary">FRAIS D'INSCRIPTION</h3>
-                    <div class="flex items-center mb-4">
-                        <div class="bg-primary-green text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mr-4">
-                            €
-                        </div>
-                        <div>
-                            <p class="text-2xl font-bold text-primary">1 200 € TTC</p>
-                            <p class="text-gray-600">Montant dû une fois admis·e</p>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-                        <div class="bg-white p-4 rounded-lg border border-green-200">
-                            <div class="flex items-center mb-2">
-                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                <p class="font-semibold">Gratuit</p>
+                        <!-- Campus Selection -->
+                        <div class="mb-8">
+                            <h4 class="text-lg font-semibold mb-4">1. Campus souhaité :</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <label class="program-option flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer">
+                                    <input type="radio" name="campus" value="Paris" class="form-radio text-primary h-5 w-5" required>
+                                    <span class="ml-3 text-gray-700">Paris</span>
+                                </label>
+                                <label class="program-option flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer">
+                                    <input type="radio" name="campus" value="Reims" class="form-radio text-primary h-5 w-5" required>
+                                    <span class="ml-3 text-gray-700">Reims</span>
+                                </label>
                             </div>
-                            <p class="text-sm text-gray-600">si contrat d'alternance signé avant la rentrée</p>
                         </div>
-                        <div class="bg-white p-4 rounded-lg border border-green-200">
-                            <div class="flex items-center mb-2">
-                                <i class="fas fa-exchange-alt text-green-500 mr-2"></i>
-                                <p class="font-semibold">Remboursé intégralement</p>
+
+                        <!-- Program Selection -->
+                        <div class="mb-8">
+                            <h4 class="text-lg font-semibold mb-4">2. Formation choisie :</h4>
+                            
+                            <h5 class="font-semibold text-primary mb-3">Bachelors (Bac +3)</h5>
+                            <div class="grid grid-cols-1 gap-3 mb-6">
+                                <label class="program-option flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer">
+                                    <input type="radio" name="program" value="Conception et Développement d'Application" class="form-radio text-primary h-5 w-5" required>
+                                    <span class="ml-3 text-gray-700">Conception et Développement d'Application</span>
+                                </label>
+                                <label class="program-option flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer">
+                                    <input type="radio" name="program" value="Intelligence Artificielle" class="form-radio text-primary h-5 w-5">
+                                    <span class="ml-3 text-gray-700">Intelligence Artificielle</span>
+                                </label>
+                                <label class="program-option flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer">
+                                    <input type="radio" name="program" value="Administrateur d'Infrastructure Sécurisée" class="form-radio text-primary h-5 w-5">
+                                    <span class="ml-3 text-gray-700">Administrateur d'Infrastructure Sécurisée</span>
+                                </label>
+                                <label class="program-option flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer">
+                                    <input type="radio" name="program" value="Performance Énergétique des Bâtiments et Procédés Industriels" class="form-radio text-primary h-5 w-5">
+                                    <span class="ml-3 text-gray-700">Performance Énergétique des Bâtiments et Procédés Industriels</span>
+                                </label>
+                                <label class="program-option flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer">
+                                    <input type="radio" name="program" value="Conception Designer UI" class="form-radio text-primary h-5 w-5">
+                                    <span class="ml-3 text-gray-700">Conception Designer UI</span>
+                                </label>
                             </div>
-                            <p class="text-sm text-gray-600">si alternance obtenue après inscription</p>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Declaration -->
-                <div class="form-section mb-8 p-6 border border-gray-200 rounded-lg bg-gray-50">
-                    <h3 class="text-xl font-semibold mb-6 text-primary">DÉCLARATION</h3>
-                    <div class="space-y-4 text-gray-600 mb-6">
-                        <p>Je certifie que les informations fournies dans ce formulaire sont exactes.</p>
-                        <p>Je comprends qu'un entretien est obligatoire avant admission.</p>
-                        <p>Je suis informé·e que les frais d'inscription ne s'appliquent pas si je suis en alternance et sont remboursables en cas de signature de contrat en cours d'année.</p>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                        <div>
-                            <label class="block text-gray-700 mb-2">Fait à</label>
-                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                            <h5 class="font-semibold text-primary mb-3">Mastères (Bac +5)</h5>
+                            <div class="grid grid-cols-1 gap-3">
+                                <label class="program-option flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer">
+                                    <input type="radio" name="program" value="Performance Énergétique, Intelligence Artificielle & Développement Durable" class="form-radio text-primary h-5 w-5">
+                                    <span class="ml-3 text-gray-700">Performance Énergétique, Intelligence Artificielle & Développement Durable</span>
+                                </label>
+                                <label class="program-option flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer">
+                                    <input type="radio" name="program" value="Intelligence Artificielle" class="form-radio text-primary h-5 w-5">
+                                    <span class="ml-3 text-gray-700">Intelligence Artificielle</span>
+                                </label>
+                            </div>
                         </div>
-                        <div>
-                            <label class="block text-gray-700 mb-2">Le</label>
-                            <input type="date" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-gray-700 mb-2">Signature (manuscrite ou numérique)</label>
-                        <input type="file" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
-                    </div>
-                </div>
 
-                <!-- Submit Button -->
-                <div class="text-center">
-                    <button class="bg-primary-green hover:bg-green-600 text-white font-semibold py-3 px-8 rounded-lg transition-colors text-lg">
-                        Soumettre ma Candidature
-                    </button>
-                </div>
+                        <!-- Apprenticeship Question -->
+                        <div>
+                            <h4 class="text-lg font-semibold mb-4">Avez-vous déjà une alternance pour votre formation ?</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <label class="program-option flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer">
+                                    <input type="radio" name="apprenticeship" value="yes" class="form-radio text-primary h-5 w-5" required>
+                                    <span class="ml-3 text-gray-700">Oui</span>
+                                </label>
+                                <label class="program-option flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer">
+                                    <input type="radio" name="apprenticeship" value="no" class="form-radio text-primary h-5 w-5">
+                                    <span class="ml-3 text-gray-700">Non</span>
+                                </label>
+                                <label class="program-option flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer">
+                                    <input type="radio" name="apprenticeship" value="undecided" class="form-radio text-primary h-5 w-5">
+                                    <span class="ml-3 text-gray-700">Je ne sais pas encore</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Required Documents -->
+                    <div class="form-section mb-8 p-6 border border-gray-200 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-6 text-primary">DOCUMENTS À FOURNIR</h3>
+                        <p class="text-gray-600 mb-4">
+                            Veuillez téléverser les documents suivants (formats acceptés : <span class="font-semibold text-primary">PDF / JPEG</span>) :
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- CV -->
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-1">CV <span class="text-red-500">*</span></label>
+                                <input type="file" name="cv" accept=".pdf,.jpeg,.jpg,.png" class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary-green focus:outline-none" required>
+                            </div>
+
+                            <!-- Lettre de motivation -->
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-1">Lettre de motivation <span class="text-red-500">*</span></label>
+                                <input type="file" name="lettre_motivation" accept=".pdf,.jpeg,.jpg,.png" class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary-green focus:outline-none" required>
+                            </div>
+
+                            <!-- Relevés de notes -->
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-1">Relevés de notes / Attestation d'études <span class="text-red-500">*</span></label>
+                                <input type="file" name="releves_notes" accept=".pdf,.jpeg,.jpg,.png" class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary-green focus:outline-none" required>
+                            </div>
+
+                            <!-- Pièce d'identité -->
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-1">Pièce d'identité (CNI / Passeport) <span class="text-red-500">*</span></label>
+                                <input type="file" name="piece_identite" accept=".pdf,.jpeg,.jpg,.png" class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary-green focus:outline-none" required>
+                            </div>
+
+                            <!-- Photo d'identité -->
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-1">Photo d'identité <span class="text-red-500">*</span></label>
+                                <input type="file" name="photo_identite" accept=".jpeg,.jpg,.png" class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary-green focus:outline-none" required>
+                            </div>
+
+                            <!-- Portfolio (optionnel) -->
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-1">Portfolio (optionnel)</label>
+                                <input type="file" name="portfolio" accept=".pdf,.jpeg,.jpg,.png" class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary-green focus:outline-none">
+                            </div>
+
+                            <!-- Signature -->
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-1">Signature (manuscrite ou numérique) <span class="text-red-500">*</span></label>
+                                <input type="file" name="signature" accept=".pdf,.jpeg,.jpg,.png" class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary-green focus:outline-none" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- How did you hear about us -->
+                    <div class="form-section mb-8 p-6 border border-gray-200 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-6 text-primary">COMMENT AVEZ-VOUS CONNU GREEN UP ACADEMY ?</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="how_heard_internet" class="form-checkbox text-primary">
+                                    <span class="ml-2">Internet</span>
+                                </label>
+                            </div>
+                            <div>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="how_heard_social_media" class="form-checkbox text-primary">
+                                    <span class="ml-2">Réseaux sociaux</span>
+                                </label>
+                            </div>
+                            <div>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="how_heard_forum_check" class="form-checkbox text-primary">
+                                    <span class="ml-2">Forum / Salon (précisez) :</span>
+                                </label>
+                                <input type="text" name="how_heard_forum" class="w-full mt-2 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                            </div>
+                            <div>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="how_heard_student_alumni" class="form-checkbox text-primary">
+                                    <span class="ml-2">Étudiant ou alumni</span>
+                                </label>
+                            </div>
+                            <div>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="how_heard_other_check" class="form-checkbox text-primary">
+                                    <span class="ml-2">Autre :</span>
+                                </label>
+                                <input type="text" name="how_heard_other" class="w-full mt-2 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Registration Fees -->
+                    <div class="form-section mb-8 p-6 border border-gray-200 rounded-lg bg-green-50 border-green-200">
+                        <h3 class="text-xl font-semibold mb-6 text-primary">FRAIS D'INSCRIPTION</h3>
+                        <div class="flex items-center mb-4">
+                            <div class="bg-primary-green text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mr-4">
+                                €
+                            </div>
+                            <div>
+                                <p class="text-2xl font-bold text-primary">1 200 € TTC</p>
+                                <p class="text-gray-600">Montant dû une fois admis·e</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                            <div class="bg-white p-4 rounded-lg border border-green-200">
+                                <div class="flex items-center mb-2">
+                                    <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                    <p class="font-semibold">Gratuit</p>
+                                </div>
+                                <p class="text-sm text-gray-600">si contrat d'alternance signé avant la rentrée</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border border-green-200">
+                                <div class="flex items-center mb-2">
+                                    <i class="fas fa-exchange-alt text-green-500 mr-2"></i>
+                                    <p class="font-semibold">Remboursé intégralement</p>
+                                </div>
+                                <p class="text-sm text-gray-600">si alternance obtenue après inscription</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Declaration -->
+                    <div class="form-section mb-8 p-6 border border-gray-200 rounded-lg bg-gray-50">
+                        <h3 class="text-xl font-semibold mb-6 text-primary">DÉCLARATION</h3>
+                        <div class="space-y-4 text-gray-600 mb-6">
+                            <p>Je certifie que les informations fournies dans ce formulaire sont exactes.</p>
+                            <p>Je comprends qu'un entretien est obligatoire avant admission.</p>
+                            <p>Je suis informé·e que les frais d'inscription ne s'appliquent pas si je suis en alternance et sont remboursables en cas de signature de contrat en cours d'année.</p>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="declaration_accepted" class="form-checkbox text-primary" required>
+                                <span class="ml-2">J'accepte la déclaration ci-dessus</span>
+                            </label>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-gray-700 mb-2">Fait à <span class="text-red-500">*</span></label>
+                                <input type="text" name="declaration_place" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2">Le <span class="text-red-500">*</span></label>
+                                <input type="date" name="declaration_date" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="text-center">
+                        <button type="submit" id="submit-btn" class="bg-primary-green hover:bg-green-600 text-white font-semibold py-3 px-8 rounded-lg transition-colors text-lg">
+                            Soumettre ma Candidature
+                        </button>
+                    </div>
+                </form>
             </section>
         </div>
     </main>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loader = new SectionLoaderManager('admission-section', 'fill-primary-green', 0.3);
+            const form = document.getElementById('admission-form');
+            const submitBtn = document.getElementById('submit-btn');
+            let isSubmitting = false; // Prevent multiple submissions
+
+            // Remove any existing submit event listeners to prevent duplicates
+            form.removeEventListener('submit', handleSubmit);
+            form.addEventListener('submit', handleSubmit);
+
+            function handleSubmit(e) {
+                e.preventDefault();
+                if (isSubmitting) return; // Prevent multiple submissions
+
+                isSubmitting = true;
+                const formData = new FormData(form);
+                submitBtn.disabled = true;
+                loader.showLoader();
+
+                fetch('{% url "admission:admission_ue" %}', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-CSRFToken': formData.get('csrfmiddlewaretoken')
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    isSubmitting = false;
+                    submitBtn.disabled = false;
+                    loader.hideLoader();
+
+                    if (data.success) {
+                        window.toastManager.buildToast()
+                            .setMessage(data.message)
+                            .setType('success')
+                            .setPosition('top-right')
+                            .setDuration(5000)
+                            .show();
+                        form.reset();
+                    } else {
+                        window.toastManager.buildToast()
+                            .setMessage(data.message)
+                            .setType('danger')
+                            .setPosition('top-right')
+                            .setDuration(5000)
+                            .show();
+                    }
+                })
+                .catch(error => {
+                    isSubmitting = false;
+                    submitBtn.disabled = false;
+                    loader.hideLoader();
+                    window.toastManager.buildToast()
+                        .setMessage("An error occurred. Please try again.")
+                        .setType('danger')
+                        .setPosition('top-right')
+                        .setDuration(5000)
+                        .show();
+                    console.error('Error:', error);
+                });
+            }
+        });
+    </script>
 {% endblock %}
