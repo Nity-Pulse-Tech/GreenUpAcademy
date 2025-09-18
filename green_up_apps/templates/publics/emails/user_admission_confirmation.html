@@ -1,0 +1,51 @@
+{% extends 'publics/emails/base.html' %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Application Submission Confirmation" %} - {{ site_name }}
+{% endblock %}
+
+{% block content %}
+<div class="content-block">
+    <h2>{% trans "Thank You for Your Application!" %}</h2>
+    <p>{% trans "Dear" %} {{ applicant_name }},</p>
+    <p>
+        {% trans "We have successfully received your application to Green Up Academy. Thank you for your interest!" %}
+    </p>
+    <p>
+        {% trans "Below are the details of your submission:" %}
+    </p>
+    <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+        <tr>
+            <td style="padding: 8px; border: 1px solid #e5e7eb; font-weight: bold;">{% trans "Applicant" %}</td>
+            <td style="padding: 8px; border: 1px solid #e5e7eb;">{{ applicant_name }}</td>
+        </tr>
+        <tr>
+            <td style="padding: 8px; border: 1px solid #e5e7eb; font-weight: bold;">{% trans "Program" %}</td>
+            <td style="padding: 8px; border: 1px solid #e5e7eb;">{{ program_name }}</td>
+        </tr>
+        <tr>
+            <td style="padding: 8px; border: 1px solid #e5e7eb; font-weight: bold;">{% trans "Campus" %}</td>
+            <td style="padding: 8px; border: 1px solid #e5e7eb;">{{ campus_name }}</td>
+        </tr>
+        <tr>
+            <td style="padding: 8px; border: 1px solid #e5e7eb; font-weight: bold;">{% trans "Application ID" %}</td>
+            <td style="padding: 8px; border: 1px solid #e5e7eb;">{{ application_id }}</td>
+        </tr>
+        <tr>
+            <td style="padding: 8px; border: 1px solid #e5e7eb; font-weight: bold;">{% trans "Submission Date" %}</td>
+            <td style="padding: 8px; border: 1px solid #e5e7eb;">{{ application_date }}</td>
+        </tr>
+    </table>
+    <p>
+        {% trans "Your application is now under review. We will contact you soon regarding the next steps, which may include an interview." %}
+    </p>
+    <p>
+        {% trans "If you have any questions, please contact us at" %} <a href="mailto:contact@green-up-academy.com">contact@green-up-academy.com</a>.
+    </p>
+    <p>
+        {% trans "Best regards," %}<br>
+        {% trans "The Green Up Academy Team" %}
+    </p>
+</div>
+{% endblock %}
