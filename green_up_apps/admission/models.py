@@ -3,7 +3,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.core.validators import FileExtensionValidator
 from phonenumber_field.modelfields import PhoneNumberField
-from green_up_apps.users.models import GreenUpBaseModel, User
+from green_up_apps.users.models import GreenUpBaseModel, Profile, User
 from django.core.exceptions import ValidationError
 from django.utils import timezone
 from green_up_apps.global_data.enums import (
@@ -165,7 +165,7 @@ class AdmissionApplication(GreenUpBaseModel):
         AdmissionSeason,
         on_delete=models.SET_NULL,
         null=True,
-        related_name="%(class)s_applications",   # ✅ FIXED: unique per subclass
+        related_name="%(class)s_applications",
         help_text=_("Admission season for this application.")
     )
     civility = models.CharField(
@@ -174,15 +174,7 @@ class AdmissionApplication(GreenUpBaseModel):
         blank=True,
         help_text=_("Civility of the applicant (Mr/Mrs).")
     )
-    first_name = models.CharField(max_length=150, help_text=_("First name of the applicant."))
-    last_name = models.CharField(max_length=150, help_text=_("Last name of the applicant."))
     date_of_birth = models.DateField(help_text=_("Date of birth of the applicant."))
-    email = models.EmailField(help_text=_("Email address of the applicant."))
-    phone_number = PhoneNumberField(help_text=_("Mobile phone number of the applicant."))
-    address = models.TextField(help_text=_("Permanent or current address of the applicant."))
-    postal_code = models.CharField(max_length=20, help_text=_("Postal code of the applicant's address."))
-    city = models.CharField(max_length=100, help_text=_("City of the applicant's address."))
-    country = models.CharField(max_length=100, help_text=_("Country of the applicant's address."))
     program = models.ForeignKey(
         Program,
         on_delete=models.SET_NULL,
@@ -256,14 +248,32 @@ class AdmissionApplication(GreenUpBaseModel):
         abstract = True
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name} - {self.program or 'No program'}"
+        return f"{self.user.get_full_name} - {self.program or 'No program'}"
 
     def clean(self):
-        """Ensure application season is valid."""
+        """Ensure application season is valid and user/profile data is present."""
         super().clean()
         if self.season and not self.season.is_open():
             raise ValidationError({"season": _("This admission season is closed. Please select an open season.")})
+        if not self.user.first_name or not self.user.last_name or not self.user.email:
+            raise ValidationError(_("User must have first name, last name, and email before submitting an application."))
+        if not hasattr(self.user, 'profile') or not self.user.profile.phone_number or not self.user.profile.address or not self.user.profile.zip_code or not self.user.profile.city or not self.user.profile.country:
+            raise ValidationError(_("User profile must have phone number, address, zip code, city, and country before submitting an application."))
 
+    def update_user_and_profile(self, form_data):
+        """Update User and Profile with form data if not already set."""
+        self.user.first_name = form_data.get('first_name', self.user.first_name)
+        self.user.last_name = form_data.get('last_name', self.user.last_name)
+        self.user.email = form_data.get('email', self.user.email)
+        self.user.save()
+
+        profile, created = Profile.objects.get_or_create(user=self.user)
+        profile.phone_number = form_data.get('phone_number', profile.phone_number)
+        profile.address = form_data.get('address', profile.address)
+        profile.zip_code = form_data.get('zip_code', profile.zip_code)
+        profile.city = form_data.get('city', profile.city)
+        profile.country = form_data.get('country', profile.country)
+        profile.save()
 
 # ----------------- NON-EU APPLICATION -----------------
 class NonEUAdmissionApplication(AdmissionApplication):
@@ -298,7 +308,7 @@ class NonEUAdmissionApplication(AdmissionApplication):
     class Meta:
         verbose_name = _("Non-EU Admission Application")
         verbose_name_plural = _("Non-EU Admission Applications")
-
+        
 # ----------------- EU APPLICATION -----------------
 class EUAdmissionApplication(AdmissionApplication):
     """
