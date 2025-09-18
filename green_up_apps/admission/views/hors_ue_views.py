@@ -7,8 +7,9 @@ from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
 from django.shortcuts import render
 from django.core.validators import FileExtensionValidator
-from green_up_apps.admission.models import NonEUAdmissionApplication, User, Profile, Program, Campus, Diploma, AdmissionSeason
-from green_up_apps.global_data.enums import CivilityChoices, ApplicationStatusChoices
+from green_up_apps.admission.models import NonEUAdmissionApplication, Program, Campus, Diploma, AdmissionSeason
+from green_up_apps.global_data.enums import ApplicationStatusChoices, CivilityChoices
+from green_up_apps.admission.tasks.send_admission_emails import send_admission_emails
 
 # Set up logging
 logger = logging.getLogger(__name__)
@@ -44,6 +45,7 @@ class NonEUAdmissionApplicationView(View):
                 'city': profile.city if profile else '',
                 'country': profile.country if profile else '',
             }
+        logger.debug(f"Rendering admission form for user {request.user.email if request.user.is_authenticated else 'anonymous'}")
         return render(request, self.template_name, context)
 
     def post(self, request, *args, **kwargs):
@@ -57,8 +59,9 @@ class NonEUAdmissionApplicationView(View):
             user = request.user
             post_data = request.POST
             files = request.FILES
+            logger.debug(f"Processing POST data for user {user.email}: {post_data.keys()}")
 
-            # Validate required fields (added 'season')
+            # Validate required fields
             required_fields = [
                 'first_name', 'last_name', 'email', 'date_of_birth', 'phone_number',
                 'address', 'zip_code', 'city', 'country', 'place_of_birth',
@@ -81,7 +84,7 @@ class NonEUAdmissionApplicationView(View):
                     messages.error(request, _("La session sélectionnée n'est pas ouverte aux candidatures."))
                     return HttpResponseRedirect(self.request.path)
             except AdmissionSeason.DoesNotExist:
-                logger.error(f"Invalid season selected by user {user.email}")
+                logger.error(f"Invalid season selected by user {user.email}: {post_data['season']}")
                 messages.error(request, _("Session d'admission invalide."))
                 return HttpResponseRedirect(self.request.path)
 
@@ -116,7 +119,7 @@ class NonEUAdmissionApplicationView(View):
 
             # Validate civility
             if post_data.get('civility') not in [choice[0] for choice in CivilityChoices.choices]:
-                logger.error(f"Invalid civility value provided by user {user.email}")
+                logger.error(f"Invalid civility value provided by user {user.email}: {post_data.get('civility')}")
                 messages.error(request, _("Valeur de civilité invalide."))
                 return HttpResponseRedirect(self.request.path)
 
@@ -132,6 +135,7 @@ class NonEUAdmissionApplicationView(View):
                 if post_data.get(source) == 'on':
                     how_heard.append(source)
             how_heard_json = {'sources': how_heard}
+            logger.debug(f"How heard sources for user {user.email}: {how_heard}")
 
             # Process multiple diplomas
             diplomas = []
@@ -154,7 +158,7 @@ class NonEUAdmissionApplicationView(View):
                         )
                         diplomas.append(diploma)
                     else:
-                        logger.warning(f"Incomplete diploma data at index {i} for user {user.email}")
+                        logger.warning(f"Incomplete diploma data at index {i} for user {user.email}: {diploma_data}")
                         messages.error(request, _(f"Données incomplètes pour le diplôme {i + 1}. Tous les champs sont requis."))
                         return HttpResponseRedirect(self.request.path)
                 except Exception as e:
@@ -182,6 +186,7 @@ class NonEUAdmissionApplicationView(View):
             try:
                 application = NonEUAdmissionApplication(user=user)
                 application.update_user_and_profile(form_data)
+                logger.debug(f"User profile updated for {user.email}: {form_data}")
             except Exception as e:
                 logger.error(f"Error updating user/profile for {user.email}: {e}")
                 messages.error(request, _("Erreur lors de la mise à jour du profil utilisateur."))
@@ -225,8 +230,38 @@ class NonEUAdmissionApplicationView(View):
                 for diploma in diplomas:
                     diploma.save()
                     application.diplomas.add(diploma)
+                
+                # Prepare user data for email
+                user_data = {
+                    'first_name': post_data['first_name'],
+                    'last_name': post_data['last_name'],
+                    'email': post_data['email'],
+                    'phone_number': post_data['phone_number'],
+                    'address': post_data['address'],
+                    'zip_code': post_data['zip_code'],
+                    'city': post_data['city'],
+                    'country': post_data['country'],
+                    'nationality': post_data['nationality'],
+                    'date_of_birth': post_data['date_of_birth'],
+                    'place_of_birth': post_data['place_of_birth'],
+                    'passport_number': post_data['passport_number'],
+                    'level_of_studies': post_data['level_of_studies'],
+                    'program_name': program.name,
+                    'campus_name': campus.name,
+                    'season_name': season.name,
+                }
+                
+                # Trigger Celery task to send emails
+                admin_emails = ["fotsoeddysteve@gmail.com"]
+                logger.info(f"Triggering Celery task 'send_admission_emails' for application ID {application.id}, user {user.email}, admin emails {admin_emails}")
+                try:
+                    send_admission_emails.delay(application.id, user_data, admin_emails)
+                    logger.debug(f"Celery task 'send_admission_emails' dispatched successfully for application ID {application.id}")
+                except Exception as e:
+                    logger.error(f"Failed to dispatch Celery task 'send_admission_emails' for application ID {application.id}: {e}")
+                
                 logger.info(f"Non-EU admission application submitted successfully by {user.email} for season {season.name}")
-                messages.success(request, _("Candidature soumise avec succès !"))
+                messages.success(request, _("Candidature soumise avec succès ! Vous recevrez une confirmation par e-mail."))
                 return HttpResponseRedirect(self.success_url)
             except ValidationError as e:
                 logger.error(f"Validation error saving application for {user.email}: {e}")

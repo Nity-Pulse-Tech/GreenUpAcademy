@@ -4,6 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from green_up_apps.global_data.email import EmailUtil
 import logging
 from datetime import date
+import time
 
 logger = logging.getLogger(__name__)
 
@@ -17,11 +18,17 @@ def send_admission_emails(application_id, user_data, admin_emails):
         user_data (dict): Dictionary containing user details (email, first_name, last_name, etc.).
         admin_emails (list): List of admin email addresses to notify.
     """
-    email_util = EmailUtil(prod=settings.EMAIL_SENDING_ENABLED)
+    logger.info(f"Starting Celery task 'send_admission_emails' for application ID {application_id}")
+    logger.debug(f"Task inputs: application_id={application_id}, user_data={user_data}, admin_emails={admin_emails}")
     
-    # Logo path for inline image
-    logo_path = f"{settings.BASE_DIR}/green_up_apps/static/images/logo.png"
+    # Use getattr to handle missing EMAIL_SENDING_ENABLED setting with default True
+    email_sending_enabled = getattr(settings, 'EMAIL_SENDING_ENABLED', True)
+    email_util = EmailUtil(prod=email_sending_enabled)
+    
+    # Logo path from settings
+    logo_path = settings.LOGO
     inline_images = {"logo_image": logo_path}
+    logger.debug(f"Using logo path: {logo_path}")
     
     # Prepare context for templates
     context = {
@@ -33,24 +40,32 @@ def send_admission_emails(application_id, user_data, admin_emails):
         "season_name": user_data.get("season_name", "N/A"),
         "submission_date": date.today().strftime("%d %B %Y"),
     }
+    logger.debug(f"Template context prepared: {context}")
     
     # 1. Send confirmation email to user
     user_email = user_data["email"]
     user_subject = _("Confirmation de réception de votre candidature - Green Up Academy")
     user_template = "publics/emails/admission_confirmation.html"
     
-    success_user = email_util.send_email_with_template(
-        template=user_template,
-        context=context,
-        receivers=[user_email],
-        subject=user_subject,
-        inline_images=inline_images
-    )
-    
-    if success_user:
-        logger.info(f"Confirmation email sent to {user_email} for application ID {application_id}")
-    else:
-        logger.error(f"Failed to send confirmation email to {user_email} for application ID {application_id}")
+    logger.info(f"Attempting to send confirmation email to {user_email} for application ID {application_id}")
+    start_time = time.time()
+    try:
+        success_user = email_util.send_email_with_template(
+            template=user_template,
+            context=context,
+            receivers=[user_email],
+            subject=user_subject,
+            inline_images=inline_images
+        )
+        elapsed_time = time.time() - start_time
+        if success_user:
+            logger.info(f"Confirmation email sent successfully to {user_email} for application ID {application_id} in {elapsed_time:.2f} seconds")
+        else:
+            logger.error(f"Failed to send confirmation email to {user_email} for application ID {application_id} after {elapsed_time:.2f} seconds")
+    except Exception as e:
+        elapsed_time = time.time() - start_time
+        logger.error(f"Exception while sending confirmation email to {user_email} for application ID {application_id} after {elapsed_time:.2f} seconds: {e}")
+        success_user = False
     
     # 2. Send notification email to admins
     admin_subject = _("Nouvelle candidature reçue - Green Up Academy")
@@ -72,18 +87,27 @@ def send_admission_emails(application_id, user_data, admin_emails):
         "city": user_data.get("city", "N/A"),
         "country": user_data.get("country", "N/A"),
     }
+    logger.debug(f"Admin email context: {context}")
     
-    success_admin = email_util.send_email_with_template(
-        template=admin_template,
-        context=context,
-        receivers=admin_emails,
-        subject=admin_subject,
-        inline_images=inline_images
-    )
+    logger.info(f"Attempting to send admin notification email to {admin_emails} for application ID {application_id}")
+    start_time = time.time()
+    try:
+        success_admin = email_util.send_email_with_template(
+            template=admin_template,
+            context=context,
+            receivers=admin_emails,
+            subject=admin_subject,
+            inline_images=inline_images
+        )
+        elapsed_time = time.time() - start_time
+        if success_admin:
+            logger.info(f"Admin notification email sent successfully to {admin_emails} for application ID {application_id} in {elapsed_time:.2f} seconds")
+        else:
+            logger.error(f"Failed to send admin notification email to {admin_emails} for application ID {application_id} after {elapsed_time:.2f} seconds")
+    except Exception as e:
+        elapsed_time = time.time() - start_time
+        logger.error(f"Exception while sending admin notification email to {admin_emails} for application ID {application_id} after {elapsed_time:.2f} seconds: {e}")
+        success_admin = False
     
-    if success_admin:
-        logger.info(f"Admin notification email sent for application ID {application_id}")
-    else:
-        logger.error(f"Failed to send admin notification email for application ID {application_id}")
-    
+    logger.info(f"Completed Celery task 'send_admission_emails' for application ID {application_id}. User email success: {success_user}, Admin email success: {success_admin}")
     return success_user and success_admin
