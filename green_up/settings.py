@@ -237,3 +237,7 @@ LOGGING = {
         },
     },
 }
+
+CELERY_IMPORTS = (
+    "green_up_apps.admission.tasks.admission_task",
+)

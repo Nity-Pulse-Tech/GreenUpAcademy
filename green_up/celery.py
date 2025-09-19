@@ -3,6 +3,15 @@ import django
 from celery import Celery
 from decouple import config
 
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "green_up.settings")
+
+app = Celery("green_up")
+
+# Load settings from Django
+app.config_from_object("django.conf:settings", namespace="CELERY")
+
+# Auto-discover tasks in installed apps
+app.autodiscover_tasks()
 # Set the default Django settings module for the Celery worker
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'green_up.settings')
 django.setup()  # Initialize Django settings
