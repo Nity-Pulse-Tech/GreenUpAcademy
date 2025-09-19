@@ -97,8 +97,7 @@ WSGI_APPLICATION = 'green_up.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-if DEBUG:
-    # Local Database (Postgres)
+if config("DEBUG", cast=bool, default=True):  # Local development
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql",
@@ -109,13 +108,12 @@ if DEBUG:
             "PORT": config("DB_PORT", default="5432"),
         }
     }
-else:
-    
+else:  # Render (production)
     DATABASES = {
         "default": dj_database_url.config(
-            default=os.environ.get("DATABASE_URL"),
-            conn_max_age=600,  # keeps connections alive
-            ssl_require=True   # enforces SSL in production
+            default=config("DATABASE_URL"),
+            conn_max_age=600,
+            ssl_require=True
         )
     }
 
