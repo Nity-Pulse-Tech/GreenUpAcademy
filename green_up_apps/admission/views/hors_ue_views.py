@@ -10,6 +10,7 @@ from django.shortcuts import render
 from django.core.validators import FileExtensionValidator
 from green_up_apps.admission.models import NonEUAdmissionApplication, Program, Campus, Diploma, AdmissionSeason
 from green_up_apps.global_data.enums import ApplicationStatusChoices, CivilityChoices
+from green_up_apps.users.models import User
 # from green_up_apps.admission.tasks.send_admission_emails import send_admission_emails
 
 # Set up logging
@@ -255,7 +256,9 @@ class NonEUAdmissionApplicationView(View):
                 }
                 
                 # Trigger Celery task to send emails
-                admin_emails = ["fotsoeddysteve@gmail.com"]
+                admin_emails = list(
+                    User.objects.filter(is_admin=True, is_active=True).values_list("email", flat=True)
+                )
                 logger.info(f"Triggering Celery task 'send_admission_emails' for application ID {application.id}, user {user.email}, admin emails {admin_emails}")
                 try:
                     send_admission_emails.delay(application.id, user_data, admin_emails)
