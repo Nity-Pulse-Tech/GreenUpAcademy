@@ -1,5 +1,6 @@
 import logging
 from django.views.generic import View
+from django.views.generic import View, TemplateView
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.http import HttpResponseRedirect
@@ -278,3 +279,6 @@ class NonEUAdmissionApplicationView(View):
             logger.error(f"Unexpected error processing non-EU admission application for {request.user.email if request.user.is_authenticated else 'anonymous'}: {e}")
             messages.error(request, _("Une erreur inattendue s'est produite. Veuillez contacter le support."))
             return HttpResponseRedirect(self.request.path)
+        
+class ResidentHorsUeView(TemplateView):
+    template_name = "publics/home/admission/resident_hors/resident_hor_ue.html"

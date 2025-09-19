@@ -78,7 +78,7 @@
                     <div class="bg-blue-50 rounded-lg p-6 text-center">
                         <div class="w-12 h-12 bg-primary-green rounded-full flex items-center justify-center text-white text-xl font-bold mx-auto mb-4">1</div>
                         <h3 class="font-bold text-lg mb-4">TÉLÉCHARGER ET REMPLIR LE FORMULAIRE D'ADMISSION</h3>
-                        <a href="{% url "admission:admission" %}" class="inline-block bg-primary-green hover:bg-secondary text-white px-6 py-2 rounded-md text-sm font-medium transition">Cliquez ici</a>
+                        <a href="{% url "admission:admission_hors_ue" %}" class="inline-block bg-primary-green hover:bg-secondary text-white px-6 py-2 rounded-md text-sm font-medium transition">Cliquez ici</a>
                     </div>
                     
                     <!-- Step 2 -->
@@ -100,7 +100,7 @@
                 <div class="mb-12 bg-blue-50 rounded-lg p-8 text-center">
                     <h3 class="text-2xl font-bold text-primary mb-4">S'inscrire</h3>
                     <p class="text-gray-700 mb-6">Les inscriptions pour la rentrée d'<span class="font-semibold">Octobre 2025</span> et la rentrée décalée de <span class="font-semibold">Février 2026</span> sont ouvertes ! Le processus d'admission se fait entièrement à distance.</p>
-                    <a href="#" class="inline-block bg-primary-green hover:bg-secondary text-white px-8 py-3 rounded-md text-lg font-medium transition">Commencer votre inscription</a>
+                    <a href="{% url "admission:admission_hors_ue" %}" class="inline-block bg-primary-green hover:bg-secondary text-white px-8 py-3 rounded-md text-lg font-medium transition">Commencer votre inscription</a>
                 </div>
                 
                 <!-- Dates Section -->
