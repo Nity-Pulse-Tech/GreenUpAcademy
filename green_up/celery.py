@@ -1,27 +1,22 @@
+# blog_agent/blog_agent/celery.py
 import os
 from celery import Celery
-from decouple import config
+from dotenv import load_dotenv
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "green_up.settings")
+# Load environment variables from .env before anything else
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+load_dotenv(os.path.join(BASE_DIR, ".env"))
 
-app = Celery("green_up")
+# Set the default Django settings module for the 'celery' program
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'green_up.settings')
 
-# Load settings from Django
-app.config_from_object("django.conf:settings", namespace="CELERY")
+app = Celery('green_up')
 
-# Auto-discover tasks in installed apps
+# Load task modules from all registered Django app configs
+app.config_from_object('django.conf:settings', namespace='CELERY')
 app.autodiscover_tasks()
 
-# Read broker and backend URLs from environment variables
-broker_url = config("CELERY_BROKER_URL", default="redis://localhost:6379/3")
-backend_url = config("CELERY_RESULT_BACKEND", default="redis://localhost:6379/3")
 
-app.conf.update(
-    broker_url=broker_url,
-    result_backend=backend_url,
-    task_serializer="json",
-    accept_content=["json"],
-    result_serializer="json",
-    timezone="UTC",
-    enable_utc=True,
-)
+@app.task(bind=True, ignore_result=True)
+def debug_task(self):
+    print(f'Request: {self.request!r}')
