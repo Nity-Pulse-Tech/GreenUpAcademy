@@ -9,7 +9,7 @@ from django.shortcuts import render
 from django.core.validators import FileExtensionValidator
 from green_up_apps.admission.models import NonEUAdmissionApplication, Program, Campus, Diploma, AdmissionSeason
 from green_up_apps.global_data.enums import ApplicationStatusChoices, CivilityChoices
-from green_up_apps.admission.tasks.send_admission_emails import send_admission_emails
+# from green_up_apps.admission.tasks.send_admission_emails import send_admission_emails
 
 # Set up logging
 logger = logging.getLogger(__name__)
@@ -50,6 +50,8 @@ class NonEUAdmissionApplicationView(View):
 
     def post(self, request, *args, **kwargs):
         try:
+            
+            from green_up_apps.admission.tasks.send_admission_emails import send_admission_emails
             # Ensure user is authenticated
             if not request.user.is_authenticated:
                 logger.error("Unauthenticated user attempted to submit non-EU admission application.")

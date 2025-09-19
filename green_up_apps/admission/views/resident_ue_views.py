@@ -7,7 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from green_up_apps.admission.models import EUAdmissionApplication, Program, Campus, Diploma, AdmissionSeason
 from green_up_apps.users.models import User, Profile
 from green_up_apps.global_data.enums import ApplicationStatusChoices, ApprenticeshipChoices, ProgramLevelChoices
-from green_up_apps.admission.tasks.admission_task import notify_admission_pending
+# from green_up_apps.admission.tasks.admission_task import notify_admission_pending
 
 logger = logging.getLogger(__name__)
 
@@ -31,6 +31,8 @@ class AdmissionUeView(LoginRequiredMixin, View):
 
     def post(self, request):
         try:
+            
+            from green_up_apps.admission.tasks.admission_task import notify_admission_pending
             # Extract form data
             first_name = request.POST.get('first_name')
             last_name = request.POST.get('last_name')
