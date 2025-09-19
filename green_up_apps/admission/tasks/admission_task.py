@@ -1,10 +1,8 @@
 import logging
 from celery import shared_task
-from django.utils.translation import gettext as _
-from green_up_apps.users.models import User
-from green_up_apps.global_data.email import EmailUtil
-from green_up_apps.admission.models import EUAdmissionApplication, Program, Campus
 from django.conf import settings
+from django.utils.translation import gettext as _
+from green_up_apps.global_data.email import EmailUtil
 
 logger = logging.getLogger(__name__)
 
@@ -13,6 +11,10 @@ def notify_admission_pending(application_id: str):
     """
     Task to notify admins and the applicant when an EU admission application is marked 'PENDING'.
     """
+    # Import models inside the function to prevent circular imports
+    from green_up_apps.users.models import User
+    from green_up_apps.admission.models import EUAdmissionApplication, Program, Campus
+
     try:
         application = EUAdmissionApplication.objects.get(id=application_id)
         applicant = application.user
