@@ -11,8 +11,8 @@ from green_up_apps.global_data.enums import (
     ProgramLevelChoices,
     ApplicationStatusChoices,
     ApprenticeshipChoices,
+    EntryLevelChoices,
 )
-
 
 # ----------------- CAMPUS -----------------
 class Campus(GreenUpBaseModel):
@@ -34,7 +34,6 @@ class Campus(GreenUpBaseModel):
     def __str__(self):
         return self.name
 
-
 # ----------------- PROGRAM -----------------
 class Program(GreenUpBaseModel):
     """
@@ -50,6 +49,11 @@ class Program(GreenUpBaseModel):
         max_length=50,
         choices=ProgramLevelChoices.choices,
         help_text=_("Level of the program (Bachelor or Master).")
+    )
+    entry_level = models.CharField(
+        max_length=50,
+        choices=EntryLevelChoices.choices,
+        help_text=_("Entry level required for the program (e.g., BAC, BAC +2).")
     )
     campuses = models.ManyToManyField(
         Campus,
@@ -110,7 +114,6 @@ class Diploma(GreenUpBaseModel):
     def __str__(self):
         return f"{self.name} - {self.user.get_full_name} ({self.year})"
 
-
 # ----------------- ADMISSION SEASON -----------------
 class AdmissionSeason(GreenUpBaseModel):
     """
@@ -147,7 +150,6 @@ class AdmissionSeason(GreenUpBaseModel):
         """Check if applications are currently open for this season."""
         today = timezone.now().date()
         return self.is_active and self.start_date <= today <= self.end_date
-
 
 # ----------------- BASE APPLICATION -----------------
 class AdmissionApplication(GreenUpBaseModel):

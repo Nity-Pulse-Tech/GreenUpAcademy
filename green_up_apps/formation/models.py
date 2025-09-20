@@ -33,10 +33,6 @@ class Formation(GreenUpBaseModel):
         blank=True,
         help_text=_("Image representing the formation (e.g., program banner).")
     )
-    entry_level = models.CharField(
-        max_length=50,
-        help_text=_("Entry level required for the formation (e.g., BAC, BAC +2).")
-    )
     objectives = models.JSONField(
         default=list,
         blank=True,
