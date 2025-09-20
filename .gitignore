@@ -22,7 +22,7 @@ lib/
 tmp/
 env/
 venv/
-# node_modules/
+node_modules/
 
 # Django specific
 /media/
