@@ -32,7 +32,7 @@ class NonEUAdmissionApplicationView(View):
         if not open_seasons:
             logger.warning("No open admission seasons available.")
             messages.error(request, _("Aucune session d'admission ouverte n'est disponible actuellement."))
-            return HttpResponseRedirect(reverse_lazy('home'))
+            return HttpResponseRedirect(reverse_lazy('users:home'))
 
         if request.user.is_authenticated:
             user = request.user
