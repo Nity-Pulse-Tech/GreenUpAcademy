@@ -147,9 +147,10 @@ class AdmissionSeason(GreenUpBaseModel):
         return f"{self.name} ({self.academic_year})"
 
     def is_open(self):
-        """Check if applications are currently open for this season."""
+        """Check if this season is still open (default open until end_date passes)."""
         today = timezone.now().date()
-        return self.is_active and self.start_date <= today <= self.end_date
+        return today <= self.end_date
+
 
 # ----------------- BASE APPLICATION -----------------
 class AdmissionApplication(GreenUpBaseModel):
