@@ -77,8 +77,8 @@
                     <!-- Step 1 -->
                     <div class="bg-blue-50 rounded-lg p-6 text-center">
                         <div class="w-12 h-12 bg-primary-green rounded-full flex items-center justify-center text-white text-xl font-bold mx-auto mb-4">1</div>
-                        <h3 class="font-bold text-lg mb-4">TÉLÉCHARGER ET REMPLIR LE FORMULAIRE D'ADMISSION</h3>
-                        <a href="{% url "admission:admission_hors_ue" %}" class="inline-block bg-primary-green hover:bg-secondary text-white px-6 py-2 rounded-md text-sm font-medium transition">Cliquez ici</a>
+                        <h3 class="font-bold text-lg mb-4">REMPLIR LE FORMULAIRE D'ADMISSION</h3>
+                        {% comment %} <a href="{% url "admission:admission_hors_ue" %}" class="inline-block bg-primary-green hover:bg-secondary text-white px-6 py-2 rounded-md text-sm font-medium transition">Cliquez ici</a> {% endcomment %}
                     </div>
                     
                     <!-- Step 2 -->
@@ -179,73 +179,8 @@
                 </div>
                 
                 <!-- Contact Form -->
-                <div class="bg-gray-50 rounded-lg p-8 mb-12">
-                    <h3 class="text-2xl font-bold text-primary mb-6 text-center">Nous contacter</h3>
-                    
-                    <form class="space-y-6">
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nom Complet</label>
-                            <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
-                        </div>
-                        
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                                <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
-                            </div>
-                            
-                            <div>
-                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Telephone</label>
-                                <input type="tel" id="phone" name="phone" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
-                            </div>
-                        </div>
-                        
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="city" class="block text-sm font-medium text-gray-700 mb-1">Ville</label>
-                                <input type="text" id="city" name="city" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
-                            </div>
-                            
-                            <div>
-                                <label for="country" class="block text-sm font-medium text-gray-700 mb-1">Pays</label>
-                                <input type="text" id="country" name="country" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <label for="formation" class="block text-sm font-medium text-gray-700 mb-1">Formation choisie</label>
-                            <select id="formation" name="formation" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
-                                <option value="">Sélectionnez une formation</option>
-                                <option value="FORMATIONS ACADÉMIQUES BAC + 2 / BAC + 3">FORMATIONS ACADÉMIQUES BAC + 2 / BAC + 3</option>
-                                <option value="FORMATIONS ACADÉMIQUES BAC + 5">FORMATIONS ACADÉMIQUES BAC + 5</option>
-                                <option value="Bachelor GUA en Performance Énergétique des Bâtiments et Procédés Industriels">Bachelor GUA en Performance Énergétique des Bâtiments et Procédés Industriels</option>
-                                <option value="Bachelor en Intelligence Artificielle">Bachelor en Intelligence Artificielle</option>
-                                <option value="Bachelor GUA en Conception Designer UI">Bachelor GUA en Conception Designer UI</option>
-                                <option value="Bachelor GUA en Conception et Développement d'Application">Bachelor GUA en Conception et Développement d'Application</option>
-                                <option value="Mastère Intelligence Artificielle">Mastère Intelligence Artificielle</option>
-                                <option value="MASTÈRE en PERFORMANCE ÉNERGÉTIQUE, INTELLIGENCE ARTIFICIELLE ET DÉVELOPPEMENT DURABLE">MASTÈRE en PERFORMANCE ÉNERGÉTIQUE, INTELLIGENCE ARTIFICIELLE ET DÉVELOPPEMENT DURABLE</option>
-                                <option value="Chargée d'Affaires en Rénovation Energétique du Bâtiment">Chargée d'Affaires en Rénovation Energétique du Bâtiment</option>
-                                <option value="Devenir Référent Énergie en industrie">Devenir Référent Énergie en industrie</option>
-                                <option value="NORME ISO 50001">NORME ISO 50001</option>
-                                <option value="Devenir Référent Energie Bâtiment">Devenir Référent Energie Bâtiment</option>
-                                <option value="Diagnostiqueur Rénovation & Recyclage">Diagnostiqueur Rénovation & Recyclage</option>
-                                <option value="Rénover un bâtiment en habitat autonome">Rénover un bâtiment en habitat autonome</option>
-                                <option value="PROFESSIONNELLES INFRA BAC">PROFESSIONNELLES INFRA BAC</option>
-                                <option value="PROFESSIONNELLES BAC + 2">PROFESSIONNELLES BAC + 2</option>
-                                <option value="Autres">Autres</option>
-                            </select>
-                        </div>
-                        
-                        <div>
-                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Parlez nous de vous en quelques mots</label>
-                            <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"></textarea>
-                        </div>
-                        
-                        <div>
-                            <button type="submit" class="w-full bg-primary-green hover:bg-secondary text-white py-3 px-6 rounded-md font-medium transition">Envoyer</button>
-                        </div>
-                    </form>
-                </div>
+                {% include 'publics/home/includes/_admission_contact.html' %}
+               
             </div>
         </div>
     </main>
