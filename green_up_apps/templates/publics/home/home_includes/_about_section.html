@@ -1,0 +1,69 @@
+{% load static %}
+{% load i18n %}
+<!-- About Section -->
+    <section id="about" class="section-padding bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <!-- Content -->
+                <div class="order-2 lg:order-1">
+                    <h3 class="text-4xl lg:text-5xl font-black text-primary-green mb-6">
+                        Green Up Academy
+                    </h3>
+                    <div class="section-divider mb-8"></div>
+                    
+                    <div class="space-y-6 text-gray-700 text-lg leading-relaxed">
+                        <p>
+                            Première institution d'enseignement et de recherche à aborder tous les aspects de la rénovation, de la construction, et de l'environnement des bâtiments éco-énergétiques et écologiques, nous redéfinissons l'avenir de l'architecture durable.
+                        </p>
+                        <p>
+                            Mais ce n'est pas tout ! La Green Up Academy, c'est aussi une école de commerce, de management et de digital, où l'innovation rencontre la durabilité pour former les leaders de demain.
+                        </p>
+                        <p>
+                            <strong>Rejoignez-nous pour repenser et façonner les infrastructures du futur avec un esprit dynamique et académique.</strong>
+                        </p>
+                        <p>
+                            Aujourd'hui, GUA est une destination intellectuelle qui attire des universitaires inspirés et des professionnels soucieux de mettre l'écologie au cœur de leur activité pour relever les nouveaux défis qui changent le monde.
+                        </p>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <button class="btn-primary text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg">
+                            En savoir plus
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Image -->
+                <div class="order-1 lg:order-2">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <div class="w-full h-80 lg:h-96 rounded-3xl flex items-center justify-center shadow-2xl relative overflow-hidden">
+                            <!-- Background Image -->
+                            <img src="{% static 'images/construction.png' %}" 
+                                alt="Éco-Construction" 
+                                class="absolute inset-0 w-full h-full object-cover object-center">
+
+                            <!-- Gradient Overlay -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-black/40"></div>
+
+                            <!-- Content -->
+                            <div class="text-center text-white relative z-10">
+                                <i class="fas fa-seedling text-6xl lg:text-8xl mb-4 opacity-80"></i>
+                                <h4 class="text-2xl font-bold">Éco-Construction</h4>
+                                <p class="text-lg opacity-90">Innovation Durable</p>
+                            </div>
+
+                            <!-- Floating Elements -->
+                            <div class="absolute -top-3 -right-3 w-16 h-16 bg-yellow-accent rounded-full flex items-center justify-center shadow-lg z-10">
+                                <i class="fas fa-leaf text-white text-xl"></i>
+                            </div>
+                            <div class="absolute -bottom-3 -left-3 w-12 h-12 bg-orange-accent rounded-full flex items-center justify-center shadow-lg z-10">
+                                <i class="fas fa-recycle text-white text-sm"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>

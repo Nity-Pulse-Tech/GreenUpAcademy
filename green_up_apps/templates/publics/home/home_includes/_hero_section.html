@@ -1,0 +1,94 @@
+{% load static %}
+{% load i18n %}
+
+<!-- Hero Section -->
+<section id="accueil" class="relative min-h-screen flex items-center overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+        <img src="{% static 'images/FORMATIONS.png' %}" 
+             alt="Hero Background" 
+             class="w-full h-full object-cover object-center">
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-black/40"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+        <div class="text-center text-white">
+            <!-- Admission Banner -->
+            <div class="inline-flex items-center bg-primary-green  text-white px-6 py-3 rounded-full font-semibold mb-8 animate-fadeIn shadow-lg">
+                <i class="fas fa-graduation-cap mr-2"></i>
+                Les admissions 2025 sont ouvertes
+            </div>
+            
+            <!-- Main Title -->
+            <h2 class="hero-title text-4xl sm:text-5xl lg:text-7xl font-black mb-6 text-shadow leading-tight">
+                Découvrez nos<br>
+                <span class="text-yellow-accent">formations</span>
+            </h2>
+            
+            <!-- Subtitle -->
+            <p class="text-lg sm:text-xl lg:text-2xl mb-10 opacity-95 max-w-4xl mx-auto leading-relaxed px-4">
+                Première institution d'enseignement et de recherche dédiée à la rénovation, construction et environnement des bâtiments éco-énergétiques
+            </p>
+            
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center px-4">
+                <button class="w-full sm:w-auto bg-white text-primary-green px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition duration-300 shadow-lg">
+                    Découvrir nos formations
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+                <button class="w-full sm:w-auto border-3 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-primary-green transition duration-300">
+                    Télécharger la brochure
+                    <i class="fas fa-download ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+        <i class="fas fa-chevron-down text-2xl"></i>
+    </div>
+</section>
+
+    <!-- Partners Section -->
+    <section class="bg-gray-50 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h3 class="text-sm font-medium text-gray-600 uppercase tracking-wider">Nos Partenaires Institutionnels</h3>
+            </div>
+            <div class="flex flex-wrap justify-center items-center gap-4 md:gap-8">
+                <div class="bg-white p-4 rounded-lg shadow-sm w-24 h-16 sm:w-28 sm:h-20 flex items-center justify-center">
+                    <div class="text-gray-400 text-center">
+                        <i class="fas fa-university text-xl mb-1"></i>
+                        <p class="text-xs">Partner 1</p>
+                    </div>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm w-24 h-16 sm:w-28 sm:h-20 flex items-center justify-center">
+                    <div class="text-gray-400 text-center">
+                        <i class="fas fa-building text-xl mb-1"></i>
+                        <p class="text-xs">Partner 2</p>
+                    </div>
+                </div>
+                <div class="bg-white p-4 rounded-full shadow-sm w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center">
+                    <div class="text-gray-400 text-center">
+                        <i class="fas fa-landmark text-lg mb-1"></i>
+                        <p class="text-xs">Académie<br>de Paris</p>
+                    </div>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm w-24 h-16 sm:w-28 sm:h-20 flex items-center justify-center">
+                    <div class="text-gray-400 text-center">
+                        <i class="fas fa-certificate text-xl mb-1"></i>
+                        <p class="text-xs">Partner 3</p>
+                    </div>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm w-24 h-16 sm:w-28 sm:h-20 flex items-center justify-center">
+                    <div class="text-gray-400 text-center">
+                        <i class="fas fa-award text-xl mb-1"></i>
+                        <p class="text-xs">Partner 4</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
