@@ -73,7 +73,7 @@
 
 <!-- Slide 6 -->
 <div class="w-full flex-shrink-0 relative">
-    <img src="{% static 'images/orientation.jpeg' %}" 
+    <img src="{% static 'images/stand.avif' %}" 
          alt="Slide 6" 
          class="w-full h-full object-cover object-center">
     <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-black/40"></div>
@@ -130,10 +130,7 @@
         </div>
     </div>
 
-    <!-- Scroll Indicator -->
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce z-20">
-        <i class="fas fa-chevron-down text-2xl"></i>
-    </div>
+  
         <!-- Navigation Arrows -->
     <button id="prev-btn" 
         class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white p-3 rounded-full z-20">
@@ -155,7 +152,7 @@
 
 
 
-    <!-- Partners Section -->
+    {% comment %} <!-- Partners Section -->
     <section class="bg-gray-50 py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-8">
@@ -194,7 +191,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> {% endcomment %}
 
     <script>
 document.addEventListener("DOMContentLoaded", () => {

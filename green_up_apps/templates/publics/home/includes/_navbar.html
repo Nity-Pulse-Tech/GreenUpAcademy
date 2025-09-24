@@ -3,7 +3,13 @@
 <!-- Header -->
 <header class="bg-white shadow-lg sticky top-0 z-40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-16 lg:h-20">
+        <div class="flex items-center justify-between h-16 lg:h-20">    
+             <a href="{% url 'users:home' %}">
+                <div class="flex items-center space-x-3">
+                    <img src="{% static 'images/france.jpeg' %}" alt="logo" class="w-18 h-12 flex items-center justify-center cursor-pointer" />
+                    
+                </div>
+            </a>        
             
             <!-- Logo -->
             <a href="{% url 'users:home' %}">

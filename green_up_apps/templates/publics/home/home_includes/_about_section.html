@@ -1,69 +1,185 @@
-{% load static %}
-{% load i18n %}
-<!-- About Section -->
-    <section id="about" class="section-padding bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                <!-- Content -->
-                <div class="order-2 lg:order-1">
-                    <h3 class="text-4xl lg:text-5xl font-black text-primary-green mb-6">
-                        Green Up Academy
-                    </h3>
-                    <div class="section-divider mb-8"></div>
-                    
-                    <div class="space-y-6 text-gray-700 text-lg leading-relaxed">
-                        <p>
-                            Première institution d'enseignement et de recherche à aborder tous les aspects de la rénovation, de la construction, et de l'environnement des bâtiments éco-énergétiques et écologiques, nous redéfinissons l'avenir de l'architecture durable.
-                        </p>
-                        <p>
-                            Mais ce n'est pas tout ! La Green Up Academy, c'est aussi une école de commerce, de management et de digital, où l'innovation rencontre la durabilité pour former les leaders de demain.
-                        </p>
-                        <p>
-                            <strong>Rejoignez-nous pour repenser et façonner les infrastructures du futur avec un esprit dynamique et académique.</strong>
-                        </p>
-                        <p>
-                            Aujourd'hui, GUA est une destination intellectuelle qui attire des universitaires inspirés et des professionnels soucieux de mettre l'écologie au cœur de leur activité pour relever les nouveaux défis qui changent le monde.
-                        </p>
-                    </div>
-                    
-                    <div class="mt-8">
-                        <button class="btn-primary text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg">
-                            En savoir plus
-                            <i class="fas fa-arrow-right ml-2"></i>
-                        </button>
-                    </div>
+<section id="about" class="section-padding bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 relative overflow-hidden">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-5">
+        <div class="absolute top-20 left-20 w-96 h-96 bg-blue-600 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
+        <div class="absolute top-40 right-20 w-96 h-96 bg-green-600 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
+        <div class="absolute bottom-20 left-40 w-96 h-96 bg-purple-600 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <!-- Header Section -->
+        <div class="text-center mb-16">
+            <div class="inline-flex items-center mb-4 bg-white/80 backdrop-blur-sm rounded-full px-6 py-2 shadow-sm">
+                <div class="flex space-x-1 mr-3">
+                    <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                    <div class="w-2 h-2 bg-green-600 rounded-full"></div>
+                    <div class="w-2 h-2 bg-purple-600 rounded-full"></div>
                 </div>
-                
-                <!-- Image -->
-                <div class="order-1 lg:order-2">
-                    <div class="relative mx-auto max-w-md lg:max-w-none">
-                        <div class="w-full h-80 lg:h-96 rounded-3xl flex items-center justify-center shadow-2xl relative overflow-hidden">
-                            <!-- Background Image -->
-                            <img src="{% static 'images/construction.png' %}" 
-                                alt="Éco-Construction" 
-                                class="absolute inset-0 w-full h-full object-cover object-center">
-
-                            <!-- Gradient Overlay -->
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-black/40"></div>
-
-                            <!-- Content -->
-                            <div class="text-center text-white relative z-10">
-                                <i class="fas fa-seedling text-6xl lg:text-8xl mb-4 opacity-80"></i>
-                                <h4 class="text-2xl font-bold">Éco-Construction</h4>
-                                <p class="text-lg opacity-90">Innovation Durable</p>
-                            </div>
-
-                            <!-- Floating Elements -->
-                            <div class="absolute -top-3 -right-3 w-16 h-16 bg-yellow-accent rounded-full flex items-center justify-center shadow-lg z-10">
-                                <i class="fas fa-leaf text-white text-xl"></i>
-                            </div>
-                            <div class="absolute -bottom-3 -left-3 w-12 h-12 bg-orange-accent rounded-full flex items-center justify-center shadow-lg z-10">
-                                <i class="fas fa-recycle text-white text-sm"></i>
-                            </div>
+                <span class="text-sm font-bold text-slate-600 uppercase tracking-widest">Établissement Supérieur d'Excellence</span>
+            </div>
+            <h2 class="text-5xl lg:text-6xl font-black text-slate-900 mb-6 leading-tight">
+                Green Up
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-blue-600 to-violet-600">Academy</span>
+            </h2>
+            <div class="w-32 h-1.5 bg-gradient-to-r from-emerald-500 via-blue-500 to-violet-500 rounded-full mx-auto"></div>
+        </div>
+        
+        <!-- Content Grid -->
+        <div class="grid lg:grid-cols-2 gap-12 items-start">
+            <!-- Left Column - Mission & Values -->
+            <div class="space-y-8">
+                <!-- Mission Statement -->
+                <div class="bg-white/90 backdrop-blur-xl rounded-2xl p-8 shadow-lg border border-white/40">
+                    <div class="flex items-start mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center shadow-md mr-4 flex-shrink-0">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-900 mb-2">Notre Mission</h3>
+                            <p class="text-slate-600 leading-relaxed">
+                                Former la prochaine génération de leaders dans les domaines de la construction durable, 
+                                de l'efficacité énergétique et de l'innovation écologique.
+                            </p>
                         </div>
                     </div>
                 </div>
 
+                <!-- Key Features -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white/90 backdrop-blur-xl rounded-2xl p-6 shadow-lg border border-white/40 hover:shadow-xl transition-shadow duration-300">
+                        <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center shadow-md mb-4">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H3m2 0h3M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2">15+ Programmes</h4>
+                        <p class="text-sm text-slate-600">Formations spécialisées de licence à doctorat</p>
+                    </div>
+                    
+                    <div class="bg-white/90 backdrop-blur-xl rounded-2xl p-6 shadow-lg border border-white/40 hover:shadow-xl transition-shadow duration-300">
+                        <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center shadow-md mb-4">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2">2500+ Étudiants</h4>
+                        <p class="text-sm text-slate-600">Communauté académique internationale</p>
+                    </div>
+                    
+                    <div class="bg-white/90 backdrop-blur-xl rounded-2xl p-6 shadow-lg border border-white/40 hover:shadow-xl transition-shadow duration-300">
+                        <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center shadow-md mb-4">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9m0 9c-5 0-9-4-9-9s4-9 9-9"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2">30+ Partenaires</h4>
+                        <p class="text-sm text-slate-600">Entreprises et institutions internationales</p>
+                    </div>
+                    
+                    <div class="bg-white/90 backdrop-blur-xl rounded-2xl p-6 shadow-lg border border-white/40 hover:shadow-xl transition-shadow duration-300">
+                        <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg flex items-center justify-center shadow-md mb-4">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2">95% Employabilité</h4>
+                        <p class="text-sm text-slate-600">Taux d'insertion professionnelle</p>
+                    </div>
+                </div>
+
+                <!-- Call to Action -->
+                <div class="flex flex-col sm:flex-row gap-4 mt-6">
+                    <button class="flex-1 bg-gradient-to-r from-emerald-600 to-blue-600 hover:from-emerald-700 hover:to-blue-700 text-white px-6 py-3 rounded-xl font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center">
+                        <span>Découvrir nos Programmes</span>
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </button>
+                    <button class="flex-1 bg-white/90 backdrop-blur-xl text-slate-700 border border-slate-200 hover:border-slate-300 px-6 py-3 rounded-xl font-bold shadow-lg hover:shadow-xl transition-all duration-300">
+                        Nous Contacter
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Column - University Identity -->
+            <div class="bg-white/90 backdrop-blur-xl rounded-2xl p-8 shadow-lg border border-white/40">
+                <div class="flex items-center mb-6">
+                    <div class="w-14 h-14 bg-gradient-to-br from-emerald-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-md mr-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H3m2 0h3M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-900">Identité Académique</h3>
+                        <p class="text-slate-600">Excellence et Innovation depuis 2010</p>
+                    </div>
+                </div>
+
+                <!-- University Description -->
+                <div class="prose prose-slate max-w-none mb-8">
+                    <p class="text-slate-700 leading-relaxed mb-4">
+                        <strong>Green Up Academy</strong> est la première institution d'enseignement supérieur entièrement dédiée 
+                        aux enjeux de la construction durable et de l'innovation écologique.
+                    </p>
+                    <p class="text-slate-700 leading-relaxed">
+                        Notre approche pédagogique unique combine excellence académique, recherche appliquée et partenariats 
+                        industriels pour former des professionnels capables de répondre aux défis environnementaux contemporains.
+                    </p>
+                </div>
+
+                <!-- Academic Pillars -->
+                <div class="space-y-4">
+                    <div class="flex items-start">
+                        <div class="w-2 h-2 bg-emerald-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Recherche Appliquée</h4>
+                            <p class="text-sm text-slate-600">Centres de recherche dédiés aux matériaux écologiques et à l'efficacité énergétique</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Pédagogie Innovante</h4>
+                            <p class="text-sm text-slate-600">Méthodes d'enseignement basées sur l'expérimentation et les projets réels</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Internationalisation</h4>
+                            <p class="text-sm text-slate-600">Programmes d'échange et doubles diplômes avec des universités partenaires</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accent Quote -->
+                <div class="mt-8 pt-6 border-t border-slate-200">
+                    <blockquote class="text-slate-700 italic text-center">
+                        "Former des bâtisseurs du futur, conscients des enjeux écologiques et équipés pour y répondre avec innovation."
+                    </blockquote>
+                    <p class="text-sm text-slate-600 text-center mt-2">— Direction de Green Up Academy</p>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+
+    <style>
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+        .animation-delay-4000 {
+            animation-delay: 4s;
+        }
+    </style>
+</section>
