@@ -3,54 +3,157 @@
 
 <!-- Hero Section -->
 <section id="accueil" class="relative min-h-screen flex items-center overflow-hidden">
-    <!-- Background Image -->
-    <div class="absolute inset-0">
-        <img src="{% static 'images/FORMATIONS.png' %}" 
-             alt="Hero Background" 
-             class="w-full h-full object-cover object-center">
-        <!-- Gradient Overlay -->
-        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-black/40"></div>
-    </div>
+    <!-- Carousel Wrapper -->
+    <div class="absolute inset-0 w-full h-full overflow-hidden">
+        <div id="hero-carousel" class="flex w-full h-full transition-transform duration-1000 ease-in-out">
+            
+            <!-- Slide 1 -->
+            <div class="w-full flex-shrink-0 relative">
+                <img src="{% static 'images/campus.jpg' %}" 
+                     alt="Slide 1" 
+                     class="w-full h-full object-cover object-center">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-black/40"></div>
+                <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white z-10 px-4">
+                    <h2 class="text-4xl sm:text-5xl lg:text-7xl font-black mb-6">Découvrez nos<br><span class="text-yellow-500">formations</span></h2>
+                    <p class="max-w-2xl text-lg sm:text-xl lg:text-2xl mb-6">Première institution d'enseignement dédiée à l'éco-construction</p>
+                </div>
+            </div>
 
-    <!-- Content -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div class="text-center text-white">
-            <!-- Admission Banner -->
-            <div class="inline-flex items-center bg-primary-green  text-white px-6 py-3 rounded-full font-semibold mb-8 animate-fadeIn shadow-lg">
-                <i class="fas fa-graduation-cap mr-2"></i>
-                Les admissions 2025 sont ouvertes
+            <!-- Slide 2 -->
+            <div class="w-full flex-shrink-0 relative">
+                <img src="{% static 'images/class.jpg' %}" 
+                     alt="Slide 2" 
+                     class="w-full h-full object-cover object-center">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-black/40"></div>
+                <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white z-10 px-4">
+                    <h2 class="text-4xl sm:text-5xl lg:text-7xl font-black mb-6">Construisez l’avenir<br><span class="text-yellow-500">durable</span></h2>
+                    <p class="max-w-2xl text-lg sm:text-xl lg:text-2xl mb-6">Rejoignez nos programmes de recherche innovants</p>
+                </div>
             </div>
-            
-            <!-- Main Title -->
-            <h2 class="hero-title text-4xl sm:text-5xl lg:text-7xl font-black mb-6 text-shadow leading-tight">
-                Découvrez nos<br>
-                <span class="text-yellow-accent">formations</span>
-            </h2>
-            
-            <!-- Subtitle -->
-            <p class="text-lg sm:text-xl lg:text-2xl mb-10 opacity-95 max-w-4xl mx-auto leading-relaxed px-4">
-                Première institution d'enseignement et de recherche dédiée à la rénovation, construction et environnement des bâtiments éco-énergétiques
-            </p>
-            
-            <!-- CTA Buttons -->
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center px-4">
-                <button class="w-full sm:w-auto bg-white text-primary-green px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition duration-300 shadow-lg">
-                    Découvrir nos formations
-                    <i class="fas fa-arrow-right ml-2"></i>
-                </button>
-                <button class="w-full sm:w-auto border-3 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-primary-green transition duration-300">
-                    Télécharger la brochure
-                    <i class="fas fa-download ml-2"></i>
-                </button>
+
+            <!-- Slide 3 -->
+            <div class="w-full flex-shrink-0 relative">
+                <img src="{% static 'images/Health.avif' %}" 
+                     alt="Slide 3" 
+                     class="w-full h-full object-cover object-center">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-black/40"></div>
+                <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white z-10 px-4">
+                    <h2 class="text-4xl sm:text-5xl lg:text-7xl font-black mb-6">Formations<br><span class="text-yellow-500">d’excellence</span></h2>
+                    <p class="max-w-2xl text-lg sm:text-xl lg:text-2xl mb-6">Un enseignement pratique et axé sur l’environnement</p>
+                </div>
             </div>
+
+            <!-- Slide 4 -->
+<div class="w-full flex-shrink-0 relative">
+    <img src="{% static 'images/viecampus.jpg' %}" 
+         alt="Slide 4" 
+         class="w-full h-full object-cover object-center">
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-black/40"></div>
+    <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white z-10 px-4">
+        <h2 class="text-4xl sm:text-5xl lg:text-7xl font-black mb-6">Vie des <span class="text-yellow-500">campus</span></h2>
+        <p class="max-w-2xl text-lg sm:text-xl lg:text-2xl mb-6">
+            Parce que la vie étudiante se passe aussi (et surtout) en dehors des cours, l’URCA a développé à l’intention de ses acteurs majeurs, les étudiants, un réseau de services répondant à leurs principales préoccupations.
+        </p>
+    </div>
+</div>
+
+<!-- Slide 5 -->
+<div class="w-full flex-shrink-0 relative">
+    <img src="{% static 'images/class.jpg' %}" 
+         alt="Slide 5" 
+         class="w-full h-full object-cover object-center">
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-black/40"></div>
+    <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white z-10 px-4">
+        <h2 class="text-4xl sm:text-5xl lg:text-7xl font-black mb-6">Ta Vie De <span class="text-yellow-500">Campus</span></h2>
+        <p class="max-w-2xl text-lg sm:text-xl lg:text-2xl mb-6">
+            L’événement incontournable de la rentrée est de retour : Ta Vie de Campus vous accueille du 22 au 25 septembre !
+        </p>
+    </div>
+</div>
+
+<!-- Slide 6 -->
+<div class="w-full flex-shrink-0 relative">
+    <img src="{% static 'images/orientation.jpeg' %}" 
+         alt="Slide 6" 
+         class="w-full h-full object-cover object-center">
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-black/40"></div>
+    <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white z-10 px-4">
+        <h2 class="text-4xl sm:text-5xl lg:text-7xl font-black mb-6">Kit de <span class="text-yellow-500">rentrée</span></h2>
+        <p class="max-w-2xl text-lg sm:text-xl lg:text-2xl mb-6">
+            Retrouvez toutes les informations utiles pour votre première rentrée.
+        </p>
+    </div>
+</div>
+
+<!-- Slide 7 -->
+<div class="w-full flex-shrink-0 relative">
+    <img src="{% static 'images/campus.jpg' %}" 
+         alt="Slide 7" 
+         class="w-full h-full object-cover object-center">
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-black/40"></div>
+    <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white z-10 px-4">
+        <h2 class="text-4xl sm:text-5xl lg:text-7xl font-black mb-6">Université <span class="text-yellow-500">Pluridisciplinaire</span></h2>
+        <p class="max-w-2xl text-lg sm:text-xl lg:text-2xl mb-6">
+            Multisites, l'Université de Reims Champagne-Ardenne est une université accueillante et dynamique qui offre un cadre favorable aux études et à la vie étudiante.
+        </p>
+    </div>
+</div>
+
+<!-- Slide 8 -->
+<div class="w-full flex-shrink-0 relative">
+    <img src="{% static 'images/international.jpg' %}" 
+         alt="Slide 8" 
+         class="w-full h-full object-cover object-center">
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-black/40"></div>
+    <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white z-10 px-4">
+        <h2 class="text-4xl sm:text-5xl lg:text-7xl font-black mb-6"><span class="text-yellow-500">International</span></h2>
+        <p class="max-w-2xl text-lg sm:text-xl lg:text-2xl mb-6">
+            Comptant plus de 435 coopérations avec 54 pays à travers le monde, l’URCA qui, grâce à ses nombreux programmes d’échanges entrants et sortants, a fait de la mobilité une priorité pour ses étudiants et personnels.
+        </p>
+    </div>
+</div>
+
+<!-- Slide 9 -->
+<div class="w-full flex-shrink-0 relative">
+    <img src="{% static 'images/formation.jpg' %}" 
+         alt="Slide 9" 
+         class="w-full h-full object-cover object-center">
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-black/40"></div>
+    <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white z-10 px-4">
+        <h2 class="text-4xl sm:text-5xl lg:text-7xl font-black mb-6"><span class="text-yellow-500">Formation</span></h2>
+        <p class="max-w-2xl text-lg sm:text-xl lg:text-2xl mb-6">
+            Avec pour objectif premier d’offrir une formation de qualité en adéquation avec les besoins de la société, l’URCA propose plus de 140 diplômes dans des domaines aussi variés que le droit, les arts, les sciences.
+        </p>
+    </div>
+</div>
+
         </div>
     </div>
-    
+
     <!-- Scroll Indicator -->
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce z-20">
+        <i class="fas fa-chevron-down text-2xl"></i>
+    </div>
+        <!-- Navigation Arrows -->
+    <button id="prev-btn" 
+        class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white p-3 rounded-full z-20">
+        <i class="fas fa-chevron-left"></i>
+    </button>
+    <button id="next-btn" 
+        class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white p-3 rounded-full z-20">
+        <i class="fas fa-chevron-right"></i>
+    </button>
+
+    <!-- Dots -->
+    <div id="carousel-dots" class="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20"></div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-white animate-bounce z-20">
         <i class="fas fa-chevron-down text-2xl"></i>
     </div>
 </section>
+
+
 
     <!-- Partners Section -->
     <section class="bg-gray-50 py-12">
@@ -92,3 +195,83 @@
             </div>
         </div>
     </section>
+
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+    const carousel = document.getElementById("hero-carousel");
+    const slides = carousel.children;
+    const totalSlides = slides.length;
+    let currentIndex = 0;
+    let interval;
+
+    // Dots container
+    const dotsContainer = document.getElementById("carousel-dots");
+
+    // Create dots dynamically
+    for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement("button");
+        dot.className = "w-3 h-3 rounded-full bg-white/50 hover:bg-white transition";
+        dot.setAttribute("data-index", i);
+        dotsContainer.appendChild(dot);
+    }
+    const dots = dotsContainer.children;
+
+    function updateDots() {
+        Array.from(dots).forEach((dot, i) => {
+            dot.classList.toggle("bg-white", i === currentIndex);
+            dot.classList.toggle("bg-white/50", i !== currentIndex);
+        });
+    }
+
+    function showSlide(index) {
+        carousel.style.transform = `translateX(-${index * 100}%)`;
+        updateDots();
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        showSlide(currentIndex);
+    }
+
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        showSlide(currentIndex);
+    }
+
+    // Auto slide
+    function startAutoSlide() {
+        interval = setInterval(nextSlide, 6000);
+    }
+
+    function stopAutoSlide() {
+        clearInterval(interval);
+    }
+
+    // Init
+    showSlide(currentIndex);
+    startAutoSlide();
+
+    // Navigation
+    document.getElementById("next-btn").addEventListener("click", () => {
+        stopAutoSlide();
+        nextSlide();
+        startAutoSlide();
+    });
+
+    document.getElementById("prev-btn").addEventListener("click", () => {
+        stopAutoSlide();
+        prevSlide();
+        startAutoSlide();
+    });
+
+    // Dot navigation
+    Array.from(dots).forEach(dot => {
+        dot.addEventListener("click", (e) => {
+            stopAutoSlide();
+            currentIndex = parseInt(e.target.getAttribute("data-index"));
+            showSlide(currentIndex);
+            startAutoSlide();
+        });
+    });
+});
+</script>
