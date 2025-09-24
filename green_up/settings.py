@@ -198,6 +198,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "green_up_apps", "media")
 
+LOGIN_URL = '/login/'
 
 # Logo path for emails
 LOGO = os.path.join(BASE_DIR, 'green_up_apps/static/images/logo.webp')
