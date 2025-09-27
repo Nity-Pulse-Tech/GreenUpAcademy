@@ -1,0 +1,377 @@
+
+{% extends "publics/home/base/index.html" %}
+
+{% load static %}
+
+{% block content  %}
+
+ <!-- Admission Type Section -->
+ <section id="admission-type" class="py-16 bg-light">
+    <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Choisissez votre parcours d'admission</h2>
+            <p class="text-lg text-gray-700">Sélectionnez le processus d'admission adapté à votre situation. Nous offrons un soutien personnalisé pour les étudiants de l'UE et hors UE.</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
+                <div class="w-16 h-16 rounded-full bg-primary-green flex items-center justify-center mb-6">
+                    <i class="fas fa-flag-eu text-white text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Admission pour les étudiants de l'UE</h3>
+                <p class="text-gray-700 mb-6">Processus simplifié pour les étudiants des pays membres de l'Union européenne avec moins de documents requis.</p>
+                <ul class="text-gray-700 space-y-3 mb-6">
+                    <li class="flex items-center"><i class="fas fa-check text-primary-green mr-3"></i> Processus d'application simplifié</li>
+                    <li class="flex items-center"><i class="fas fa-check text-primary-green mr-3"></i> Aucun visa étudiant requis</li>
+                    <li class="flex items-center"><i class="fas fa-check text-primary-green mr-3"></i> Tarifs de scolarité de l'UE</li>
+                    <li class="flex items-center"><i class="fas fa-check text-primary-green mr-3"></i> Décision d'admission rapide</li>
+                </ul>
+                <a href="{% url "admission:admission_ue" %}" class="inline-block bg-primary-green text-white px-6 py-2 rounded-lg font-semibold hover:bg-dark transition duration-300 w-full text-center">Postuler en tant qu'étudiant de l'UE</a>
+            </div>
+            
+            <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
+                <div class="w-16 h-16 rounded-full bg-primary-green flex items-center justify-center mb-6">
+                    <i class="fas fa-globe-americas text-white text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Admission pour les étudiants hors UE</h3>
+                <p class="text-gray-700 mb-6">Soutien complet pour les étudiants internationaux venant de l'extérieur de l'Union européenne.</p>
+                <ul class="text-gray-700 space-y-3 mb-6">
+                    <li class="flex items-center"><i class="fas fa-check text-primary-green mr-3"></i> Assistance pour la demande de visa</li>
+                    <li class="flex items-center"><i class="fas fa-check text-primary-green mr-3"></i> Orientation pour les étudiants internationaux</li>
+                    <li class="flex items-center"><i class="fas fa-check text-primary-green mr-3"></i> Services de soutien au logement</li>
+                    <li class="flex items-center"><i class="fas fa-check text-primary-green mr-3"></i> Programmes d'intégration culturelle</li>
+                </ul>
+                <a href="{% url "admission:admission_hors_ue" %}" class="inline-block bg-primary-green text-white px-6 py-2 rounded-lg font-semibold hover:bg-dark transition duration-300 w-full text-center">Postuler en tant qu'étudiant international</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Professional Message Section -->
+<section class="py-16 bg-light">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="bg-white rounded-xl p-8 shadow-lg fade-in">
+            <h2 class="text-3xl lg:text-4xl font-bold mb-6 text-gray-900">Prêt à transformer votre avenir ?</h2>
+            <p class="text-lg mb-8 text-gray-600 leading-relaxed">
+                À Green Up Academy, nous créons des histoires de succès avec des services d'admission complets pour les étudiants de l'UE et hors UE.
+            </p>
+            <div class="grid md:grid-cols-3 gap-6 mt-10">
+                <div class="bg-gray-100 rounded-lg p-6">
+                    <div class="text-primary-green text-4xl mb-4">
+                        <svg class="svg-icon w-12 h-12 mx-auto" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                            <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Accompagnement Expert</h3>
+                    <p class="text-gray-600">Consultation personnalisée par des spécialistes des admissions</p>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-6">
+                    <div class="text-primary-green text-4xl mb-4">
+                        <svg class="svg-icon w-12 h-12 mx-auto" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Résultats Prouvés</h3>
+                    <p class="text-gray-600">95% de taux de réussite dans les placements universitaires</p>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-6">
+                    <div class="text-primary-green text-4xl mb-4">
+                        <svg class="svg-icon w-12 h-12 mx-auto" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Soutien Complet</h3>
+                    <p class="text-gray-600">De la candidature à l'assistance pour le visa</p>
+                </div>
+            </div>
+            <a href="#admission-type" class="mt-10 inline-block bg-primary-green text-white px-8 py-3 rounded-md font-semibold text-lg hover:bg-dark transition-all shadow-md">
+                Commencez Votre Parcours Aujourd'hui
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Admission Process Section -->
+<section id="admission-info" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Processus d'Admission</h2>
+            <p class="text-lg text-gray-600">Suivez ces étapes pour rejoindre Green Up Academy</p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-6 mb-12">
+            <!-- Step 1 -->
+            <div class="bg-blue-50 rounded-lg p-6 text-center">
+                <div class="w-12 h-12 bg-primary-green rounded-full flex items-center justify-center text-white text-xl font-bold mx-auto mb-4">1</div>
+                <h3 class="font-bold text-lg mb-4">Remplir le Formulaire d'Admission</h3>
+                <p class="text-gray-600 mb-4">Complétez et soumettez le formulaire d'admission avec les documents requis.</p>
+                <a href="#admission-type" class="inline-block bg-primary-green text-white px-6 py-2 rounded-md text-sm font-medium hover:bg-dark transition-all">Commencer la Candidature</a>
+            </div>
+            
+            <!-- Step 2 -->
+            <div class="bg-blue-50 rounded-lg p-6 text-center">
+                <div class="w-12 h-12 bg-primary-green rounded-full flex items-center justify-center text-white text-xl font-bold mx-auto mb-4">2</div>
+                <h3 class="font-bold text-lg mb-4">Examen de la Candidature</h3>
+                <p class="text-gray-600 mb-4">L'école examine votre candidature et peut programmer un entretien.</p>
+                <p class="text-gray-600 font-semibold">Frais : 1 200 € (Inscription) + 1 000 € (Arrhes, déductibles des frais de scolarité)</p>
+            </div>
+            
+            <!-- Step 3 -->
+            <div class="bg-blue-50 rounded-lg p-6 text-center">
+                <div class="w-12 h-12 bg-primary-green rounded-full flex items-center justify-center text-white text-xl font-bold mx-auto mb-4">3</div>
+                <h3 class="font-bold text-lg mb-4">Confirmation d'Inscription</h3>
+                <p class="text-gray-600 mb-4">Recevez la confirmation d'inscription, la facture et les documents pour le visa.</p>
+                <a href="#faq" class="inline-block bg-primary-green text-white px-6 py-2 rounded-md text-sm font-medium hover:bg-dark transition-all">En Savoir Plus</a>
+            </div>
+        </div>
+        
+        <!-- Cancellation Policy -->
+        <div class="bg-light rounded-lg p-8 text-center">
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Politique d'Annulation</h3>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div>
+                    <p class="font-semibold text-gray-900">Plus de 4 semaines avant le début</p>
+                    <p class="text-gray-600">Remboursement de 100% des arrhes (avec justification)</p>
+                </div>
+                <div>
+                    <p class="font-semibold text-gray-900">Moins de 4 semaines avant le début</p>
+                    <p class="text-gray-600">Aucun remboursement des arrhes ou frais d'inscription</p>
+                </div>
+                <div>
+                    <p class="font-semibold text-gray-900">Après le début</p>
+                    <p class="text-gray-600">Aucun remboursement, sauf pour des raisons sérieuses (avec justification)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Programs Section -->
+<section id="programs" class="py-16 bg-light">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Nos Programmes</h2>
+            <p class="text-lg text-gray-600">Découvrez nos offres éducatives variées à Paris et Reims</p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-6">
+            <!-- Program 1 -->
+            <div class="program-card bg-white rounded-lg overflow-hidden shadow-md">
+                <svg class="w-full h-48 bg-gray-100 p-4" viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="200" height="150" fill="#F0F9F4"/>
+                    <path d="M50 120C50 105 70 100 100 100C130 100 150 105 150 120" stroke="#0D8B36" stroke-width="8"/>
+                    <circle cx="100" cy="50" r="30" fill="#0D8B36"/>
+                    <path d="M80 50H120M100 30V70" stroke="white" stroke-width="4"/>
+                </svg>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Administration des Affaires</h3>
+                    <p class="text-gray-600 mb-2">Développez des compétences de leadership pour réussir dans le monde des affaires.</p>
+                    <p class="text-sm text-gray-500"><strong>Lieu :</strong> Paris</p>
+                    <p class="text-sm text-gray-500"><strong>Type :</strong> Bachelor</p>
+                    <a href="#contact" class="mt-4 inline-block text-primary-green font-semibold hover:underline">En Savoir Plus</a>
+                </div>
+            </div>
+            <!-- Program 2 -->
+            <div class="program-card bg-white rounded-lg overflow-hidden shadow-md">
+                <svg class="w-full h-48 bg-gray-100 p-4" viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="200" height="150" fill="#F0F9F4"/>
+                    <path d="M50 50H150V100H50V50Z" fill="#0D8B36"/>
+                    <path d="M75 75H125" stroke="white" stroke-width="8"/>
+                    <path d="M100 50V100" stroke="white" stroke-width="8"/>
+                </svg>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Informatique</h3>
+                    <p class="text-gray-600 mb-2">Maîtrisez les technologies de pointe et l'innovation.</p>
+                    <p class="text-sm text-gray-500"><strong>Lieu :</strong> Reims</p>
+                    <p class="text-sm text-gray-500"><strong>Type :</strong> Mastère</p>
+                    <a href="#contact" class="mt-4 inline-block text-primary-green font-semibold hover:underline">En Savoir Plus</a>
+                </div>
+            </div>
+            <!-- Program 3 -->
+            <div class="program-card bg-white rounded-lg overflow-hidden shadow-md">
+                <svg class="w-full h-48 bg-gray-100 p-4" viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="200" height="150" fill="#F0F9F4"/>
+                    <path d="M100 30L130 90H70L100 30Z" fill="#0D8B36"/>
+                    <circle cx="100" cy="110" r="20" fill="#064E20"/>
+                </svg>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Études Environnementales</h3>
+                    <p class="text-gray-600 mb-2">Concentrez-vous sur la durabilité et les technologies vertes.</p>
+                    <p class="text-sm text-gray-500"><strong>Lieu :</strong> Paris</p>
+                    <p class="text-sm text-gray-500"><strong>Type :</strong> Bachelor</p>
+                    <a href="#contact" class="mt-4 inline-block text-primary-green font-semibold hover:underline">En Savoir Plus</a>
+                </div>
+            </div>
+            <!-- Program 4 -->
+            <div class="program-card bg-white rounded-lg overflow-hidden shadow-md">
+                <svg class="w-full h-48 bg-gray-100 p-4" viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="200" height="150" fill="#F0F9F4"/>
+                    <path d="M50 100H150L125 50H75L50 100Z" fill="#0D8B36"/>
+                    <path d="M100 50V100" stroke="white" stroke-width="8"/>
+                </svg>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Relations Internationales</h3>
+                    <p class="text-gray-600 mb-2">Comprenez la politique mondiale et la diplomatie.</p>
+                    <p class="text-sm text-gray-500"><strong>Lieu :</strong> Reims</p>
+                    <p class="text-sm text-gray-500"><strong>Type :</strong> Mastère</p>
+                    <a href="#contact" class="mt-4 inline-block text-primary-green font-semibold hover:underline">En Savoir Plus</a>
+                </div>
+            </div>
+            <!-- Program 5 -->
+            <div class="program-card bg-white rounded-lg overflow-hidden shadow-md">
+                <svg class="w-full h-48 bg-gray-100 p-4" viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="200" height="150" fill="#F0F9F4"/>
+                    <path d="M50 100C50 70 70 50 100 50C130 50 150 70 150 100" fill="#0D8B36"/>
+                    <circle cx="100" cy="100" r="10" fill="white"/>
+                </svg>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Art et Design</h3>
+                    <p class="text-gray-600 mb-2">Exprimez votre créativité à travers divers médias.</p>
+                    <p class="text-sm text-gray-500"><strong>Lieu :</strong> Paris</p>
+                    <p class="text-sm text-gray-500"><strong>Type :</strong> Bachelor</p>
+                    <a href="#contact" class="mt-4 inline-block text-primary-green font-semibold hover:underline">En Savoir Plus</a>
+                </div>
+            </div>
+            <!-- Program 6 -->
+            <div class="program-card bg-white rounded-lg overflow-hidden shadow-md">
+                <svg class="w-full h-48 bg-gray-100 p-4" viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="200" height="150" fill="#F0F9F4"/>
+                    <path d="M60 110L100 30L140 110H60Z" fill="#0D8B36"/>
+                    <path d="M100 30V110" stroke="white" stroke-width="8"/>
+                </svg>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Sciences de la Santé</h3>
+                    <p class="text-gray-600 mb-2">Préparez-vous à des carrières dans les soins de santé et le bien-être.</p>
+                    <p class="text-sm text-gray-500"><strong>Lieu :</strong> Reims</p>
+                    <p class="text-sm text-gray-500"><strong>Type :</strong> Mastère</p>
+                    <a href="#contact" class="mt-4 inline-block text-primary-green font-semibold hover:underline">En Savoir Plus</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section id="faq" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Questions Fréquemment Posées</h2>
+            <p class="text-lg text-gray-600">Trouvez des réponses aux questions courantes sur les admissions et les études à Green Up Academy</p>
+        </div>
+        
+        <div class="space-y-4">
+            <!-- FAQ 1: Visa Longue Durée -->
+            <div class="border border-gray-200 rounded-lg">
+                <button class="accordion-button w-full flex justify-between items-center px-6 py-4 bg-blue-50 rounded-t-lg focus:outline-none">
+                    <h4 class="font-semibold text-lg text-primary-green">Comment demander un visa de longue durée ou un titre de séjour ?</h4>
+                    <i class="fas fa-chevron-down text-primary-green"></i>
+                </button>
+                <div class="hidden px-6 py-4 bg-white">
+                    <p class="text-gray-700">Demandez un visa auprès du consulat de France dans votre pays. Consultez le site web du consulat pour connaître les procédures spécifiques et les délais de traitement, qui peuvent prendre plusieurs mois. Les documents requis varient selon le pays et le type de visa. <span class="font-semibold text-red-600">Note :</span> Votre passeport doit être valide pour toute la durée de votre séjour en France, sinon votre demande sera rejetée.</p>
+                </div>
+            </div>
+            
+            <!-- FAQ 2: Visa Étudiant -->
+            <div class="border border-gray-200 rounded-lg">
+                <button class="accordion-button w-full flex justify-between items-center px-6 py-4 bg-blue-50 rounded-t-lg focus:outline-none">
+                    <h4 class="font-semibold text-lg text-primary-green">Comment obtenir un visa étudiant ?</h4>
+                    <i class="fas fa-chevron-down text-primary-green"></i>
+                </button>
+                <div class="hidden px-6 py-4 bg-white">
+                    <p class="text-gray-700">Visitez Campus France pour les procédures de visa étudiant, qui varient selon le pays :</p>
+                    <ul class="list-disc pl-5 mt-2 space-y-1">
+                        <li><a href="#" class="text-primary-green hover:underline font-semibold">Procédure pour 33 pays avec inscription en ligne (CEF)</a></li>
+                        <li><a href="#" class="text-primary-green hover:underline font-semibold">Procédure pour les pays européens</a></li>
+                        <li><a href="#" class="text-primary-green hover:underline font-semibold">Procédure pour les autres pays</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- FAQ 3: Admission Procedure -->
+            <div class="border border-gray-200 rounded-lg">
+                <button class="accordion-button w-full flex justify-between items-center px-6 py-4 bg-blue-50 rounded-t-lg focus:outline-none">
+                    <h4 class="font-semibold text-lg text-primary-green">Quelle est la procédure d'admission pour les étudiants internationaux ?</h4>
+                    <i class="fas fa-chevron-down text-primary-green"></i>
+                </button>
+                <div class="hidden px-6 py-4 bg-white">
+                    <p class="text-gray-700">Lors de la soumission de votre candidature, deux possibilités :</p>
+                    <p class="text-gray-700 mt-2"><span class="font-semibold">Si Green Up Academy est répertoriée dans votre pays :</span> Sélectionnez notre institution, suivez les étapes et fournissez le pack visa délivré par Green Up Academy lors de l'inscription.</p>
+                    <p class="text-gray-700 mt-2"><span class="font-semibold">Si Green Up Academy n'est pas répertoriée :</span> Entrez "Green Up Academy" dans le champ de texte et joignez le pack visa fourni par l'école.</p>
+                    <p class="text-gray-700 mt-2">Campus France vérifiera votre inscription auprès de nos services.</p>
+                </div>
+            </div>
+            
+            <!-- FAQ 4: Admission Dates -->
+            <div class="border border-gray-200 rounded-lg">
+                <button class="accordion-button w-full flex justify-between items-center px-6 py-4 bg-blue-50 rounded-t-lg focus:outline-none">
+                    <h4 class="font-semibold text-lg text-primary-green">Quelles sont les dates clés d'admission ?</h4>
+                    <i class="fas fa-chevron-down text-primary-green"></i>
+                </button>
+                <div class="hidden px-6 py-4 bg-white">
+                    <p class="text-gray-700">Les admissions sont ouvertes pour les sessions d'octobre 2025 et février 2026. La date limite de candidature est un mois avant la date de début. Dates clés :</p>
+                    <ul class="list-disc pl-5 mt-2 text-gray-700">
+                        <li>15 octobre 2025</li>
+                        <li>10 février 2026</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us Section -->
+<section id="about" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Pourquoi choisir Green Up Academy ?</h2>
+            <p class="text-lg text-gray-600">Votre succès est notre engagement</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="text-center group bg-light p-6 rounded-lg shadow-sm hover:shadow-md transition-all">
+                <div class="bg-primary-green bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-green group-hover:text-white transition-all">
+                    <svg class="svg-icon w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Excellence</h3>
+                <p class="text-gray-600">Offrir des résultats exceptionnels</p>
+            </div>
+            
+            <div class="text-center group bg-light p-6 rounded-lg shadow-sm hover:shadow-md transition-all">
+                <div class="bg-primary-green bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-green group-hover:text-white transition-all">
+                    <svg class="svg-icon w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Personnalisé</h3>
+                <p class="text-gray-600">Adapté à vos objectifs</p>
+            </div>
+            
+            <div class="text-center group bg-light p-6 rounded-lg shadow-sm hover:shadow-md transition-all">
+                <div class="bg-primary-green bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-green group-hover:text-white transition-all">
+                    <svg class="svg-icon w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M13 2.05v3.03c3.39.49 6 3.39 6 6.92 0 .9-.18 1.75-.5 2.54l2.62 1.53c.56-1.24.88-2.62.88-4.07 0-5.18-3.95-9.45-9-9.95zM12 19c-3.87 0-7-3.13-7-7 0-3.53 2.61-6.43 6-6.92V2.05c-5.06.5-9 4.76-9 9.95 0 5.52 4.47 10 9.99 10 3.31 0 6.24-1.61 8.06-4.09l-2.6-1.53C16.17 17.98 14.21 19 12 19z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Innovant</h3>
+                <p class="text-gray-600">Outils et stratégies modernes</p>
+            </div>
+            
+            <div class="text-center group bg-light p-6 rounded-lg shadow-sm hover:shadow-md transition-all">
+                <div class="bg-primary-green bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-green group-hover:text-white transition-all">
+                    <svg class="svg-icon w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M23 12l-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68L23 12zm-10 5h-2v-2h2v2zm0-4h-2V7h2v6z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Fiable</h3>
+                <p class="text-gray-600">Historique éprouvé</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock  %}

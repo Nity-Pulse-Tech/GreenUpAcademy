@@ -1,4 +1,4 @@
-{% extends 'publics/home/base.html' %}
+{% extends "publics/home/base/index.html" %}
 {% load static %}
 {% load i18n %}
 
@@ -34,20 +34,20 @@
 </style>
 
 <!-- Breadcrumb Section -->
-<section class="bg-primary-green text-white py-6">
+{% comment %} <section class="bg-primary-green text-white py-6">
     <div class="container mx-auto px-4">
         <div class="text-center">
             <h1 class="text-3xl font-bold mb-2">{% trans "Procédure d'Admission" %}</h1>
             <p class="text-lg">Green Up Academy > Admission</p>
         </div>
     </div>
-</section>
+</section> {% endcomment %}
 
 <!-- Main Content Section -->
 <main class="py-12">
     <div class="container mx-auto px-4">
         <!-- Admission Process Steps -->
-        <section class="mb-16">
+        {% comment %} <section class="mb-16">
             <h2 class="text-3xl font-bold text-center mb-12">{% trans "Processus d'Admission" %}</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Step 1 -->
@@ -118,7 +118,7 @@
                     <p class="text-gray-600">{% trans "Pas de remboursement, sauf motif grave (avec justificatifs)" %}</p>
                 </div>
             </div>
-        </section>
+        </section> {% endcomment %}
 
         <!-- Session Information -->
         <section class="mb-16 bg-white rounded-lg shadow-lg p-8">

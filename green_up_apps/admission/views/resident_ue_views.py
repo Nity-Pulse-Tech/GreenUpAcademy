@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 class ResidentUeView(TemplateView):
     template_name = "publics/home/admission/resident_ue/resident_ue.html"
     
-class AdmissionUeView(LoginRequiredMixin, View):
+class AdmissionUeView(View):
     """View for handling EU admission application form submission"""
 
     def get(self, request):

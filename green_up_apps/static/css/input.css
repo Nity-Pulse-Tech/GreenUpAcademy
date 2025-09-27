@@ -118,11 +118,13 @@
   --font-weight-bold: 700;
 
 
-  --color-primary-green: #1B5E20;
+  --color-primary-green: #0D8B36;
   --color-secondary-green: #2E7D32;
   --color-tertiary: #0A2540;
   --color-tertiaryBlack: #ff6227;
   --color-cancel: #676565;
+  --color-dark: '#064E20';
+  --color-light: '#F0F9F4';
 
   --color-light-green: #4CAF50;
   --color-accent-green: #66BB6A;
