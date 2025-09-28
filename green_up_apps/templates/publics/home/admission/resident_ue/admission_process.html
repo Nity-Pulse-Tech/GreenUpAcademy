@@ -525,66 +525,116 @@
                         </div>
                     </div>
 
-                    <!-- Step 6: Review & Submit -->
-                    <div class="wizard-step" data-step="6">
-                        <div class="form-section p-6 border border-gray-200 rounded-lg">
-                            <h3 class="text-xl font-semibold mb-6 text-primary">{% trans "Review & Submit" %}</h3>
-                            <div class="review-section space-y-4">
-                                <div>
-                                    <h4 class="text-lg font-medium text-gray-800">{% trans "Personal Information" %}</h4>
-                                    <p><strong>{% trans "Nom" %}:</strong> <span id="review-last_name"></span></p>
-                                    <p><strong>{% trans "Prénom" %}:</strong> <span id="review-first_name"></span></p>
-                                    <p><strong>{% trans "Date de naissance" %}:</strong> <span id="review-date_of_birth"></span></p>
-                                    <p><strong>{% trans "Téléphone mobile" %}:</strong> <span id="review-phone_number"></span></p>
-                                    <p><strong>{% trans "E-mail" %}:</strong> <span id="review-email"></span></p>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-medium text-gray-800">{% trans "Contact Information" %}</h4>
-                                    <p><strong>{% trans "Adresse complète" %}:</strong> <span id="review-address"></span></p>
-                                    <p><strong>{% trans "Code postal" %}:</strong> <span id="review-zip_code"></span></p>
-                                    <p><strong>{% trans "Ville" %}:</strong> <span id="review-city"></span></p>
-                                    <p><strong>{% trans "Pays" %}:</strong> <span id="review-country"></span></p>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-medium text-gray-800">{% trans "Academic Background" %}</h4>
-                                    <p><strong>{% trans "Dernier diplôme obtenu ou en cours" %}:</strong> <span id="review-last_diploma"></span></p>
-                                    <p><strong>{% trans "Établissement" %}:</strong> <span id="review-institution"></span></p>
-                                    <p><strong>{% trans "Ville / Pays" %}:</strong> <span id="review-institution_city_country"></span></p>
-                                    <p><strong>{% trans "Année d'obtention" %}:</strong> <span id="review-year_obtained"></span></p>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-medium text-gray-800">{% trans "Campus & Program" %}</h4>
-                                    <p><strong>{% trans "Campus" %}:</strong> <span id="review-campus"></span></p>
-                                    <p><strong>{% trans "Program" %}:</strong> <span id="review-program"></span></p>
-                                    <p><strong>{% trans "Apprenticeship" %}:</strong> <span id="review-apprenticeship"></span></p>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-medium text-gray-800">{% trans "Documents" %}</h4>
-                                    <p><strong>{% trans "CV" %}:</strong> <span id="review-cv"></span></p>
-                                    <p><strong>{% trans "Lettre de motivation" %}:</strong> <span id="review-lettre_motivation"></span></p>
-                                    <p><strong>{% trans "Relevés de notes / Attestation d'études" %}:</strong> <span id="review-releves_notes"></span></p>
-                                    <p><strong>{% trans "Pièce d'identité" %}:</strong> <span id="review-piece_identite"></span></p>
-                                    <p><strong>{% trans "Photo d'identité" %}:</strong> <span id="review-photo_identite"></span></p>
-                                    <p><strong>{% trans "Portfolio" %}:</strong> <span id="review-portfolio"></span></p>
-                                    <p><strong>{% trans "Signature" %}:</strong> <span id="review-signature"></span></p>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-medium text-gray-800">{% trans "How did you hear about us" %}</h4>
-                                    <p><strong>{% trans "Sources" %}:</strong> <span id="review-how_heard"></span></p>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-medium text-gray-800">{% trans "Declaration" %}</h4>
-                                    <p><strong>{% trans "Accepted" %}:</strong> <span id="review-declaration_accepted"></span></p>
-                                    <p><strong>{% trans "Fait à" %}:</strong> <span id="review-declaration_place"></span></p>
-                                    <p><strong>{% trans "Le" %}:</strong> <span id="review-declaration_date"></span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex justify-between mt-6">
-                            <button type="button" class="bg-primary-green text-white font-semibold py-3 px-8 rounded-lg transition-colors prev-step"><i class="fas fa-arrow-left mr-2"></i> {% trans "Previous" %}</button>
-                            <button type="submit" id="submit-btn" class="bg-primary-green text-white font-semibold py-3 px-8 rounded-lg transition-colors">{% trans "Soumettre ma Candidature" %} <i class="fas fa-paper-plane ml-2"></i></button>
-                        </div>
-                    </div>
+                   <!-- Step 6: Review & Submit -->
+<div class="wizard-step" data-step="6">
+    <div class="form-section p-8 bg-white border border-gray-200 rounded-2xl shadow-sm">
+        <!-- Title -->
+        <h3 class="text-2xl font-bold mb-8 text-primary flex items-center">
+            <i class="fas fa-check-circle text-primary mr-3"></i> {% trans "Review & Submit" %}
+        </h3>
+
+        <div class="review-section grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Personal Information -->
+            <div class="p-6 bg-gray-50 rounded-xl shadow-sm border">
+                <h4 class="text-lg font-semibold mb-4 text-gray-800 flex items-center">
+                    <i class="fas fa-user text-primary mr-2"></i> {% trans "Personal Information" %}
+                </h4>
+                <div class="space-y-2 text-sm text-gray-700">
+                    <p><strong>{% trans "Nom" %}:</strong> <span id="review-last_name"></span></p>
+                    <p><strong>{% trans "Prénom" %}:</strong> <span id="review-first_name"></span></p>
+                    <p><strong>{% trans "Date de naissance" %}:</strong> <span id="review-date_of_birth"></span></p>
+                    <p><strong>{% trans "Téléphone mobile" %}:</strong> <span id="review-phone_number"></span></p>
+                    <p><strong>{% trans "E-mail" %}:</strong> <span id="review-email"></span></p>
+                </div>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="p-6 bg-gray-50 rounded-xl shadow-sm border">
+                <h4 class="text-lg font-semibold mb-4 text-gray-800 flex items-center">
+                    <i class="fas fa-map-marker-alt text-primary mr-2"></i> {% trans "Contact Information" %}
+                </h4>
+                <div class="space-y-2 text-sm text-gray-700">
+                    <p><strong>{% trans "Adresse complète" %}:</strong> <span id="review-address"></span></p>
+                    <p><strong>{% trans "Code postal" %}:</strong> <span id="review-zip_code"></span></p>
+                    <p><strong>{% trans "Ville" %}:</strong> <span id="review-city"></span></p>
+                    <p><strong>{% trans "Pays" %}:</strong> <span id="review-country"></span></p>
+                </div>
+            </div>
+
+            <!-- Academic Background -->
+            <div class="p-6 bg-gray-50 rounded-xl shadow-sm border">
+                <h4 class="text-lg font-semibold mb-4 text-gray-800 flex items-center">
+                    <i class="fas fa-graduation-cap text-primary mr-2"></i> {% trans "Academic Background" %}
+                </h4>
+                <div class="space-y-2 text-sm text-gray-700">
+                    <p><strong>{% trans "Dernier diplôme obtenu ou en cours" %}:</strong> <span id="review-last_diploma"></span></p>
+                    <p><strong>{% trans "Établissement" %}:</strong> <span id="review-institution"></span></p>
+                    <p><strong>{% trans "Ville / Pays" %}:</strong> <span id="review-institution_city_country"></span></p>
+                    <p><strong>{% trans "Année d'obtention" %}:</strong> <span id="review-year_obtained"></span></p>
+                </div>
+            </div>
+
+            <!-- Campus & Program -->
+            <div class="p-6 bg-gray-50 rounded-xl shadow-sm border">
+                <h4 class="text-lg font-semibold mb-4 text-gray-800 flex items-center">
+                    <i class="fas fa-book-open text-primary mr-2"></i> {% trans "Campus & Program" %}
+                </h4>
+                <div class="space-y-2 text-sm text-gray-700">
+                    <p><strong>{% trans "Campus" %}:</strong> <span id="review-campus"></span></p>
+                    <p><strong>{% trans "Program" %}:</strong> <span id="review-program"></span></p>
+                    <p><strong>{% trans "Apprenticeship" %}:</strong> <span id="review-apprenticeship"></span></p>
+                </div>
+            </div>
+
+            <!-- Documents -->
+            <div class="p-6 bg-gray-50 rounded-xl shadow-sm border md:col-span-2">
+                <h4 class="text-lg font-semibold mb-4 text-gray-800 flex items-center">
+                    <i class="fas fa-file-alt text-primary mr-2"></i> {% trans "Documents" %}
+                </h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-700">
+                    <p><strong>{% trans "CV" %}:</strong> <span id="review-cv"></span></p>
+                    <p><strong>{% trans "Lettre de motivation" %}:</strong> <span id="review-lettre_motivation"></span></p>
+                    <p><strong>{% trans "Relevés de notes / Attestation d'études" %}:</strong> <span id="review-releves_notes"></span></p>
+                    <p><strong>{% trans "Pièce d'identité" %}:</strong> <span id="review-piece_identite"></span></p>
+                    <p><strong>{% trans "Photo d'identité" %}:</strong> <span id="review-photo_identite"></span></p>
+                    <p><strong>{% trans "Portfolio" %}:</strong> <span id="review-portfolio"></span></p>
+                    <p><strong>{% trans "Signature" %}:</strong> <span id="review-signature"></span></p>
+                </div>
+            </div>
+
+            <!-- Sources -->
+            <div class="p-6 bg-gray-50 rounded-xl shadow-sm border">
+                <h4 class="text-lg font-semibold mb-4 text-gray-800 flex items-center">
+                    <i class="fas fa-bullhorn text-primary mr-2"></i> {% trans "How did you hear about us" %}
+                </h4>
+                <p class="text-sm text-gray-700"><strong>{% trans "Sources" %}:</strong> <span id="review-how_heard"></span></p>
+            </div>
+
+            <!-- Declaration -->
+            <div class="p-6 bg-gray-50 rounded-xl shadow-sm border">
+                <h4 class="text-lg font-semibold mb-4 text-gray-800 flex items-center">
+                    <i class="fas fa-clipboard-check text-primary mr-2"></i> {% trans "Declaration" %}
+                </h4>
+                <div class="space-y-2 text-sm text-gray-700">
+                    <p><strong>{% trans "Accepted" %}:</strong> <span id="review-declaration_accepted"></span></p>
+                    <p><strong>{% trans "Fait à" %}:</strong> <span id="review-declaration_place"></span></p>
+                    <p><strong>{% trans "Le" %}:</strong> <span id="review-declaration_date"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="flex justify-between mt-8">
+        <button type="button" class="bg-gray-100 text-gray-700 font-medium py-3 px-8 rounded-lg shadow-sm hover:bg-gray-200 transition-colors prev-step">
+            <i class="fas fa-arrow-left mr-2"></i> {% trans "Previous" %}
+        </button>
+        <button type="submit" id="submit-btn" class="bg-primary-green text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-green-700 transition-colors">
+            {% trans "Soumettre ma Candidature" %} <i class="fas fa-paper-plane ml-2"></i>
+        </button>
+    </div>
+</div>
+
                 </form>
             </section>
         </div>
