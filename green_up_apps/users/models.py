@@ -157,7 +157,7 @@ class Profile(GreenUpBaseModel):
         help_text=_("Associated user account.")
     )
     country = models.CharField(_("Country"), max_length=20, blank=True)
-    phone_number = models.CharField(_("Phone Number"), max_length=15, blank=True)
+    phone_number = models.CharField(_("Phone Number"), max_length=25, blank=True)
     region = models.CharField(_("Region"), max_length=20, default="Paris", blank=True)
     city = models.CharField(_("City"), max_length=20, blank=True)
     address = models.CharField(_("Address"), max_length=100, blank=True)
