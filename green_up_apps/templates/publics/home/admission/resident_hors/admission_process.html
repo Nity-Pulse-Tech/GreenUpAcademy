@@ -587,123 +587,124 @@
             </div>
         </div>
 
-        <!-- Step 6: Review & Submit -->
+<!-- Étape 6 : Vérification & Soumission -->
 <div class="wizard-step" data-step="6">
     <div class="form-section p-8 bg-white border border-gray-200 rounded-2xl shadow-sm">
-        <!-- Title -->
+        <!-- Titre -->
         <h3 class="text-2xl font-bold mb-8 text-primary flex items-center">
-            <i class="fas fa-check-circle text-primary mr-3"></i> Review & Submit
+            <i class="fas fa-check-circle text-primary mr-3"></i> Vérification & Soumission
         </h3>
 
         <div class="review-section grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Personal Information -->
+            <!-- Informations personnelles -->
             <div class="p-6 bg-gray-50 rounded-xl shadow-sm border">
                 <h4 class="text-lg font-semibold mb-4 text-gray-800 flex items-center">
-                    <i class="fas fa-user text-primary mr-2"></i> Personal Information
+                    <i class="fas fa-user text-primary mr-2"></i> Informations personnelles
                 </h4>
                 <div class="space-y-2 text-sm text-gray-700">
-                    <p><strong>Civilité:</strong> <span id="review-civilite"></span></p>
-                    <p><strong>Last Name:</strong> <span id="review-last_name"></span></p>
-                    <p><strong>First Name:</strong> <span id="review-first_name"></span></p>
-                    <p><strong>Date of Birth:</strong> <span id="review-date_of_birth"></span></p>
-                    <p><strong>Place of Birth:</strong> <span id="review-place_of_birth"></span></p>
-                    <p><strong>Nationality:</strong> <span id="review-nationality"></span></p>
-                    <p><strong>Passport Number:</strong> <span id="review-passport_number"></span></p>
-                    <p><strong>Level of Studies:</strong> <span id="review-level_of_studies"></span></p>
-                    <p><strong>Email:</strong> <span id="review-email"></span></p>
-                    <p><strong>Mobile Number:</strong> <span id="review-mobile_number"></span></p>
-                    <p><strong>Current Address:</strong> <span id="review-current_address"></span></p>
-                    <p><strong>Postal Code:</strong> <span id="review-postal_code"></span></p>
-                    <p><strong>City:</strong> <span id="review-city"></span></p>
-                    <p><strong>Country:</strong> <span id="review-country"></span></p>
-                    <p><strong>Photo d'identité:</strong> <span id="review-photo_identite"></span></p>
+                    <p><strong>Civilité :</strong> <span id="review-civilite"></span></p>
+                    <p><strong>Nom :</strong> <span id="review-last_name"></span></p>
+                    <p><strong>Prénom :</strong> <span id="review-first_name"></span></p>
+                    <p><strong>Date de naissance :</strong> <span id="review-date_of_birth"></span></p>
+                    <p><strong>Lieu de naissance :</strong> <span id="review-place_of_birth"></span></p>
+                    <p><strong>Nationalité :</strong> <span id="review-nationality"></span></p>
+                    <p><strong>Numéro de passeport :</strong> <span id="review-passport_number"></span></p>
+                    <p><strong>Niveau d’études :</strong> <span id="review-level_of_studies"></span></p>
+                    <p><strong>Email :</strong> <span id="review-email"></span></p>
+                    <p><strong>Numéro de téléphone :</strong> <span id="review-mobile_number"></span></p>
+                    <p><strong>Adresse actuelle :</strong> <span id="review-current_address"></span></p>
+                    <p><strong>Code postal :</strong> <span id="review-postal_code"></span></p>
+                    <p><strong>Ville :</strong> <span id="review-city"></span></p>
+                    <p><strong>Pays :</strong> <span id="review-country"></span></p>
+                    <p><strong>Photo d’identité :</strong> <span id="review-photo_identite"></span></p>
                 </div>
             </div>
 
-            <!-- Parent Information -->
+            <!-- Informations parent/tuteur -->
             <div class="p-6 bg-gray-50 rounded-xl shadow-sm border">
                 <h4 class="text-lg font-semibold mb-4 text-gray-800 flex items-center">
-                    <i class="fas fa-users text-primary mr-2"></i> Parent/Guardian Information
+                    <i class="fas fa-users text-primary mr-2"></i> Informations parent/tuteur
                 </h4>
                 <div class="space-y-2 text-sm text-gray-700">
-                    <p><strong>Last Name:</strong> <span id="review-parent_last_name"></span></p>
-                    <p><strong>First Name:</strong> <span id="review-parent_first_name"></span></p>
-                    <p><strong>Mobile Number:</strong> <span id="review-parent_mobile_number"></span></p>
-                    <p><strong>Email:</strong> <span id="review-parent_email"></span></p>
-                    <p><strong>Address:</strong> <span id="review-parent_address"></span></p>
-                    <p><strong>Postal Code:</strong> <span id="review-parent_postal_code"></span></p>
-                    <p><strong>City:</strong> <span id="review-parent_city"></span></p>
-                    <p><strong>Country:</strong> <span id="review-parent_country"></span></p>
+                    <p><strong>Nom :</strong> <span id="review-parent_last_name"></span></p>
+                    <p><strong>Prénom :</strong> <span id="review-parent_first_name"></span></p>
+                    <p><strong>Numéro de téléphone :</strong> <span id="review-parent_mobile_number"></span></p>
+                    <p><strong>Email :</strong> <span id="review-parent_email"></span></p>
+                    <p><strong>Adresse :</strong> <span id="review-parent_address"></span></p>
+                    <p><strong>Code postal :</strong> <span id="review-parent_postal_code"></span></p>
+                    <p><strong>Ville :</strong> <span id="review-parent_city"></span></p>
+                    <p><strong>Pays :</strong> <span id="review-parent_country"></span></p>
                 </div>
             </div>
 
-            <!-- Diploma -->
+            <!-- Diplôme -->
             <div class="p-6 bg-gray-50 rounded-xl shadow-sm border">
                 <h4 class="text-lg font-semibold mb-4 text-gray-800 flex items-center">
-                    <i class="fas fa-graduation-cap text-primary mr-2"></i> Diploma Information
+                    <i class="fas fa-graduation-cap text-primary mr-2"></i> Informations sur le diplôme
                 </h4>
                 <div class="space-y-2 text-sm text-gray-700">
-                    <p><strong>Diploma Details:</strong> <span id="review-diploma_details"></span></p>
-                    <p><strong>School/University:</strong> <span id="review-school_university"></span></p>
-                    <p><strong>City/Country:</strong> <span id="review-school_city_country"></span></p>
-                    <p><strong>Year:</strong> <span id="review-diploma_year"></span></p>
+                    <p><strong>Détails du diplôme :</strong> <span id="review-diploma_details"></span></p>
+                    <p><strong>École/Université :</strong> <span id="review-school_university"></span></p>
+                    <p><strong>Ville/Pays :</strong> <span id="review-school_city_country"></span></p>
+                    <p><strong>Année :</strong> <span id="review-diploma_year"></span></p>
                 </div>
             </div>
 
-            <!-- Program Selection -->
+            <!-- Sélection du programme -->
             <div class="p-6 bg-gray-50 rounded-xl shadow-sm border">
                 <h4 class="text-lg font-semibold mb-4 text-gray-800 flex items-center">
-                    <i class="fas fa-book-open text-primary mr-2"></i> Program Selection
+                    <i class="fas fa-book-open text-primary mr-2"></i> Sélection du programme
                 </h4>
                 <div class="space-y-2 text-sm text-gray-700">
-                    <p><strong>Campus:</strong> <span id="review-campus"></span></p>
-                    <p><strong>Programs:</strong> <span id="review-programs"></span></p>
+                    <p><strong>Campus :</strong> <span id="review-campus"></span></p>
+                    <p><strong>Programmes :</strong> <span id="review-programs"></span></p>
                 </div>
             </div>
 
-            <!-- Required Documents -->
+            <!-- Documents requis -->
             <div class="p-6 bg-gray-50 rounded-xl shadow-sm border md:col-span-2">
                 <h4 class="text-lg font-semibold mb-4 text-gray-800 flex items-center">
-                    <i class="fas fa-file-alt text-primary mr-2"></i> Required Documents
+                    <i class="fas fa-file-alt text-primary mr-2"></i> Documents requis
                 </h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-700">
-                    <p><strong>CV:</strong> <span id="review-cv"></span></p>
-                    <p><strong>Lettre de motivation:</strong> <span id="review-lettre_motivation"></span></p>
-                    <p><strong>Portfolio:</strong> <span id="review-portfolio"></span></p>
-                    <p><strong>Passeport:</strong> <span id="review-passeport"></span></p>
-                    <p><strong>Diplôme/Relevés:</strong> <span id="review-diplome"></span></p>
-                    <p><strong>Attestation Langue:</strong> <span id="review-attestation_langue"></span></p>
+                    <p><strong>CV :</strong> <span id="review-cv"></span></p>
+                    <p><strong>Lettre de motivation :</strong> <span id="review-lettre_motivation"></span></p>
+                    <p><strong>Portfolio :</strong> <span id="review-portfolio"></span></p>
+                    <p><strong>Passeport :</strong> <span id="review-passeport"></span></p>
+                    <p><strong>Diplôme/Relevés :</strong> <span id="review-diplome"></span></p>
+                    <p><strong>Attestation de langue :</strong> <span id="review-attestation_langue"></span></p>
                 </div>
             </div>
 
             <!-- Source -->
             <div class="p-6 bg-gray-50 rounded-xl shadow-sm border">
                 <h4 class="text-lg font-semibold mb-4 text-gray-800 flex items-center">
-                    <i class="fas fa-bullhorn text-primary mr-2"></i> Source Information
+                    <i class="fas fa-bullhorn text-primary mr-2"></i> Source d’information
                 </h4>
-                <p class="text-sm text-gray-700"><strong>How did you hear about us:</strong> <span id="review-source"></span></p>
+                <p class="text-sm text-gray-700"><strong>Comment avez-vous entendu parler de nous :</strong> <span id="review-source"></span></p>
             </div>
 
-            <!-- Declaration -->
+            <!-- Déclaration -->
             <div class="p-6 bg-gray-50 rounded-xl shadow-sm border">
                 <h4 class="text-lg font-semibold mb-4 text-gray-800 flex items-center">
-                    <i class="fas fa-clipboard-check text-primary mr-2"></i> Declaration
+                    <i class="fas fa-clipboard-check text-primary mr-2"></i> Déclaration
                 </h4>
-                <p class="text-sm text-gray-700"><strong>Accepted:</strong> <span id="review-declaration"></span></p>
+                <p class="text-sm text-gray-700"><strong>Acceptée :</strong> <span id="review-declaration"></span></p>
             </div>
         </div>
     </div>
 
-    <!-- Navigation Buttons -->
+    <!-- Boutons de navigation -->
     <div class="flex justify-between mt-8">
         <button type="button" class="bg-gray-100 text-gray-700 font-medium py-3 px-8 rounded-lg shadow-sm hover:bg-gray-200 transition-colors prev-step">
-            <i class="fas fa-arrow-left mr-2"></i> Previous
+            <i class="fas fa-arrow-left mr-2"></i> Précédent
         </button>
         <button type="submit" class="bg-primary-green text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-green-700 transition-colors">
-            Soumettre ma Candidature <i class="fas fa-paper-plane ml-2"></i>
+            Soumettre ma candidature <i class="fas fa-paper-plane ml-2"></i>
         </button>
     </div>
 </div>
+
 
     </form>
 </section>
